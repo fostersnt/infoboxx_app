@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: Center(
-          child: Text("WELCOME TO INFOBOXX V5"),
+          child: DashboardFragmentScreen(),
         ),
       ),
     );
