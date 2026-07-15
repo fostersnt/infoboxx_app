@@ -33,8 +33,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 250,
+                          height: MediaQuery.of(context).size.height / 4,
                           child: Image.asset("images/logo_white.webp"),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 8,
+                          child: Text(
+                            "WELCOME BACK !",
+                            style: TextStyle(color: Colors.grey, fontSize: 20),
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -145,30 +152,43 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 30),
+                                  Material(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: InkWell(
+                                      onTap: () => {},
+                                      borderRadius: BorderRadius.circular(30),
+                                      child: const Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
+                                        child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 16),),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 30),
                                   Row(
                                     children: [
                                       Expanded(
-                                          child: Text(
-                                            "Don't have an Account?",
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(color: Colors.black),
-                                          )
+                                        child: Text(
+                                          "Don't have an Account?",
+                                          textAlign: TextAlign.end,
+                                          style: TextStyle(color: Colors.black),
+                                        ),
                                       ),
-                                        TextButton(
-                                          onPressed: () {
-                                            Get.to(
-                                              () => OnboardingStarterScreen(),
-                                            );
-                                          },
-                                          child: Text(
-                                            "Onboard Now",
-                                            style: TextStyle(
-                                              color: Color(0xFFFBC31B),
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Get.to(
+                                            () => OnboardingStarterScreen(),
+                                          );
+                                        },
+                                        child: Text(
+                                          "Onboard Now",
+                                          style: TextStyle(
+                                            color: Color(0xFFFBC31B),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
+                                      ),
                                     ],
                                   ),
                                 ],
