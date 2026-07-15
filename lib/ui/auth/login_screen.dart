@@ -19,12 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: LayoutBuilder(
         builder: (context, cons) {
           return ConstrainedBox(
             constraints: BoxConstraints(minHeight: cons.maxHeight),
             child: SingleChildScrollView(
-              child: Center(
+              physics: const BouncingScrollPhysics(),
+              child: IntrinsicHeight(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: Padding(
