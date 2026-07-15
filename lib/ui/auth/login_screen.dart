@@ -146,32 +146,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   SizedBox(height: 30),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("Don't have an Account?"),
-                                      TextButton(
-                                        onPressed: (){
-                                          Get.to(() => OnboardingStarterScreen());
-                                        },
-                                        child: Text("Register Here", style: TextStyle(color: Colors.purpleAccent, fontSize: 16),),
+                                      Expanded(
+                                          child: Text(
+                                            "Don't have an Account?",
+                                            textAlign: TextAlign.end,
+                                            style: TextStyle(color: Colors.black),
+                                          )
                                       ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Get.to(
+                                              () => OnboardingStarterScreen(),
+                                            );
+                                          },
+                                          child: Text(
+                                            "Onboard Now",
+                                            style: TextStyle(
+                                              color: Color(0xFFFBC31B),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
                                     ],
                                   ),
-                                  Text(
-                                    "OR",
-                                    style: TextStyle(color: Colors.grey, fontSize: 16),
-                                  ),
-                                  //Service Provider link
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("Are you a service provider?"),
-                                      TextButton(
-                                        onPressed: (){},
-                                        child: Text("Click Here", style: TextStyle(color: Colors.grey, fontSize: 16),),
-                                      ),
-                                    ],
-                                  )
                                 ],
                               ),
                             ),
