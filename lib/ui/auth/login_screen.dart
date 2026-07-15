@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: emailController,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.email),
-                                      hintText: "Enter email...",
+                                      hintText: "email",
                                       filled: true,
                                       fillColor: Colors.white,
                                       border: OutlineInputBorder(
@@ -84,50 +84,61 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   SizedBox(height: 30),
                                   //! Password field
-                                  TextFormField(
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.key),
-                                      suffixIcon: Obx(
-                                        () => GestureDetector(
-                                          onTap: () {
-                                            hidePassword.value =
-                                                !hidePassword.value;
-                                          },
-                                          child: Icon(
-                                            hidePassword.value == true
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                            color: Colors.black,
+                                  Obx(
+                                    () => TextFormField(
+                                      controller: passwordController,
+                                      obscureText: hidePassword.value,
+                                      decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.key),
+                                        suffixIcon: Obx(
+                                          () => GestureDetector(
+                                            onTap: () {
+                                              hidePassword.value =
+                                                  !hidePassword.value;
+                                            },
+                                            child: Icon(
+                                              hidePassword.value == true
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                              color: Colors.black,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      hintText: "Enter email...",
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                        hintText: "password",
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          borderSide: const BorderSide(
+                                            color: Colors.white60,
+                                          ),
                                         ),
-                                      ),
-                                      // 1. Border when the field is enabled (idle)
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                        // 1. Border when the field is enabled (idle)
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          borderSide: const BorderSide(
+                                            color: Colors.white60,
+                                          ),
                                         ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          borderSide: const BorderSide(
+                                            color: Colors.white60,
+                                          ),
                                         ),
-                                      ),
-                                      disabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                        disabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          borderSide: const BorderSide(
+                                            color: Colors.white60,
+                                          ),
                                         ),
                                       ),
                                     ),
