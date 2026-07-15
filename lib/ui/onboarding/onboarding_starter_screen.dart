@@ -22,149 +22,145 @@ class _OnboardingStarterState extends State<OnboardingStarterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundPage,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        // Optional top navigation layout adjustments can go here if needed
-      ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-              vertical: 20.0,
-            ),
-            child: Container(
-              // Main white container box mimicking your reference design
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+        child: Center(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 20.0,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // --- Header Badge (INFO BOXX · PARTNER ONBOARDING) ---
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(
-                          0xFFFEF9E7,
-                        ), // Light yellow background tint
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: primaryYellow.withOpacity(0.3),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            "INFO ",
-                            style: TextStyle(
-                              color: primaryYellow,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.0,
-                            ),
-                          ),
-                          const Text(
-                            "BOXX",
-                            style: TextStyle(
-                              color: textColorDark,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 1.0,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 6.0),
-                            child: Text(
-                              "·",
-                              style: TextStyle(color: primaryYellow),
-                            ),
-                          ),
-                          const Text(
-                            "PARTNER ONBOARDING",
-                            style: TextStyle(
-                              color: primaryYellow,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.8,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // --- Title Section ---
-                    const Text(
-                      "Welcome to partner onboarding",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: textColorDark,
-                        fontSize: 26,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -0.5,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    // --- Subtitle Section ---
-                    const Text(
-                      "Are you continuing a previous application or starting fresh?",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: textColorGrey,
-                        fontSize: 15,
-                        height: 1.4,
-                      ),
-                    ),
-                    const SizedBox(height: 32),
-
-                    // --- Option Card 1: Continue Application ---
-                    _buildOptionCard(
-                      icon: Icons.assignment_outlined,
-                      title: "Continue previous application",
-                      subtitle:
-                          "Use a draft on this device or enter a recovery code",
-                      accentColor: primaryYellow,
-                      onTap: () {
-                        Get.to(() => RecoveryScreen());
-                      },
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // --- Option Card 2: Start Fresh ---
-                    _buildOptionCard(
-                      icon: Icons.refresh_rounded,
-                      title: "Start fresh",
-                      subtitle: "Begin a new partner application",
-                      accentColor: const Color(
-                        0xFF90A4AE,
-                      ), // Slate grey icon styling
-                      onTap: () {
-                        // Handle start fresh action here
-                      },
+              child: Container(
+                // Main white container box mimicking your reference design
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
                     ),
                   ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // --- Header Badge (INFO BOXX · PARTNER ONBOARDING) ---
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(
+                            0xFFFEF9E7,
+                          ), // Light yellow background tint
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: primaryYellow.withOpacity(0.3),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "INFO ",
+                              style: TextStyle(
+                                color: primaryYellow,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1.0,
+                              ),
+                            ),
+                            const Text(
+                              "BOXX",
+                              style: TextStyle(
+                                color: textColorDark,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 1.0,
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 6.0),
+                              child: Text(
+                                "·",
+                                style: TextStyle(color: primaryYellow),
+                              ),
+                            ),
+                            const Text(
+                              "PARTNER ONBOARDING",
+                              style: TextStyle(
+                                color: primaryYellow,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.8,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // --- Title Section ---
+                      const Text(
+                        "Welcome to partner onboarding",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: textColorDark,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+
+                      // --- Subtitle Section ---
+                      const Text(
+                        "Are you continuing a previous application or starting fresh?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: textColorGrey,
+                          fontSize: 15,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+
+                      // --- Option Card 1: Continue Application ---
+                      _buildOptionCard(
+                        icon: Icons.assignment_outlined,
+                        title: "Continue previous application",
+                        subtitle:
+                            "Use a draft on this device or enter a recovery code",
+                        accentColor: primaryYellow,
+                        onTap: () {
+                          Get.to(() => RecoveryScreen());
+                        },
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // --- Option Card 2: Start Fresh ---
+                      _buildOptionCard(
+                        icon: Icons.refresh_rounded,
+                        title: "Start fresh",
+                        subtitle: "Begin a new partner application",
+                        accentColor: const Color(
+                          0xFF90A4AE,
+                        ), // Slate grey icon styling
+                        onTap: () {
+                          // Handle start fresh action here
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
