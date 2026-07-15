@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infoboxx/ui/onboarding/starter_starter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -144,6 +145,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 30),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("Don't have an Account?"),
+                                      TextButton(
+                                        onPressed: (){
+                                          Get.to(() => OnboardingStarterScreen());
+                                        },
+                                        child: Text("Register Here", style: TextStyle(color: Colors.purpleAccent, fontSize: 16),),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "OR",
+                                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                                  ),
+                                  //Service Provider link
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("Are you a service provider?"),
+                                      TextButton(
+                                        onPressed: (){},
+                                        child: Text("Click Here", style: TextStyle(color: Colors.grey, fontSize: 16),),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
