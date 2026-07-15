@@ -42,7 +42,6 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Obx(
             () => _fragmentScreens[indexNumber.value]
@@ -54,16 +53,21 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
             onTap: (val){
               indexNumber.value = val;
             },
+            backgroundColor: Colors.black,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedItemColor: Colors.white,
+            selectedItemColor: Colors.red,
             unselectedItemColor: Colors.white24,
             items: List.generate(_navigationButtonsProperties.length, (index) {
              var navBtnProperty = _navigationButtonsProperties[index];
              return BottomNavigationBarItem(
                backgroundColor: Colors.black,
-               icon: Icon(navBtnProperty["non_active_icon"]),
-               activeIcon: Icon(navBtnProperty["active_icon"]),
+               icon: navBtnProperty["non_active_icon"] is FaIconData
+                   ? FaIcon(navBtnProperty["non_active_icon"])
+                   : Icon(navBtnProperty["non_active_icon"]),
+               activeIcon: navBtnProperty["active_icon"] is FaIconData
+                   ? FaIcon(navBtnProperty["active_icon"])
+                   : Icon(navBtnProperty["active_icon"]),
                label: navBtnProperty["label"],
              );
             }),
