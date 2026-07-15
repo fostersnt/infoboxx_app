@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/ui/auth/login_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 
 void main() {
@@ -17,11 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(
-        body: Center(
-          child: DashboardFragmentScreen(),
-        ),
-      ),
+      home: LoginScreen()
     );
   }
 }
