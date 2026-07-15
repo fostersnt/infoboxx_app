@@ -169,7 +169,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                                   ),
                                 ),
                                 child: const Text(
-                                  "Load draft",
+                                  "Verify",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
