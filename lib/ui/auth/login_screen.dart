@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infoboxx/api/dio_client.dart';
+import 'package:infoboxx/api/endpoints.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -148,7 +153,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
-                                    onTap: () => {},
+                                    onTap: () async {
+                                      const loginEndpoint =
+                                          ApiEndpoint.SERVICE_PROVIDER_LOGIN;
+                                      var requestData = {
+                                        "email": emailController.text.trim(),
+                                        "password": passwordController.text
+                                            .trim(),
+                                      };
+                                      var apiResponse = await DioClient.myDioObj
+                                          .post(
+                                            loginEndpoint,
+                                            data: requestData,
+                                          );
+                                      if (apiResponse.data.data.status_code ==
+                                          200) {
+                                        // 1. Convert the JSON object into a pretty-printed string
+                                        var encoder =
+                                            const JsonEncoder.withIndent('  ');
+                                        String prettyJson = encoder.convert(
+                                          apiResponse.data,
+                                        );
+
+                                        // 2. Print it out
+                                        debugPrint("--- API RESPONSE DATA ---");
+                                        debugPrint(prettyJson);
+                                        debugPrint("-------------------------");
+                                      }
+                                    },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
                                       padding: EdgeInsets.symmetric(
