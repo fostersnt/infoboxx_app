@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           Get.snackbar(
                                             "Login Failed",
                                             serverMessage,
-                                            snackPosition: SnackPosition.BOTTOM,
+                                            snackPosition: SnackPosition.TOP,
                                             backgroundColor: Colors.redAccent,
                                             colorText: Colors.white,
                                             margin: const EdgeInsets.all(16),
@@ -254,7 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         Get.snackbar(
                                           "Network Error",
                                           errorMessage,
-                                          snackPosition: SnackPosition.BOTTOM,
+                                          snackPosition: SnackPosition.TOP,
                                           backgroundColor: Colors.redAccent,
                                           colorText: Colors.white,
                                           margin: const EdgeInsets.all(16),
