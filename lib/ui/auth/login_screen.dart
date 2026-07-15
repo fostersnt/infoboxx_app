@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/api/dio_client.dart';
 import 'package:infoboxx/api/endpoints.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
+import 'package:infoboxx/util/response_convertor.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -166,20 +167,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                             loginEndpoint,
                                             data: requestData,
                                           );
-                                      if (apiResponse.data.data.status_code ==
-                                          200) {
-                                        // 1. Convert the JSON object into a pretty-printed string
-                                        var encoder =
-                                            const JsonEncoder.withIndent('  ');
-                                        String prettyJson = encoder.convert(
-                                          apiResponse.data,
-                                        );
 
-                                        // 2. Print it out
-                                        debugPrint("--- API RESPONSE DATA ---");
-                                        debugPrint(prettyJson);
-                                        debugPrint("-------------------------");
-                                      }
+                                      ResponseConvertor.convertToJson(apiResponse.data);
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
