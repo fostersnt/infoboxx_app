@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/api/dio_client.dart';
@@ -155,20 +156,115 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
                                     onTap: () async {
-                                      const loginEndpoint =
-                                          ApiEndpoint.SERVICE_PROVIDER_LOGIN;
-                                      var requestData = {
-                                        "email": emailController.text.trim(),
-                                        "password": passwordController.text
-                                            .trim(),
-                                      };
-                                      var apiResponse = await DioClient.myDioObj
-                                          .post(
-                                            loginEndpoint,
-                                            data: requestData,
-                                          );
+                                      try {
+                                        const loginEndpoint =
+                                            ApiEndpoint.SERVICE_PROVIDER_LOGIN;
+                                        var requestData = {
+                                          "email": emailController.text.trim(),
+                                          "password": passwordController.text
+                                              .trim(),
+                                        };
+                                        var apiResponse = await DioClient
+                                            .myDioObj
+                                            .post(
+                                              loginEndpoint,
+                                              data: requestData,
+                                            );
 
-                                      ResponseConvertor.convertToJson(apiResponse.data);
+                                        Map<String, dynamic> response =
+                                            apiResponse.data;
+                                        String serverMessage =
+                                            response['reason'] ??
+                                            "An error occurred during login.";
+
+                                        ResponseConvertor.convertToJson(
+                                          response,
+                                        );
+
+                                        if (response['status_code'] == 200) {
+                                          debugPrint(
+                                            "--- API REQUEST IS COMPLETED WITH SUCCESS RESPONSE ---",
+                                          );
+                                        } else {
+                                          Get.snackbar(
+                                            "Login Failed",
+                                            serverMessage,
+                                            snackPosition: SnackPosition.BOTTOM,
+                                            backgroundColor: Colors.redAccent,
+                                            colorText: Colors.white,
+                                            margin: const EdgeInsets.all(16),
+                                            duration: const Duration(
+                                              seconds: 3,
+                                            ),
+                                          );
+                                        }
+                                      } catch (e) {
+                                        String errorMessage =
+                                            "An unexpected error occurred.";
+
+                                        if (e is DioException) {
+                                          if (e.response != null &&
+                                              e.response?.data != null) {
+                                            // The server WAS reached, but returned an error status (400, 401, 500, etc.)
+                                            errorMessage =
+                                                e
+                                                    .response
+                                                    ?.data['data']['reason'] ??
+                                                e
+                                                    .response
+                                                    ?.data['data']['reason'] ??
+                                                "Server error.";
+                                          } else {
+                                            // The request NEVER reached your server!
+                                            // Let's find out exactly why:
+                                            switch (e.type) {
+                                              case DioExceptionType
+                                                  .connectionTimeout:
+                                                errorMessage =
+                                                    "Connection timed out. Please try again later.";
+                                                break;
+                                              case DioExceptionType.sendTimeout:
+                                                errorMessage =
+                                                    "Failed to send data to the server. Please check your connection.";
+                                                break;
+                                              case DioExceptionType
+                                                  .receiveTimeout:
+                                                errorMessage =
+                                                    "Server took too long to respond. Please try again.";
+                                                break;
+                                              case DioExceptionType
+                                                  .connectionError:
+                                                errorMessage =
+                                                    "No internet connection or the host server is completely unreachable.";
+                                                break;
+                                              case DioExceptionType.cancel:
+                                                errorMessage =
+                                                    "The request was cancelled.";
+                                                break;
+                                              default:
+                                                errorMessage =
+                                                    "Network connection failed: ${e.message}";
+                                                break;
+                                            }
+                                          }
+                                        } else {
+                                          errorMessage = e.toString();
+                                        }
+
+                                        Get.snackbar(
+                                          "Network Error",
+                                          errorMessage,
+                                          snackPosition: SnackPosition.BOTTOM,
+                                          backgroundColor: Colors.redAccent,
+                                          colorText: Colors.white,
+                                          margin: const EdgeInsets.all(16),
+                                          icon: const Icon(
+                                            Icons.wifi_off,
+                                            color: Colors.white,
+                                          ),
+                                          duration: const Duration(seconds: 4),
+                                        );
+                                      }
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
