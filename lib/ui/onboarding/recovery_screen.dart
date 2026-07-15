@@ -9,16 +9,27 @@ class RecoveryScreen extends StatefulWidget {
 }
 
 class _RecoveryScreenState extends State<RecoveryScreen> {
+  final _codeController = TextEditingController();
+
   // Exact color palette matching the brand and reference design
   static const Color primaryYellow = Color(0xFFFBC31B);
   static const Color backgroundPage = Color(0xFFFAF8F5); // Light cream outer background
   static const Color textColorDark = Colors.black;
   static const Color textColorGrey = Color(0xFF757575);
+  static const Color borderLightGrey = Color(0xFFE2E8F0);
+
+  @override
+  void dispose() {
+    _codeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundPage,
+      // Prevents layout distortion or pixel clipping when the virtual keyboard slides up
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -26,7 +37,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
               child: Container(
-                // Main white container card matching the reference image layout
+                // Main white container box matching the rounded card layout
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(24.0),
@@ -42,220 +53,159 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 36.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start, // Left-aligned content container body
                     children: [
-                      // --- Header Badge (INFO BOXX · PARTNER ONBOARDING) ---
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFEF9E7), // Very subtle yellow background tint
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: primaryYellow.withOpacity(0.4),
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                      // --- Centralized Header Titles ---
+                      Center(
+                        child: Column(
                           children: [
                             const Text(
-                              "INFO ",
-                              style: TextStyle(
-                                color: primaryYellow,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: 0.8,
-                              ),
-                            ),
-                            const Text(
-                              "BOXX",
+                              "Continue your application",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: textColorDark,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 0.8,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                "·",
-                                style: TextStyle(
-                                  color: primaryYellow,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const Text(
-                              "PARTNER ONBOARDING",
-                              style: TextStyle(
-                                color: primaryYellow,
-                                fontSize: 11,
+                                fontSize: 26,
                                 fontWeight: FontWeight.w800,
-                                letterSpacing: 0.8,
+                                letterSpacing: -0.5,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            const Text(
+                              "Use a draft saved on this device or enter the recovery code you received when you saved.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: textColorGrey,
+                                fontSize: 15,
+                                height: 1.4,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 36),
 
-                      // --- Title Section ---
+                      // --- Section Label ---
                       const Text(
-                        "Welcome to partner onboarding",
-                        textAlign: TextAlign.center,
+                        "ENTER RECOVERY CODE",
                         style: TextStyle(
                           color: textColorDark,
-                          fontSize: 26,
+                          fontSize: 13,
                           fontWeight: FontWeight.w800,
-                          letterSpacing: -0.5,
+                          letterSpacing: 0.5,
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 8),
 
-                      // --- Subtitle Section ---
+                      // --- Input Context Description ---
                       const Text(
-                        "Are you continuing a previous application or starting fresh?",
-                        textAlign: TextAlign.center,
+                        "Use the code you received when you saved your draft (e.g. from email or when you clicked \"Save draft\").",
                         style: TextStyle(
                           color: textColorGrey,
-                          fontSize: 15,
+                          fontSize: 13,
                           height: 1.4,
                         ),
                       ),
-                      const SizedBox(height: 32),
-
-                      // --- Option Card 1: Continue Application (Yellow Tint) ---
-                      _buildOptionCard(
-                        icon: Icons.assignment_outlined,
-                        title: "Continue previous application",
-                        subtitle: "Use a draft on this device or enter a recovery code",
-                        accentColor: primaryYellow,
-                        onTap: () {
-                          // Handle resume action
-                        },
-                      ),
-
                       const SizedBox(height: 16),
 
-                      // --- Option Card 2: Start Fresh (Slate Grey Tint) ---
-                      _buildOptionCard(
-                        icon: Icons.refresh_rounded,
-                        title: "Start fresh",
-                        subtitle: "Begin a new partner application",
-                        accentColor: const Color(0xFF90A4AE),
-                        onTap: () {
-                          // Handle start fresh action
-                        },
-                      ),
-
-                      const SizedBox(height: 28),
-
-                      // --- Back Button Link at the bottom of the card ---
+                      // --- Horizontal Row containing Text field and Action button ---
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextButton.icon(
-                            onPressed: () => Get.back(),
-                            icon: const Icon(Icons.arrow_back, color: textColorDark, size: 16),
-                            label: const Text(
-                              "Back to Partners",
-                              style: TextStyle(
+                          // Left-side Recovery Input Box
+                          Expanded(
+                            flex: 5,
+                            child: TextFormField(
+                              controller: _codeController,
+                              style: const TextStyle(
                                 color: textColorDark,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: "e.g. A1B2-C3D4",
+                                hintStyle: const TextStyle(
+                                  color: Color(0xFFCBD5E1),
+                                  fontSize: 15,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                // Precise border setup matching input styling
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: const BorderSide(color: borderLightGrey),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: const BorderSide(color: borderLightGrey),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: const BorderSide(color: primaryYellow, width: 1.5),
+                                ),
                               ),
                             ),
-                            style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                          const SizedBox(width: 12),
+
+                          // Right-side Action Load Button
+                          Expanded(
+                            flex: 3,
+                            child: SizedBox(
+                              height: 50, // Hardcoded matching the exact size scale of input field
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Handle load draft validation logic
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: primaryYellow,
+                                  foregroundColor: textColorDark,
+                                  elevation: 0,
+                                  shadowColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                                child: const Text(
+                                  "Load draft",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 16),
+
+                      // --- Back Button Link at the bottom ---
+                      Center(
+                        child: TextButton.icon(
+                          onPressed: () => Get.back(),
+                          icon: const Icon(Icons.arrow_back, color: textColorDark, size: 16),
+                          label: const Text(
+                            "Back to choices",
+                            style: TextStyle(
+                              color: textColorDark,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Card builder helper widget to manage properties and keep things clean
-  Widget _buildOptionCard({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required Color accentColor,
-    required VoidCallback onTap,
-  }) {
-    final bool isYellow = accentColor == primaryYellow;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: isYellow ? primaryYellow.withOpacity(0.5) : const Color(0xFFE2E8F0),
-          width: isYellow ? 1.5 : 1.0,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                // Highlight Icon Block Container
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: accentColor.withOpacity(0.08),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Icon(icon, color: accentColor, size: 24),
-                ),
-                const SizedBox(width: 16),
-
-                // Card Text elements
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          color: textColorDark,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        subtitle,
-                        style: const TextStyle(
-                          color: textColorGrey,
-                          fontSize: 13,
-                          height: 1.3,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8),
-
-                // Trailing Action Arrow icon
-                const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: Color(0xFFCBD5E1),
-                  size: 16,
-                ),
-              ],
             ),
           ),
         ),
