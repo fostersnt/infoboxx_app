@@ -9,14 +9,15 @@ class DashboardFragmentScreen extends StatefulWidget {
   const DashboardFragmentScreen({super.key});
 
   @override
-  State<DashboardFragmentScreen> createState() => _DashboardFragmentScreenState();
+  State<DashboardFragmentScreen> createState() =>
+      _DashboardFragmentScreenState();
 }
 
 class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   final List<Widget> _fragmentScreens = [
     HomeFragmentScreen(),
     FavoriteFragmentScreen(),
-    ProfileFragmentScreen()
+    ProfileFragmentScreen(),
   ];
 
   final List _navigationButtonsProperties = [
@@ -42,36 +43,32 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Obx(
-            () => _fragmentScreens[indexNumber.value]
-        ),
-      ),
+      body: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
       bottomNavigationBar: Obx(
-          () => BottomNavigationBar(
-            currentIndex: indexNumber.value,
-            onTap: (val){
-              indexNumber.value = val;
-            },
-            backgroundColor: Colors.black,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.red,
-            unselectedItemColor: Colors.white24,
-            items: List.generate(_navigationButtonsProperties.length, (index) {
-             var navBtnProperty = _navigationButtonsProperties[index];
-             return BottomNavigationBarItem(
-               backgroundColor: Colors.black,
-               icon: navBtnProperty["non_active_icon"] is FaIconData
-                   ? FaIcon(navBtnProperty["non_active_icon"])
-                   : Icon(navBtnProperty["non_active_icon"]),
-               activeIcon: navBtnProperty["active_icon"] is FaIconData
-                   ? FaIcon(navBtnProperty["active_icon"])
-                   : Icon(navBtnProperty["active_icon"]),
-               label: navBtnProperty["label"],
-             );
-            }),
-          )
+        () => BottomNavigationBar(
+          currentIndex: indexNumber.value,
+          onTap: (val) {
+            indexNumber.value = val;
+          },
+          backgroundColor: Colors.black,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.red,
+          unselectedItemColor: Colors.white24,
+          items: List.generate(_navigationButtonsProperties.length, (index) {
+            var navBtnProperty = _navigationButtonsProperties[index];
+            return BottomNavigationBarItem(
+              backgroundColor: Colors.black,
+              icon: navBtnProperty["non_active_icon"] is FaIconData
+                  ? FaIcon(navBtnProperty["non_active_icon"])
+                  : Icon(navBtnProperty["non_active_icon"]),
+              activeIcon: navBtnProperty["active_icon"] is FaIconData
+                  ? FaIcon(navBtnProperty["active_icon"])
+                  : Icon(navBtnProperty["active_icon"]),
+              label: navBtnProperty["label"],
+            );
+          }),
+        ),
       ),
     );
   }
