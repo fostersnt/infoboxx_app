@@ -312,6 +312,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  shimmer_animation_kit:
+    dependency: "direct main"
+    description:
+      name: shimmer_animation_kit
+      sha256: "0c172e2c02010d499fe03697d90ee14fb4d64eeb0478831b4a356a7ccd4cdfd5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextFormField(
                                   controller: emailController,
                                   decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.email),
+                                    prefixIcon: Icon(Icons.email, color: AppColors.grayCoolSlate,),
                                     hintText: "email",
                                     filled: true,
                                     fillColor: AppColors.whitePure,
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: passwordController,
                                     obscureText: hidePassword.value,
                                     decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.key),
+                                      prefixIcon: Icon(Icons.key, color: AppColors.grayCoolSlate,),
                                       suffixIcon: Obx(
                                         () => GestureDetector(
                                           onTap: () {
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             hidePassword.value == true
                                                 ? Icons.visibility_off
                                                 : Icons.visibility,
-                                            color: AppColors.blackPure,
+                                            color: AppColors.grayCoolSlate,
                                           ),
                                         ),
                                       ),
