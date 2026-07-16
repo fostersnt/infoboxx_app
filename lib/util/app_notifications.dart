@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class AppNotifications {
   static void showSuccessSnackBar(String title, String successMessage) {
@@ -11,7 +12,7 @@ class AppNotifications {
         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
       ),
       snackPosition: SnackPosition.TOP,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.grayLightSilver,
       colorText: Colors.green,
       margin: const EdgeInsets.all(16),
       icon: const Icon(Icons.check, color: Colors.green),
@@ -29,7 +30,7 @@ class AppNotifications {
         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
       ),
       snackPosition: SnackPosition.TOP,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.grayLightSilver,
       colorText: Colors.red,
       margin: const EdgeInsets.all(16),
       icon: const Icon(Icons.error, color: Colors.red),

@@ -8,6 +8,7 @@ import 'package:infoboxx/api/dio_client.dart';
 import 'package:infoboxx/api/endpoints.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
+import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_loaders.dart';
 import 'package:infoboxx/util/app_notifications.dart';
 import 'package:infoboxx/util/app_validators.dart';
@@ -33,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whitePure,
       body: LayoutBuilder(
         builder: (context, cons) {
           return ConstrainedBox(
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               "WELCOME BACK !",
                               style: TextStyle(
-                                color: Colors.grey,
+                                color: AppColors.grayCoolSlate,
                                 fontSize: 20,
                               ),
                             ),
@@ -74,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: AppColors.grayLightSilver,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
