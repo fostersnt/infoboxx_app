@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loading_animation_kit/flutter_loading_animation_kit.dart';
+import 'app_colors.dart';
 
 class AppLoaders {
   // Brand fallback yellow color if needed elsewhere
@@ -9,7 +10,7 @@ class AppLoaders {
   static Widget fourCirclePulse() {
     return const Center(
       child: FourCirclePulse(
-        circleColor: Colors.black,
+        circleColor: AppColors.yellowColor,
         curve: Curves.easeIn,
         // circleColor: Color(0xFFFBC31B),
       ),
