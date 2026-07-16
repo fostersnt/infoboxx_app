@@ -102,6 +102,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
+  flutter_loading_animation_kit:
+    dependency: "direct main"
+    description:
+      name: flutter_loading_animation_kit
+      sha256: "1115cb9118fe303aec45432a7ace203cc4a1e4e700369f480ff678cc4b0ec0b7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter

@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.5.5
   font_awesome_flutter: ^11.0.0
   sprintf: ^7.0.0
+  flutter_loading_animation_kit: ^0.0.2
 
 dev_dependencies:
   flutter_test:
