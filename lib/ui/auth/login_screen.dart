@@ -27,8 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var hidePassword = true.obs;
   var isLoading = false.obs;
-  var isFormValidated = false.obs;
-  var formErrorMessage = "".obs;
+  // var isFormValidated = false.obs;
+  // var formErrorMessage = "".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -87,24 +87,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 //! Email field
                                 TextFormField(
                                   controller: emailController,
-                                  validator: (val) {
-                                    if (val == "") {
-                                      isFormValidated.value = false;
-                                      formErrorMessage.value =
-                                          "Email field should not be blank";
-                                    } else {
-                                      bool emailCheck =
-                                          AppValidators.isValidEmail(
-                                            emailController.text,
-                                          );
-                                      if (emailCheck == false) {
-                                        isFormValidated.value = false;
-                                        formErrorMessage.value =
-                                            "Invalid email";
-                                      }
-                                    }
-                                    return val;
-                                  },
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(Icons.email),
                                     hintText: "email",
@@ -194,125 +176,135 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Material(
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(30),
-                                  child: Obx(
-                                      () => InkWell(
-                                      onTap: () async {
-                                        try {
-                                          if (isFormValidated.value == false) {
-                                            AppNotifications.showErrorSnackBar(
-                                              "Input Error",
-                                              formErrorMessage.value.toString(),
-                                            );
-                                            return;
-                                          }
+                                  child: InkWell(
+                                    onTap: () async {
+                                      try {
+                                        String email = emailController.text
+                                            .trim();
+                                        String password = passwordController
+                                            .text
+                                            .trim();
 
-                                          isLoading.value = true;
-                                          const loginEndpoint =
-                                              ApiEndpoint.SERVICE_PROVIDER_LOGIN;
-                                          var requestData = {
-                                            "email": emailController.text.trim(),
-                                            "password": passwordController.text
-                                                .trim(),
-                                          };
-                                          var apiResponse = await DioClient
-                                              .myDioObj
-                                              .post(
-                                                loginEndpoint,
-                                                data: requestData,
-                                              );
-
-                                          Map<String, dynamic> response =
-                                              apiResponse.data;
-                                          String serverMessage =
-                                              response['reason'] ??
-                                              "An error occurred during login.";
-
-                                          ResponseConvertor.convertToJson(
-                                            response,
-                                          );
-
-                                          if (response['status_code'] == 200) {
-                                            Get.to(
-                                              () => DashboardFragmentScreen(),
-                                            );
-                                          } else {
-                                            AppNotifications.showErrorSnackBar(
-                                              "Login Failed",
-                                              serverMessage,
-                                            );
-                                          }
-                                        } catch (e) {
-                                          String errorMessage =
-                                              "An unexpected error occurred.";
-
-                                          if (e is DioException) {
-                                            if (e.response != null &&
-                                                e.response?.data != null) {
-                                              // The server WAS reached, but returned an error status (400, 401, 500, etc.)
-                                              errorMessage =
-                                                  e
-                                                      .response
-                                                      ?.data['data']['reason'] ??
-                                                  e
-                                                      .response
-                                                      ?.data['data']['reason'] ??
-                                                  "Server error.";
-                                            } else {
-                                              // The request NEVER reached your server!
-                                              // Let's find out exactly why:
-                                              switch (e.type) {
-                                                case DioExceptionType
-                                                    .connectionTimeout:
-                                                  errorMessage =
-                                                      "Connection timed out. Please try again later.";
-                                                  break;
-                                                case DioExceptionType.sendTimeout:
-                                                  errorMessage =
-                                                      "Failed to send data to the server. Please check your connection.";
-                                                  break;
-                                                case DioExceptionType
-                                                    .receiveTimeout:
-                                                  errorMessage =
-                                                      "Server took too long to respond. Please try again.";
-                                                  break;
-                                                case DioExceptionType
-                                                    .connectionError:
-                                                  errorMessage =
-                                                      "No internet connection or the host server is completely unreachable.";
-                                                  break;
-                                                case DioExceptionType.cancel:
-                                                  errorMessage =
-                                                      "The request was cancelled.";
-                                                  break;
-                                                default:
-                                                  errorMessage =
-                                                      "Network connection failed: ${e.message}";
-                                                  break;
-                                              }
-                                            }
-                                          } else {
-                                            errorMessage = e.toString();
-                                          }
-
+                                        if (email == "") {
                                           AppNotifications.showErrorSnackBar(
-                                            "An Error Occurred",
-                                            errorMessage,
+                                            "Email Error",
+                                            "Your email should not be empty",
+                                          );
+                                          return;
+                                        }
+                                        if (password == "") {
+                                          AppNotifications.showErrorSnackBar(
+                                            "Password Error",
+                                            "Your password should not be empty",
+                                          );
+                                          return;
+                                        }
+
+                                        isLoading.value = true;
+                                        const loginEndpoint =
+                                            ApiEndpoint.SERVICE_PROVIDER_LOGIN;
+                                        var requestData = {
+                                          "email": email,
+                                          "password": password,
+                                        };
+                                        var apiResponse = await DioClient
+                                            .myDioObj
+                                            .post(
+                                              loginEndpoint,
+                                              data: requestData,
+                                            );
+
+                                        Map<String, dynamic> response =
+                                            apiResponse.data;
+                                        String serverMessage =
+                                            response['reason'] ??
+                                            "An error occurred during login.";
+
+                                        ResponseConvertor.convertToJson(
+                                          response,
+                                        );
+
+                                        if (response['status_code'] == 200) {
+                                          Get.to(
+                                            () => DashboardFragmentScreen(),
+                                          );
+                                        } else {
+                                          AppNotifications.showErrorSnackBar(
+                                            "Login Failed",
+                                            serverMessage,
                                           );
                                         }
-                                        isLoading.value = false;
-                                      },
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 10,
-                                          horizontal: 28,
-                                        ),
-                                        child: Text(
-                                          "Login",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
+                                      } catch (e) {
+                                        String errorMessage =
+                                            "An unexpected error occurred.";
+
+                                        if (e is DioException) {
+                                          if (e.response != null &&
+                                              e.response?.data != null) {
+                                            // The server WAS reached, but returned an error status (400, 401, 500, etc.)
+                                            errorMessage =
+                                                e
+                                                    .response
+                                                    ?.data['data']['reason'] ??
+                                                e
+                                                    .response
+                                                    ?.data['data']['reason'] ??
+                                                "Server error.";
+                                          } else {
+                                            // The request NEVER reached your server!
+                                            // Let's find out exactly why:
+                                            switch (e.type) {
+                                              case DioExceptionType
+                                                  .connectionTimeout:
+                                                errorMessage =
+                                                    "Connection timed out. Please try again later.";
+                                                break;
+                                              case DioExceptionType.sendTimeout:
+                                                errorMessage =
+                                                    "Failed to send data to the server. Please check your connection.";
+                                                break;
+                                              case DioExceptionType
+                                                  .receiveTimeout:
+                                                errorMessage =
+                                                    "Server took too long to respond. Please try again.";
+                                                break;
+                                              case DioExceptionType
+                                                  .connectionError:
+                                                errorMessage =
+                                                    "No internet connection or the host server is completely unreachable.";
+                                                break;
+                                              case DioExceptionType.cancel:
+                                                errorMessage =
+                                                    "The request was cancelled.";
+                                                break;
+                                              default:
+                                                errorMessage =
+                                                    "Network connection failed: ${e.message}";
+                                                break;
+                                            }
+                                          }
+                                        } else {
+                                          errorMessage = e.toString();
+                                        }
+
+                                        AppNotifications.showErrorSnackBar(
+                                          "An Error Occurred",
+                                          errorMessage,
+                                        );
+                                      }
+                                      isLoading.value = false;
+                                    },
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 28,
+                                      ),
+                                      child: Text(
+                                        "Login",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
                                         ),
                                       ),
                                     ),
