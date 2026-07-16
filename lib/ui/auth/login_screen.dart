@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/api/dio_client.dart';
 import 'package:infoboxx/api/endpoints.dart';
+import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 import 'package:infoboxx/util/app_loaders.dart';
+import 'package:infoboxx/util/app_notifications.dart';
 import 'package:infoboxx/util/response_convertor.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -204,9 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         );
 
                                         if (response['status_code'] == 200) {
-                                          debugPrint(
-                                            "--- API REQUEST IS COMPLETED WITH SUCCESS RESPONSE ---",
-                                          );
+                                          Get.to(() => DashboardFragmentScreen());
                                         } else {
                                           Get.snackbar(
                                             "Login Failed",
@@ -273,19 +273,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           errorMessage = e.toString();
                                         }
 
-                                        Get.snackbar(
-                                          "Network Error",
-                                          errorMessage,
-                                          snackPosition: SnackPosition.TOP,
-                                          backgroundColor: Colors.redAccent,
-                                          colorText: Colors.white,
-                                          margin: const EdgeInsets.all(16),
-                                          icon: const Icon(
-                                            Icons.wifi_off,
-                                            color: Colors.white,
-                                          ),
-                                          duration: const Duration(seconds: 4),
-                                        );
+                                        AppNotifications.showErrorSnackBar(errorMessage);
                                       }
                                       isLoading.value = false;
                                     },
