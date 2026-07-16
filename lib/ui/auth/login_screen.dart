@@ -93,30 +93,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                     prefixIcon: Icon(Icons.email),
                                     hintText: "email",
                                     filled: true,
-                                    fillColor: Colors.white,
+                                    fillColor: AppColors.whitePure,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                        color: Colors.white60,
+                                        color: AppColors.grayLightSilver,
                                       ),
                                     ),
                                     // 1. Border when the field is enabled (idle)
                                     enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                        color: Colors.white60,
+                                        color: AppColors.grayLightSilver,
                                       ),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                        color: Colors.white60,
+                                        color: AppColors.grayLightSilver,
                                       ),
                                     ),
                                     disabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                        color: Colors.white60,
+                                        color: AppColors.grayLightSilver,
                                       ),
                                     ),
                                   ),
@@ -139,36 +139,36 @@ class _LoginScreenState extends State<LoginScreen> {
                                             hidePassword.value == true
                                                 ? Icons.visibility_off
                                                 : Icons.visibility,
-                                            color: Colors.black,
+                                            color: AppColors.blackPure,
                                           ),
                                         ),
                                       ),
                                       hintText: "password",
                                       filled: true,
-                                      fillColor: Colors.white,
+                                      fillColor: AppColors.whitePure,
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
                                         borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                          color: AppColors.grayLightSilver,
                                         ),
                                       ),
                                       // 1. Border when the field is enabled (idle)
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
                                         borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                          color: AppColors.grayLightSilver,
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
                                         borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                          color: AppColors.grayLightSilver,
                                         ),
                                       ),
                                       disabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
                                         borderSide: const BorderSide(
-                                          color: Colors.white60,
+                                          color: AppColors.grayLightSilver,
                                         ),
                                       ),
                                     ),
@@ -176,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 SizedBox(height: 30),
                                 Material(
-                                  color: Colors.black,
+                                  color: AppColors.blackPure,
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
                                     onTap: () async {
@@ -320,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       child: Text(
                                         "Don't have an Account?",
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(color: Colors.black),
+                                        style: TextStyle(color: AppColors.blackPure),
                                       ),
                                     ),
                                     TextButton(
@@ -330,7 +330,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       child: Text(
                                         "Onboard Now",
                                         style: TextStyle(
-                                          color: Color(0xFFFBC31B),
+                                          color: AppColors.yellowColor,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),
