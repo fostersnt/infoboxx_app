@@ -30,13 +30,13 @@ class AppNotifications {
       "",
       messageText: Text(
         errorMessage,
-        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red,),
+        style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.redCrimson),
       ),
       snackPosition: SnackPosition.TOP,
       backgroundColor: AppColors.grayLightSilver,
-      colorText: Colors.red,
+      colorText: AppColors.redCrimson,
       margin: const EdgeInsets.all(16),
-      icon: const Icon(Icons.error, color: Colors.red),
+      icon: const Icon(Icons.error, color: AppColors.redCrimson),
       duration: const Duration(seconds: 5),
       snackStyle: SnackStyle.FLOATING,
     );
