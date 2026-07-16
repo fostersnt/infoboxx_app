@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      // home: LoginScreen()
-      home: Center(
-        child: AppLoaders.fourCirclePulse(),
-      ),
+      home: LoginScreen()
+      // home: Center(
+      //   child: AppLoaders.fourCirclePulse(),
+      // ),
     );
   }
 }

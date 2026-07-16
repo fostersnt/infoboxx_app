@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/api/dio_client.dart';
 import 'package:infoboxx/api/endpoints.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
+import 'package:infoboxx/util/app_loaders.dart';
 import 'package:infoboxx/util/response_convertor.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   var hidePassword = true.obs;
+  var isLoading = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +47,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height / 8,
-                        child: Text(
-                          "WELCOME BACK !",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                        child: Column(
+                          children: [
+                            Text(
+                              "WELCOME BACK !",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Obx(() {
+                              if (isLoading.value == true) {
+                                return AppLoaders.fourCirclePulse();
+                              } else {
+                                return Text("");
+                              }
+                            }),
+                          ],
                         ),
                       ),
                       Container(
@@ -157,6 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: InkWell(
                                     onTap: () async {
                                       try {
+                                        isLoading.value = true;
                                         const loginEndpoint =
                                             ApiEndpoint.SERVICE_PROVIDER_LOGIN;
                                         var requestData = {
@@ -198,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ),
                                           );
                                         }
-                                      } catch (e) {
+                                      }catch (e) {
                                         String errorMessage =
                                             "An unexpected error occurred.";
 
@@ -265,6 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           duration: const Duration(seconds: 4),
                                         );
                                       }
+                                      isLoading.value = false;
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
