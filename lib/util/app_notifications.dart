@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppNotifications {
-static void showSuccessSnackBar(String successMessage) {
+static void showSuccessSnackBar(String title, String successMessage) {
   Get.snackbar(
-    "An Error Occurred",
+    title,
     successMessage,
     snackPosition: SnackPosition.TOP,
     backgroundColor: Colors.white,
@@ -18,9 +18,9 @@ static void showSuccessSnackBar(String successMessage) {
     snackStyle: SnackStyle.FLOATING,
   );
 }
-  static void showErrorSnackBar(String errorMessage) {
+  static void showErrorSnackBar(String title, String errorMessage) {
     Get.snackbar(
-      "An Error Occurred",
+      title,
       errorMessage,
       snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.white,

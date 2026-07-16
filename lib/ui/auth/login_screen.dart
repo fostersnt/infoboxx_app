@@ -208,17 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         if (response['status_code'] == 200) {
                                           Get.to(() => DashboardFragmentScreen());
                                         } else {
-                                          Get.snackbar(
-                                            "Login Failed",
-                                            serverMessage,
-                                            snackPosition: SnackPosition.TOP,
-                                            backgroundColor: Colors.redAccent,
-                                            colorText: Colors.white,
-                                            margin: const EdgeInsets.all(16),
-                                            duration: const Duration(
-                                              seconds: 3,
-                                            ),
-                                          );
+                                          AppNotifications.showErrorSnackBar("Login Failed", serverMessage);
                                         }
                                       }catch (e) {
                                         String errorMessage =
@@ -273,7 +263,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           errorMessage = e.toString();
                                         }
 
-                                        AppNotifications.showErrorSnackBar(errorMessage);
+                                        AppNotifications.showErrorSnackBar("An Error Occurred", errorMessage);
                                       }
                                       isLoading.value = false;
                                     },
