@@ -16,7 +16,7 @@ class AppNotifications {
       ),
       snackPosition: SnackPosition.TOP,
       backgroundColor: AppColors.grayLightSilver,
-      colorText: Colors.green,
+      colorText: AppColors.greenVibrantEmerald,
       margin: const EdgeInsets.all(16),
       icon: const Icon(Icons.check, color: AppColors.greenVibrantEmerald),
       duration: const Duration(seconds: 5),
@@ -49,14 +49,14 @@ class AppNotifications {
       messageText: Obx(
         () => Text(
           reactiveMessage.value,
-          style: const TextStyle(color: Colors.red),
+          style: const TextStyle(color: AppColors.redCrimson),
         ),
       ),
       snackPosition: SnackPosition.TOP,
       backgroundColor: AppColors.grayLightSilver,
-      colorText: Colors.red,
+      colorText: AppColors.redCrimson,
       margin: const EdgeInsets.all(16),
-      icon: const Icon(Icons.error, color: Colors.red),
+      icon: const Icon(Icons.error, color: AppColors.redCrimson),
       duration: const Duration(seconds: 5),
       snackStyle: SnackStyle.FLOATING,
     );
