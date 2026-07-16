@@ -174,6 +174,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: InkWell(
                                     onTap: () async {
                                       try {
+                                        if(isLoading.value == true){
+                                          return;
+                                        }
+
                                         isLoading.value = true;
                                         const loginEndpoint =
                                             ApiEndpoint.SERVICE_PROVIDER_LOGIN;

@@ -8,7 +8,11 @@ class AppLoaders {
   /// 1. Returns the FourCirclePulse animation widget
   static Widget fourCirclePulse() {
     return const Center(
-      child: FourCirclePulse(),
+      child: FourCirclePulse(
+        circleColor: Colors.black,
+        curve: Curves.easeIn,
+        // circleColor: Color(0xFFFBC31B),
+      ),
     );
   }
 
