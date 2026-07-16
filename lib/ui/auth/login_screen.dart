@@ -216,6 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                         Map<String, dynamic> response =
                                             apiResponse.data;
+
                                         String serverMessage =
                                             response['reason'] ??
                                             "An error occurred during login.";
@@ -224,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           response,
                                         );
 
-                                        if (response['status_code'] == 200) {
+                                        if (response['data']['status_code'] == 200) {
                                           Get.to(
                                             () => DashboardFragmentScreen(),
                                           );
