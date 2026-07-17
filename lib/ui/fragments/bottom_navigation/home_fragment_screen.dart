@@ -13,14 +13,37 @@ class HomeFragmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double deviceWidth  = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+
+    double marginControl = 9;
+
+    double boxWidth = (deviceWidth / 3) - marginControl;
+    double boxHeight = deviceWidth / 3 + 50;
+
     return ShimmerScope(
         child: Column(
           children: [
-            AppShimmers.circleShimmer(200),
-            AppShimmers.circleShimmer(200),
-            AppShimmers.circleShimmer(200),
-            AppShimmers.circleShimmer(200),
-            AppShimmers.circleShimmer(200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+              ],
+            ),
+
+            SizedBox(height: 10),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+              ],
+            ),
           ],
         ),
     );

@@ -24,8 +24,9 @@ class AppShimmers {
     return ShimmerBox(
       width: width,
       height: height,
-      baseColor: AppColors.whitePure,
-      highlightColor: AppColors.yellowColor,
+      baseColor: AppColors.grayLightSilver,
+      highlightColor: AppColors.grayLight,
+      borderRadius: BorderRadius.circular(20),
     );
   }
 

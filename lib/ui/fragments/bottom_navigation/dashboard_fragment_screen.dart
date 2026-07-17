@@ -44,9 +44,9 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grayLightSilver,
+      backgroundColor: AppColors.whitePure,
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(10, 20, 10, 30),
+        padding: EdgeInsets.fromLTRB(9, 20, 9, 30),
         child: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
       ),
       bottomNavigationBar: Obx(
