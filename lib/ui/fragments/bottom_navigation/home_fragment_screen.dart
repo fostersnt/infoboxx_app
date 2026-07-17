@@ -38,6 +38,16 @@ class HomeFragmentScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
               child: Column(
                 children: [
+                  Container(
+                    color: AppColors.blackCharcoal,
+                    width: deviceWidth,
+                    height: 300,
+                    child: Column(
+                      children: [
+
+                      ],
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
