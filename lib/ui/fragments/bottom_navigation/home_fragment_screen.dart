@@ -17,10 +17,11 @@ class HomeFragmentScreen extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
 
-    double marginControl = 9;
-
+    double verticalHeight = 10;
+    double addOnValue = 50;
     double boxWidth = (deviceWidth / 3.5);
-    double boxHeight = deviceWidth / 3 + 50;
+    double boxHeight = boxWidth + addOnValue;
+    double containerHeight = addOnValue + boxHeight;
 
     return PopScope(
       canPop: false,
@@ -39,7 +40,11 @@ class HomeFragmentScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    color: AppColors.blackCharcoal,
+                    margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                    decoration: BoxDecoration(
+                      color: AppColors.blackCharcoal,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     width: deviceWidth,
                     height: 300,
                     child: Column(
@@ -48,85 +53,36 @@ class HomeFragmentScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppShimmers.boxShimmer(boxWidth, boxHeight),
-                          SizedBox(height: 10),
-                          AppShimmers.textShimmer(boxWidth),
-                        ],
-                      ),
-                    ],
+                  SizedBox(height: 10,),
+                  SizedBox(
+                    width: deviceWidth,
+                    height: 230,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            AppShimmers.boxShimmer(boxWidth, boxHeight),
+                            SizedBox(height: 10),
+                            AppShimmers.textShimmer(boxWidth),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            AppShimmers.boxShimmer(boxWidth, boxHeight),
+                            SizedBox(height: 10),
+                            AppShimmers.textShimmer(boxWidth),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            AppShimmers.boxShimmer(boxWidth, boxHeight),
+                            SizedBox(height: 10),
+                            AppShimmers.textShimmer(boxWidth),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -137,3 +93,4 @@ class HomeFragmentScreen extends StatelessWidget {
     );
   }
 }
+
