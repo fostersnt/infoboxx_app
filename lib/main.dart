@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         // statusBarColor: Colors.transparent, // No background color strip
-        statusBarColor: AppColors.yellowAmber, // No background color strip
+        statusBarColor: AppColors.blackGunMetal, // No background color strip
         statusBarIconBrightness:
         Brightness.light, // 👈 FOR ANDROID: Forces icons to be WHITE
         statusBarBrightness:
