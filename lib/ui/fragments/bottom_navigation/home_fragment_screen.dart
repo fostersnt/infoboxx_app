@@ -62,9 +62,20 @@ class HomeFragmentScreen extends StatelessWidget {
                               color: AppColors.yellowAmber,
                             ),
                           ),
-                          child: Text(
-                            "LEAD OVERVIEW",
-                            style: TextStyle(color: AppColors.yellowAmber),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(Icons.group_add, color: AppColors.yellowAmber,),
+                                SizedBox(width: 10,),
+                                Text(
+                                  "LEAD OVERVIEW",
+                                  style: TextStyle(color: AppColors.yellowAmber),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 30),
