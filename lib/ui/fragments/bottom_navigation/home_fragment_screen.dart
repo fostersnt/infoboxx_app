@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
@@ -13,8 +14,7 @@ class HomeFragmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    double deviceWidth  = MediaQuery.of(context).size.width;
+    double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
 
     double marginControl = 9;
@@ -22,7 +22,14 @@ class HomeFragmentScreen extends StatelessWidget {
     double boxWidth = (deviceWidth / 3) - marginControl;
     double boxHeight = deviceWidth / 3 + 50;
 
-    return ShimmerScope(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          SystemNavigator.pop();
+        }
+      },
+      child: ShimmerScope(
         child: Column(
           children: [
             Row(
@@ -46,6 +53,7 @@ class HomeFragmentScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
     );
   }
 }

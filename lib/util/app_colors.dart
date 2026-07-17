@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //! Yellow colors
-  static const yellowColor = Color(0xFFFBC31B);
+  static const yellowBrightGolden   = Color(0xFFFBC31B);
+  static const yellowSlightlyDarker = Color(0xFFE0A800);
+  static const yellowAmber          = Color(0xFFD49400);
+  static const yellowWarmDark       = Color(0xFFC58A00);
+  static const yellowMustard        = Color(0xFFB8860B);
+  static const yellowDeepGoldenRod  = Color(0xFFDAA520);
+  // static const yellowBrightGolden = Color(0xFFFBC31B);
+  // static const yellowBrightGolden = Color(0xFFFBC31B);
+  // static const yellowBrightGolden = Color(0xFFFBC31B);
+  // static const yellowBrightGolden = Color(0xFFFBC31B);
 
   //! Dark colors
   static const blackPure = Color(0xFF000000);

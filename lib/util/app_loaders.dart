@@ -10,7 +10,7 @@ class AppLoaders {
   static Widget fourCirclePulse() {
     return const Center(
       child: FourCirclePulse(
-        circleColor: AppColors.yellowColor,
+        circleColor: AppColors.yellowAmber,
         curve: Curves.easeIn,
         // circleColor: Color(0xFFFBC31B),
       ),

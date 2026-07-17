@@ -330,7 +330,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       child: Text(
                                         "Onboard Now",
                                         style: TextStyle(
-                                          color: AppColors.yellowColor,
+                                          color: AppColors.yellowAmber,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),

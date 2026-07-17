@@ -55,7 +55,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
           onTap: (val) {
             indexNumber.value = val;
           },
-          backgroundColor: AppColors.yellowColor,
+          backgroundColor: AppColors.yellowAmber,
           // backgroundColor: AppColors.blackOnyx,
           showSelectedLabels: true,
           showUnselectedLabels: true,
