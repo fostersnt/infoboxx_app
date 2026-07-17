@@ -19,7 +19,7 @@ class HomeFragmentScreen extends StatelessWidget {
 
     double marginControl = 9;
 
-    double boxWidth = (deviceWidth / 3);
+    double boxWidth = (deviceWidth / 3.5);
     double boxHeight = deviceWidth / 3 + 50;
 
     return PopScope(
@@ -29,46 +29,99 @@ class HomeFragmentScreen extends StatelessWidget {
           SystemNavigator.pop();
         }
       },
-      child: ShimmerScope(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                    Expanded(child: AppShimmers.textShimmer(boxWidth))
-                  ],
-                ),
-                Column(
-                  children: [
-                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                    Expanded(child: AppShimmers.textShimmer(boxWidth))
-                  ],
-                ),
-                Column(
-                  children: [
-                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                    Expanded(child: AppShimmers.textShimmer(boxWidth))
-                  ],
-                ),
-                // Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                // Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-              ],
+      child: SizedBox(
+        width: double.infinity,
+        child: ShimmerScope(
+          child: SizedBox(
+            width: deviceWidth,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          AppShimmers.boxShimmer(boxWidth, boxHeight),
+                          SizedBox(height: 10),
+                          AppShimmers.textShimmer(boxWidth),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-
-            SizedBox(height: 10),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );
