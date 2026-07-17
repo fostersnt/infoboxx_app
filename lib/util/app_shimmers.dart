@@ -3,11 +3,11 @@ import 'package:infoboxx/util/app_colors.dart';
 import 'package:shimmer_animation_kit/shimmer_animation_kit.dart';
 
 class AppShimmers {
-  static Widget textShimmer(double width, double height) {
+  static Widget textShimmer(double width) {
     return ShimmerTextWidget(
       direction: ShimmerDirection.leftToRight,
-      baseColor: AppColors.whitePure,
-      highlightColor: AppColors.yellowAmber,
+      baseColor: AppColors.grayLightSilver,
+      highlightColor: AppColors.grayLight,
       width: width,
     );
   }
@@ -15,8 +15,8 @@ class AppShimmers {
   static Widget circleShimmer(double diameter) {
     return ShimmerCircleWidget(
       diameter: diameter,
-      baseColor: AppColors.whitePure,
-      highlightColor: AppColors.yellowAmber,
+      baseColor: AppColors.grayLightSilver,
+      highlightColor: AppColors.grayLight,
     );
   }
 

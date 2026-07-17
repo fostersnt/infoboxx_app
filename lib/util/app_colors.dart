@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class AppColors {
   //! Yellow colors
   static const yellowBrightGolden   = Color(0xFFFBC31B);
-  static const yellowSlightlyDarker = Color(0xFFE0A800);
+  static const yellowSlightlyDarker = Color(0xFFFBC31B);
+  // static const yellowSlightlyDarker = Color(0xFFE0A800);
   static const yellowAmber          = Color(0xFFD49400);
   static const yellowWarmDark       = Color(0xFFC58A00);
   static const yellowMustard        = Color(0xFFB8860B);

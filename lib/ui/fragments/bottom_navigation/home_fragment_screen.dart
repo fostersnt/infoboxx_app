@@ -35,9 +35,26 @@ class HomeFragmentScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
-                Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                Column(
+                  children: [
+                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                    Expanded(child: AppShimmers.textShimmer(boxWidth))
+                  ],
+                ),
+                Column(
+                  children: [
+                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                    Expanded(child: AppShimmers.textShimmer(boxWidth))
+                  ],
+                ),
+                Column(
+                  children: [
+                    Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                    Expanded(child: AppShimmers.textShimmer(boxWidth))
+                  ],
+                ),
+                // Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
+                // Expanded(child: AppShimmers.boxShimmer(boxWidth, boxHeight)),
               ],
             ),
 
