@@ -6,22 +6,23 @@ import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_scree
 import 'package:flutter_loading_animation_kit/flutter_loading_animation_kit.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dart';
 import 'package:infoboxx/util/app_loaders.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.edgeToEdge,
-  );
-
-  //! Set statusBar color to transparent
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light, // Android: white icons
-      statusBarBrightness: Brightness.dark, // iOS
-    ),
-  );
+  // SystemChrome.setEnabledSystemUIMode(
+  //   SystemUiMode.edgeToEdge,
+  // );
+  //
+  // //! Set statusBar color to transparent
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   const SystemUiOverlayStyle(
+  //     statusBarColor: Colors.transparent,
+  //     statusBarIconBrightness: Brightness.light, // Android: white icons
+  //     statusBarBrightness: Brightness.dark, // iOS
+  //   ),
+  // );
 
   runApp(const MyApp());
 }
@@ -31,12 +32,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        // statusBarColor: Colors.transparent, // No background color strip
+        statusBarColor: AppColors.yellowColor, // No background color strip
+        statusBarIconBrightness:
+        Brightness.light, // 👈 FOR ANDROID: Forces icons to be WHITE
+        statusBarBrightness:
+        Brightness.dark, // FOR iOS: Forces text to be WHITE
       ),
-      home: LoginScreen()
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: LoginScreen()
+      ),
     );
     // return GetMaterialApp(
     //   debugShowCheckedModeBanner: false,
