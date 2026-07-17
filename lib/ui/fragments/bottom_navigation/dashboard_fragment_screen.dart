@@ -55,11 +55,13 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
           onTap: (val) {
             indexNumber.value = val;
           },
-          backgroundColor: AppColors.blackOnyx,
+          backgroundColor: AppColors.yellowColor,
+          // backgroundColor: AppColors.blackOnyx,
           showSelectedLabels: true,
           showUnselectedLabels: true,
           selectedItemColor: AppColors.whitePure,
-          unselectedItemColor: AppColors.yellowColor,
+          unselectedItemColor: AppColors.blackOnyx,
+          // unselectedItemColor: AppColors.yellowColor,
           items: List.generate(_navigationButtonsProperties.length, (index) {
             var navBtnProperty = _navigationButtonsProperties[index];
             return BottomNavigationBarItem(
