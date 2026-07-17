@@ -41,6 +41,7 @@ dependencies:
   sprintf: ^7.0.0
   flutter_loading_animation_kit: ^0.0.2
   shimmer_animation_kit: ^0.1.0
+  intl: ^0.20.3
 
 dev_dependencies:
   flutter_test:

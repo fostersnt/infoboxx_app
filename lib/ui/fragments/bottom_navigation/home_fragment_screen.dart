@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
+import 'package:infoboxx/util/general_functions.dart';
 import 'package:shimmer_animation_kit/shimmer_animation_kit.dart';
 
 class HomeFragmentScreen extends StatelessWidget {
@@ -41,19 +42,61 @@ class HomeFragmentScreen extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                    padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: AppColors.blackCharcoal,
+                      color: AppColors.blackGunMetal,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     width: deviceWidth,
-                    height: 300,
+                    // height: 300,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-
+                        Container(
+                          padding: EdgeInsets.fromLTRB(16, 5, 16, 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: BoxBorder.all(
+                              width: 1,
+                              color: AppColors.yellowAmber,
+                            ),
+                          ),
+                          child: Text(
+                            "LEAD OVERVIEW",
+                            style: TextStyle(color: AppColors.yellowAmber),
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          "Good Afternoon, Gwo Sevo",
+                          style: TextStyle(
+                            color: AppColors.whitePure,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          "Stay on top of new enquiries and outreach",
+                          style: TextStyle(
+                            color: AppColors.yellowAmber,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          GeneralFunctions.getFormatedDate(),
+                          style: TextStyle(
+                            color: AppColors.grayLight,
+                            // fontSize: 18,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 10),
                   SizedBox(
                     width: deviceWidth,
                     height: 230,
@@ -93,4 +136,3 @@ class HomeFragmentScreen extends StatelessWidget {
     );
   }
 }
-
