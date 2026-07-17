@@ -19,7 +19,7 @@ class HomeFragmentScreen extends StatelessWidget {
 
     double marginControl = 9;
 
-    double boxWidth = (deviceWidth / 3) - marginControl;
+    double boxWidth = (deviceWidth / 3);
     double boxHeight = deviceWidth / 3 + 50;
 
     return PopScope(
