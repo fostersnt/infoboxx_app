@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/favorite_fragment_screen.dart';
@@ -59,7 +60,8 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
           });
         } else {
           // 3. Stack is empty; safely exit the dashboard screen back to root
-          Navigator.of(context).pop();
+          // Navigator.of(context).pop();
+          SystemNavigator.pop();
         }
       },
       child: Scaffold(
