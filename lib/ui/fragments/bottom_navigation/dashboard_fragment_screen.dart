@@ -44,19 +44,22 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.redCrimson,
-      body: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
+      backgroundColor: AppColors.grayLightSilver,
+      body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(10, 20, 10, 30),
+        child: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
+      ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           currentIndex: indexNumber.value,
           onTap: (val) {
             indexNumber.value = val;
           },
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.blackOnyx,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.white24,
+          selectedItemColor: AppColors.whitePure,
+          unselectedItemColor: AppColors.yellowColor,
           items: List.generate(_navigationButtonsProperties.length, (index) {
             var navBtnProperty = _navigationButtonsProperties[index];
             return BottomNavigationBarItem(

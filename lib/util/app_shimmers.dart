@@ -6,8 +6,8 @@ class AppShimmers {
   static Widget textShimmer(double width, double height) {
     return ShimmerTextWidget(
       direction: ShimmerDirection.leftToRight,
-      highlightColor: AppColors.redCrimson,
       baseColor: AppColors.whitePure,
+      highlightColor: AppColors.yellowColor,
       width: width,
     );
   }
@@ -16,7 +16,7 @@ class AppShimmers {
     return ShimmerCircleWidget(
       diameter: diameter,
       baseColor: AppColors.whitePure,
-      highlightColor: AppColors.grayLightSilver,
+      highlightColor: AppColors.yellowColor,
     );
   }
 
@@ -25,7 +25,7 @@ class AppShimmers {
       width: width,
       height: height,
       baseColor: AppColors.whitePure,
-      highlightColor: AppColors.grayLightSilver,
+      highlightColor: AppColors.yellowColor,
     );
   }
 

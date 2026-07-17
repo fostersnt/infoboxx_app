@@ -14,19 +14,14 @@ class HomeFragmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShimmerScope(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                AppShimmers.circleShimmer(200),
-                AppShimmers.circleShimmer(200),
-                AppShimmers.circleShimmer(200),
-                AppShimmers.circleShimmer(200),
-                AppShimmers.circleShimmer(200),
-              ],
-            ),
-          ),
+        child: Column(
+          children: [
+            AppShimmers.circleShimmer(200),
+            AppShimmers.circleShimmer(200),
+            AppShimmers.circleShimmer(200),
+            AppShimmers.circleShimmer(200),
+            AppShimmers.circleShimmer(200),
+          ],
         ),
     );
   }
