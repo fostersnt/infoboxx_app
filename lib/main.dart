@@ -15,16 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return GetMaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-    //   ),
-    //   home: LoginScreen()
-    // );
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeFragmentScreen(),
+      theme: ThemeData(
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: LoginScreen()
     );
+    // return GetMaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   home: HomeFragmentScreen(),
+    // );
   }
 }
