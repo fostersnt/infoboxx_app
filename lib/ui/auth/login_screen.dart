@@ -190,14 +190,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                         if (email == "") {
                                           AppNotifications.showErrorSnackBar(
                                             "Email Error",
-                                            "Your email should not be empty",
+                                            "Email should not be empty",
                                           );
                                           return;
                                         }
                                         if (password == "") {
                                           AppNotifications.showErrorSnackBar(
                                             "Password Error",
-                                            "Your password should not be empty",
+                                            "Password should not be empty",
                                           );
                                           return;
                                         }

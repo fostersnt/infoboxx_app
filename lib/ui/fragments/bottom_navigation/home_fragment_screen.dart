@@ -17,7 +17,7 @@ class HomeFragmentScreen extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: AppShimmers.circleShimmer(200, 200),
+            child: AppShimmers.circleShimmer(200),
           ),
           // const SizedBox(width: 12),
           // Expanded(
