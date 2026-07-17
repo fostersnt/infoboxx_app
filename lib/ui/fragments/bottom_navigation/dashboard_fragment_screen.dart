@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/favorite_fragment_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/profile_fragment_screen.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class DashboardFragmentScreen extends StatefulWidget {
   const DashboardFragmentScreen({super.key});
@@ -43,6 +44,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.redCrimson,
       body: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(

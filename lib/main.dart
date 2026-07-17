@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/ui/auth/login_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
@@ -7,6 +8,21 @@ import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dar
 import 'package:infoboxx/util/app_loaders.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge,
+  );
+
+  //! Set statusBar color to transparent
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light, // Android: white icons
+      statusBarBrightness: Brightness.dark, // iOS
+    ),
+  );
+
   runApp(const MyApp());
 }
 

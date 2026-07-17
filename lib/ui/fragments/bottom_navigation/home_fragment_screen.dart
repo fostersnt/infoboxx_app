@@ -14,18 +14,20 @@ class HomeFragmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShimmerScope(
-      child: Container(
-        color: AppColors.whitePure,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Row(
-          children: [
-            Expanded(
-              child: AppShimmers.circleShimmer(200),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                AppShimmers.circleShimmer(200),
+                AppShimmers.circleShimmer(200),
+                AppShimmers.circleShimmer(200),
+                AppShimmers.circleShimmer(200),
+                AppShimmers.circleShimmer(200),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
     );
   }
 }
