@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
+import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
@@ -20,6 +21,7 @@ class HomeFragmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
+    RxBool isSelected = false.obs;
 
     String greeting = GeneralFunctions.getGreeting();
 
@@ -48,8 +50,17 @@ class HomeFragmentScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
               child: Column(
                 children: [
+                  GreetingCard(
+                    name: "Greetings",
+                    selected: isSelected.value,
+                    onChanged: (val){
+                      if(val != null){
+                        isSelected.value = ! isSelected.value;
+                      }
+                    },
+                  ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                    margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: AppColors.blackGunMetal,
@@ -76,14 +87,19 @@ class HomeFragmentScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Icon(Icons.group_add, color: AppColors.yellowAmber,),
-                                SizedBox(width: 10,),
+                                Icon(
+                                  Icons.group_add,
+                                  color: AppColors.yellowAmber,
+                                ),
+                                SizedBox(width: 10),
                                 Expanded(
                                   child: Text(
                                     "Lead Overview",
-                                    style: TextStyle(color: AppColors.yellowAmber),
+                                    style: TextStyle(
+                                      color: AppColors.yellowAmber,
+                                    ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
