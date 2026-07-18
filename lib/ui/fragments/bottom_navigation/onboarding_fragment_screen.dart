@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 
-class MoreFragmentScreen extends StatelessWidget {
-  MoreFragmentScreen({super.key});
+class OnboardingFragmentScreen extends StatelessWidget {
+  OnboardingFragmentScreen({super.key});
 
   final userService = Get.find<UserService>();
 
