@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/auth/login_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:flutter_loading_animation_kit/flutter_loading_animation_kit.dart';
@@ -8,21 +9,10 @@ import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dar
 import 'package:infoboxx/util/app_loaders.dart';
 import 'package:infoboxx/util/app_colors.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // SystemChrome.setEnabledSystemUIMode(
-  //   SystemUiMode.edgeToEdge,
-  // );
-  //
-  // //! Set statusBar color to transparent
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     statusBarColor: Colors.transparent,
-  //     statusBarIconBrightness: Brightness.light, // Android: white icons
-  //     statusBarBrightness: Brightness.dark, // iOS
-  //   ),
-  // );
+  await Get.putAsync(() => UserService().init());
 
   runApp(const MyApp());
 }

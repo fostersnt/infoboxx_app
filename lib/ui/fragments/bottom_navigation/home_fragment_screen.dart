@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
@@ -8,6 +9,8 @@ import 'package:shimmer_animation_kit/shimmer_animation_kit.dart';
 
 class HomeFragmentScreen extends StatelessWidget {
   HomeFragmentScreen({super.key});
+
+  final userService = Get.find<UserService>();
 
   // Reactive loading state tracker
   final RxBool _isLoading = true.obs;

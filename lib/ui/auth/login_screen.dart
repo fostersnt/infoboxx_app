@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:infoboxx/api/dio_client.dart';
-import 'package:infoboxx/api/endpoints.dart';
+import 'package:infoboxx/services/api/dio_client.dart';
+import 'package:infoboxx/services/api/api_endpoints.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                         isLoading.value = true;
                                         const loginEndpoint =
-                                            ApiEndpoint.SERVICE_PROVIDER_LOGIN;
+                                            ApiEndpoints.SERVICE_PROVIDER_LOGIN;
                                         var requestData = {
                                           "email": email,
                                           "password": password,
