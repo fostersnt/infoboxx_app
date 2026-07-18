@@ -73,7 +73,9 @@ class UserService extends GetxService {
     try {
       String token = accessToken.value;
       var data = {
-        "service_provider_id": userData.value["service_provider"]["id"]
+        "service_provider_id": userData.value["service_provider"]["id"],
+        "sub_category": userData.value["service_provider"]["sub_category"]["name"],
+        "category": userData.value["service_provider"]["sub_category"]["category"]["name"],
       };
       var result = await ApiService.getLeadStatisticsApi(accessToken.value, data);
       if (result['is_success'] == true) {
