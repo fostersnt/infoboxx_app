@@ -70,7 +70,7 @@ class OnboardingCard extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                       letterSpacing: .5,
                     ),
                   ),
