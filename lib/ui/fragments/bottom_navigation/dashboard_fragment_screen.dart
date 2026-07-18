@@ -31,7 +31,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
     {
       "active_icon": Icons.rocket_launch,
       "non_active_icon": Icons.rocket_launch_outlined,
-      "label": "More",
+      "label": "Onboarding",
     },
     {
       "active_icon": FontAwesomeIcons.person,
