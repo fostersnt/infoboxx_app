@@ -9,10 +9,10 @@ import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dar
 import 'package:infoboxx/util/app_loaders.dart';
 import 'package:infoboxx/util/app_colors.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Get.putAsync(() => UserService().init());
+  Get.put(UserService(), permanent: true);
 
   runApp(const MyApp());
 }
