@@ -8,14 +8,27 @@ import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
 import 'package:shimmer_animation_kit/shimmer_animation_kit.dart';
 
-class HomeFragmentScreen extends StatelessWidget {
-  HomeFragmentScreen({super.key});
+class HomeFragmentScreen extends StatefulWidget {
+  const HomeFragmentScreen({super.key});
 
+  @override
+  State<HomeFragmentScreen> createState() => _HomeFragmentScreenState();
+}
+
+class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
   final userService = Get.find<UserService>();
-
   // Reactive loading state tracker
   final RxBool _isLoading = true.obs;
   final bool isLoading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    String token = userService.accessToken.value;
+    print("======== LeadStatisticsScreen initState ======= TOKEN == $token ======");
+    userService.getLeadStatistics();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +37,7 @@ class HomeFragmentScreen extends StatelessWidget {
     RxBool isSelected = false.obs;
 
     String greeting = GeneralFunctions.getGreeting();
+    // var leadStats = userService.leadStatistics();
 
     var userData = userService.userData.value;
     String companyName = userData["service_provider"]["company_name"] ?? "N/A";

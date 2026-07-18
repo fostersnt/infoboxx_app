@@ -10,7 +10,14 @@ class UserService extends GetxService {
   RxBool isLoading = false.obs;
   RxString errorMessage = "".obs;
   RxString accessToken = "".obs;
-  var leadStatistics = {}.obs;
+  final leadStatistics = Rx<Map<String, dynamic>>({});
+
+  // @override
+  // void onInit() {
+  //   // TODO: implement onInit
+  //   super.onInit();
+  //   getLeadStatistics();
+  // }
 
   Future<bool> userLogin({
     bool forceRefresh = false,
@@ -39,11 +46,13 @@ class UserService extends GetxService {
       if (result['is_success'] == true) {
         var response = result["api_response"];
         userData.value = response["data"];
-        accessToken.value = response["access_token"] ?? "NA_APP";
+        accessToken.value = response["data"]["access_token"] ?? "NA_APP";
 
         var encoder = const JsonEncoder.withIndent('  ');
         String prettyJson = encoder.convert(userData.value);
         debugPrint("--------DATA FROM USER LOGIN SERVICE------------");
+        String tk = accessToken.value;
+        debugPrint("--------ACCESS TOKEN $tk ------------");
         debugPrint(prettyJson);
         debugPrint("--------END-----DATA FROM USER LOGIN SERVICE------------");
 
@@ -62,13 +71,17 @@ class UserService extends GetxService {
 
   Future<bool> getLeadStatistics() async {
     try {
-      var result = await ApiService.getLeadStatisticsApi(accessToken.value);
+      String token = accessToken.value;
+      var data = {
+        "service_provider_id": userData.value["service_provider"]["id"]
+      };
+      var result = await ApiService.getLeadStatisticsApi(accessToken.value, data);
       if (result['is_success'] == true) {
         var response = result["api_response"];
         leadStatistics.value = response["data"];
 
         var encoder = const JsonEncoder.withIndent('  ');
-        String prettyJson = encoder.convert(userData.value);
+        String prettyJson = encoder.convert(leadStatistics.value);
         debugPrint("--------DATA FROM LEADS STATISTICS SERVICE------------");
         debugPrint(prettyJson);
         debugPrint("--------END-----DATA FROM LEADS STATISTICS SERVICE------------");

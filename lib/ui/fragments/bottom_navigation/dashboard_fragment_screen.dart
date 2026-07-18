@@ -68,7 +68,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
         backgroundColor: AppColors.whitePure,
         body: SafeArea(child: Obx(() => _fragmentScreens[indexNumber.value])),
         bottomNavigationBar: Obx(
-              () => BottomNavigationBar(
+          () => BottomNavigationBar(
             currentIndex: indexNumber.value,
             onTap: (val) {
               // Avoid duplicating the index if they tap the same active tab twice
