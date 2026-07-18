@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/api/api_service.dart';
 
-class UserService {
-  Rx<User?> user = Rx<User?>(null);
+class UserService extends GetxService {
+  final user = Rx<Map<String, dynamic>>({});
   RxBool isLoading = false.obs;
 
   Future<void> fetchUser({bool forceRefresh = false, String email = "", String password = ""}) async {
     // Skip fetching if data already exists
-    if (!forceRefresh && user.value != null) {
+    if (forceRefresh == false && user.value.isNotEmpty) {
       return;
     }
 
