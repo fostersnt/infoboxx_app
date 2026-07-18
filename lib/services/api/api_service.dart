@@ -3,30 +3,17 @@ import 'package:infoboxx/services/api/dio_client.dart';
 import 'package:infoboxx/services/api/api_endpoints.dart';
 
 class ApiService {
-  static Future<Map<String, dynamic>> loginUser(
+  static Future<Map<String, dynamic>> userLoginApi(
     String email,
     String password,
   ) async {
-    Map<String, dynamic> result = {
-      "is_success": false,
-      "status": "FAILED",
-      "message": "Request failed",
-      "data": {},
-    };
-
     try {
       String endpoint = ApiEndpoints.SERVICE_PROVIDER_LOGIN;
       var requestBody = {"email": email, "password": password};
       var response = await DioClient.myDioObj.post(endpoint, data: requestBody);
-      return {
-        "is_success": true,
-        "api_response": response.data
-      };
+      return {"is_success": true, "api_response": response.data};
     } catch (e) {
-      return {
-        "is_success": false,
-        "error_message": e.toString()
-      };
+      return {"is_success": false, "error_message": e.toString()};
     }
   }
 }

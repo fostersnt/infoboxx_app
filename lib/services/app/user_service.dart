@@ -6,7 +6,7 @@ class UserService extends GetxService {
   final user = Rx<Map<String, dynamic>>({});
   RxBool isLoading = false.obs;
 
-  Future<void> fetchUser({bool forceRefresh = false, String email = "", String password = ""}) async {
+  Future<void> userLogin({bool forceRefresh = false, String email = "", String password = ""}) async {
     // Skip fetching if data already exists
     if (forceRefresh == false && user.value.isNotEmpty) {
       return;
@@ -15,7 +15,7 @@ class UserService extends GetxService {
     isLoading.value = true;
 
     try {
-      user.value = await ApiService.loginUser(email, password);
+      user.value = await ApiService.userLoginApi(email, password);
     } finally {
       isLoading.value = false;
     }
