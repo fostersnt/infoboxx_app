@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class OnboardingCard extends StatelessWidget {
   final String name;
@@ -22,8 +23,8 @@ class OnboardingCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         gradient: const LinearGradient(
           colors: [
-            Color(0xFF4F46E5),
-            Color(0xFF6366F1),
+            AppColors.blackCharcoal,
+            AppColors.yellowMustard
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

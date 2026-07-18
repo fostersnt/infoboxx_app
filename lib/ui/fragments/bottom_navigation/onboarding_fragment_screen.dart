@@ -21,7 +21,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
               () => OnboardingCard(
                 name: "Identity Verification",
                 selected: isSelected.value,
-                icon: Icons.ssid_chart,
+                icon: Icons.verified_user,
                 onChanged: (value) {
                   isSelected.value = !isSelected.value;
                 },
