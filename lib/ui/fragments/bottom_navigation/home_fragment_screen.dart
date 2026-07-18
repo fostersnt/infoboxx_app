@@ -21,6 +21,8 @@ class HomeFragmentScreen extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
 
+    String greeting = GeneralFunctions.getGreeting();
+
     var userData = userService.userData.value;
     String companyName = userData["service_provider"]["company_name"] ?? "N/A";
 
@@ -69,7 +71,7 @@ class HomeFragmentScreen extends StatelessWidget {
                             ),
                           ),
                           child: SizedBox(
-                            width: 160,
+                            width: 140,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -78,7 +80,7 @@ class HomeFragmentScreen extends StatelessWidget {
                                 SizedBox(width: 10,),
                                 Expanded(
                                   child: Text(
-                                    "LEAD OVERVIEW",
+                                    "Lead Overview",
                                     style: TextStyle(color: AppColors.yellowAmber),
                                   ),
                                 )
@@ -88,11 +90,11 @@ class HomeFragmentScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 30),
                         Text(
-                          "Good Afternoon, $companyName",
+                          "Good $greeting, $companyName",
                           style: TextStyle(
                             color: AppColors.whitePure,
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(height: 4),
@@ -101,7 +103,7 @@ class HomeFragmentScreen extends StatelessWidget {
                           style: TextStyle(
                             color: AppColors.yellowAmber,
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(height: 20),
