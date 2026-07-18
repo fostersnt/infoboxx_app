@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             SizedBox(height: 5),
                             Obx(() {
-                              if (isLoading.value == true) {
+                              if (userService.isLoading.value == true) {
                                 return AppLoaders.fourCirclePulse();
                               } else {
                                 return Text("");

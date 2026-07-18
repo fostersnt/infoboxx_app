@@ -21,6 +21,9 @@ class HomeFragmentScreen extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
 
+    var userData = userService.userData.value;
+    String serviceProviderName = userData["service_provider"]["company_name"] ?? "N/A";
+
     double verticalHeight = 10;
     double addOnValue = 50;
     double boxWidth = (deviceWidth / 3.5);
@@ -85,7 +88,7 @@ class HomeFragmentScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 30),
                         Text(
-                          "Good Afternoon, Gwo Sevo",
+                          "Good Afternoon, $serviceProviderName",
                           style: TextStyle(
                             color: AppColors.whitePure,
                             fontSize: 18,
