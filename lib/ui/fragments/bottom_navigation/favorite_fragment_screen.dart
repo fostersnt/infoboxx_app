@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:infoboxx/services/app/user_service.dart';
 
 class FavoriteFragmentScreen extends StatelessWidget {
-  const FavoriteFragmentScreen({super.key});
+  FavoriteFragmentScreen({super.key});
+
+  final userService = Get.find<UserService>();
 
   @override
   Widget build(BuildContext context) {
+    String companyName = userService.userData.value["service_provider"]["company_name"] ?? "N/A";
     return Center(
-        child: Text("FAVORITE FRAGMENT SCREEN"),
+        child: Text("Hi $companyName, welcome to Favorites screen"),
     );
   }
 }
