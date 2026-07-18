@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/api/dio_client.dart';
 import 'package:infoboxx/services/api/api_endpoints.dart';
+import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -25,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final userService = Get.find<UserService>();
 
   var hidePassword = true.obs;
   var isLoading = false.obs;
@@ -90,7 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextFormField(
                                   controller: emailController,
                                   decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.email, color: AppColors.grayCoolSlate,),
+                                    prefixIcon: Icon(
+                                      Icons.email,
+                                      color: AppColors.grayCoolSlate,
+                                    ),
                                     hintText: "email",
                                     filled: true,
                                     fillColor: AppColors.whitePure,
@@ -128,7 +134,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: passwordController,
                                     obscureText: hidePassword.value,
                                     decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.key, color: AppColors.grayCoolSlate,),
+                                      prefixIcon: Icon(
+                                        Icons.key,
+                                        color: AppColors.grayCoolSlate,
+                                      ),
                                       suffixIcon: Obx(
                                         () => GestureDetector(
                                           onTap: () {
@@ -179,123 +188,140 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: AppColors.blackPure,
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
+                                    // onTap: () async {
+                                    //   try {
+                                    //     String email = emailController.text
+                                    //         .trim();
+                                    //     String password = passwordController
+                                    //         .text
+                                    //         .trim();
+                                    //
+                                    //     if (email == "") {
+                                    //       AppNotifications.showErrorSnackBar(
+                                    //         "Email Error",
+                                    //         "Email should not be empty",
+                                    //       );
+                                    //       return;
+                                    //     }
+                                    //     if (password == "") {
+                                    //       AppNotifications.showErrorSnackBar(
+                                    //         "Password Error",
+                                    //         "Password should not be empty",
+                                    //       );
+                                    //       return;
+                                    //     }
+                                    //
+                                    //     isLoading.value = true;
+                                    //     const loginEndpoint =
+                                    //         ApiEndpoints.SERVICE_PROVIDER_LOGIN;
+                                    //     var requestData = {
+                                    //       "email": email,
+                                    //       "password": password,
+                                    //     };
+                                    //     var apiResponse = await DioClient
+                                    //         .myDioObj
+                                    //         .post(
+                                    //           loginEndpoint,
+                                    //           data: requestData,
+                                    //         );
+                                    //
+                                    //     Map<String, dynamic> response =
+                                    //         apiResponse.data;
+                                    //
+                                    //     String serverMessage =
+                                    //         response['reason'] ??
+                                    //         "An error occurred during login.";
+                                    //
+                                    //     ResponseConvertor.convertToJson(
+                                    //       response,
+                                    //     );
+                                    //
+                                    //     if (response['data']['status_code'] == 200) {
+                                    //       Get.to(
+                                    //         () => DashboardFragmentScreen(),
+                                    //       );
+                                    //     } else {
+                                    //       AppNotifications.showErrorSnackBar(
+                                    //         "Login Failed",
+                                    //         serverMessage,
+                                    //       );
+                                    //     }
+                                    //   } catch (e) {
+                                    //     String errorMessage =
+                                    //         "An unexpected error occurred.";
+                                    //
+                                    //     if (e is DioException) {
+                                    //       if (e.response != null &&
+                                    //           e.response?.data != null) {
+                                    //         // The server WAS reached, but returned an error status (400, 401, 500, etc.)
+                                    //         errorMessage =
+                                    //             e
+                                    //                 .response
+                                    //                 ?.data['data']['reason'] ??
+                                    //             e
+                                    //                 .response
+                                    //                 ?.data['data']['reason'] ??
+                                    //             "Server error.";
+                                    //       } else {
+                                    //         // The request NEVER reached your server!
+                                    //         // Let's find out exactly why:
+                                    //         switch (e.type) {
+                                    //           case DioExceptionType
+                                    //               .connectionTimeout:
+                                    //             errorMessage =
+                                    //                 "Connection timed out. Please try again later.";
+                                    //             break;
+                                    //           case DioExceptionType.sendTimeout:
+                                    //             errorMessage =
+                                    //                 "Failed to send data to the server. Please check your connection.";
+                                    //             break;
+                                    //           case DioExceptionType
+                                    //               .receiveTimeout:
+                                    //             errorMessage =
+                                    //                 "Server took too long to respond. Please try again.";
+                                    //             break;
+                                    //           case DioExceptionType
+                                    //               .connectionError:
+                                    //             errorMessage =
+                                    //                 "No internet connection or the host server is completely unreachable.";
+                                    //             break;
+                                    //           case DioExceptionType.cancel:
+                                    //             errorMessage =
+                                    //                 "The request was cancelled.";
+                                    //             break;
+                                    //           default:
+                                    //             errorMessage =
+                                    //                 "Network connection failed: ${e.message}";
+                                    //             break;
+                                    //         }
+                                    //       }
+                                    //     } else {
+                                    //       errorMessage = e.toString();
+                                    //     }
+                                    //
+                                    //     AppNotifications.showErrorSnackBar(
+                                    //       "An Error Occurred",
+                                    //       errorMessage,
+                                    //     );
+                                    //   }
+                                    //   isLoading.value = false;
+                                    // },
                                     onTap: () async {
-                                      try {
-                                        String email = emailController.text
-                                            .trim();
-                                        String password = passwordController
-                                            .text
-                                            .trim();
+                                      String email = emailController.text
+                                          .trim();
+                                      String password = passwordController.text
+                                          .trim();
+                                      bool check = await userService.userLogin(
+                                        email: email,
+                                        password: password,
+                                        forceRefresh: false,
+                                      );
 
-                                        if (email == "") {
-                                          AppNotifications.showErrorSnackBar(
-                                            "Email Error",
-                                            "Email should not be empty",
-                                          );
-                                          return;
-                                        }
-                                        if (password == "") {
-                                          AppNotifications.showErrorSnackBar(
-                                            "Password Error",
-                                            "Password should not be empty",
-                                          );
-                                          return;
-                                        }
-
-                                        isLoading.value = true;
-                                        const loginEndpoint =
-                                            ApiEndpoints.SERVICE_PROVIDER_LOGIN;
-                                        var requestData = {
-                                          "email": email,
-                                          "password": password,
-                                        };
-                                        var apiResponse = await DioClient
-                                            .myDioObj
-                                            .post(
-                                              loginEndpoint,
-                                              data: requestData,
-                                            );
-
-                                        Map<String, dynamic> response =
-                                            apiResponse.data;
-
-                                        String serverMessage =
-                                            response['reason'] ??
-                                            "An error occurred during login.";
-
-                                        ResponseConvertor.convertToJson(
-                                          response,
-                                        );
-
-                                        if (response['data']['status_code'] == 200) {
-                                          Get.to(
-                                            () => DashboardFragmentScreen(),
-                                          );
-                                        } else {
-                                          AppNotifications.showErrorSnackBar(
-                                            "Login Failed",
-                                            serverMessage,
-                                          );
-                                        }
-                                      } catch (e) {
-                                        String errorMessage =
-                                            "An unexpected error occurred.";
-
-                                        if (e is DioException) {
-                                          if (e.response != null &&
-                                              e.response?.data != null) {
-                                            // The server WAS reached, but returned an error status (400, 401, 500, etc.)
-                                            errorMessage =
-                                                e
-                                                    .response
-                                                    ?.data['data']['reason'] ??
-                                                e
-                                                    .response
-                                                    ?.data['data']['reason'] ??
-                                                "Server error.";
-                                          } else {
-                                            // The request NEVER reached your server!
-                                            // Let's find out exactly why:
-                                            switch (e.type) {
-                                              case DioExceptionType
-                                                  .connectionTimeout:
-                                                errorMessage =
-                                                    "Connection timed out. Please try again later.";
-                                                break;
-                                              case DioExceptionType.sendTimeout:
-                                                errorMessage =
-                                                    "Failed to send data to the server. Please check your connection.";
-                                                break;
-                                              case DioExceptionType
-                                                  .receiveTimeout:
-                                                errorMessage =
-                                                    "Server took too long to respond. Please try again.";
-                                                break;
-                                              case DioExceptionType
-                                                  .connectionError:
-                                                errorMessage =
-                                                    "No internet connection or the host server is completely unreachable.";
-                                                break;
-                                              case DioExceptionType.cancel:
-                                                errorMessage =
-                                                    "The request was cancelled.";
-                                                break;
-                                              default:
-                                                errorMessage =
-                                                    "Network connection failed: ${e.message}";
-                                                break;
-                                            }
-                                          }
-                                        } else {
-                                          errorMessage = e.toString();
-                                        }
-
-                                        AppNotifications.showErrorSnackBar(
-                                          "An Error Occurred",
-                                          errorMessage,
-                                        );
+                                      if(check == true){
+                                        Get.to(() => DashboardFragmentScreen());
+                                      }else{
+                                        AppNotifications.showErrorSnackBar("Login Error", userService.errorMessage.value);
                                       }
-                                      isLoading.value = false;
                                     },
                                     borderRadius: BorderRadius.circular(30),
                                     child: const Padding(
@@ -320,7 +346,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       child: Text(
                                         "Don't have an Account?",
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(color: AppColors.blackPure),
+                                        style: TextStyle(
+                                          color: AppColors.blackPure,
+                                        ),
                                       ),
                                     ),
                                     TextButton(
