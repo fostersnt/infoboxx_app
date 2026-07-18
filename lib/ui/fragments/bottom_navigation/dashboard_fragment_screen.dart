@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:infoboxx/ui/fragments/bottom_navigation/favorite_fragment_screen.dart';
+import 'package:infoboxx/ui/fragments/bottom_navigation/more_fragment_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/profile_fragment_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -18,7 +18,7 @@ class DashboardFragmentScreen extends StatefulWidget {
 class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   final List<Widget> _fragmentScreens = [
     HomeFragmentScreen(),
-    FavoriteFragmentScreen(),
+    MoreFragmentScreen(),
     ProfileFragmentScreen(),
   ];
 
@@ -29,9 +29,9 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
       "label": "Home",
     },
     {
-      "active_icon": Icons.favorite,
-      "non_active_icon": Icons.favorite_border,
-      "label": "Favorites",
+      "active_icon": Icons.more,
+      "non_active_icon": Icons.more_outlined,
+      "label": "More",
     },
     {
       "active_icon": FontAwesomeIcons.person,
