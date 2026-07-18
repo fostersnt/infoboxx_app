@@ -9,6 +9,8 @@ class UserService extends GetxService {
   final userData = Rx<Map<String, dynamic>>({});
   RxBool isLoading = false.obs;
   RxString errorMessage = "".obs;
+  RxString accessToken = "".obs;
+  var leadStatistics = {}.obs;
 
   Future<bool> userLogin({
     bool forceRefresh = false,
@@ -23,13 +25,12 @@ class UserService extends GetxService {
     isLoading.value = true;
 
     try {
-
-      if(email == ""){
+      if (email == "") {
         errorMessage.value = "Email should not be blank";
         return false;
       }
 
-      if(password == ""){
+      if (password == "") {
         errorMessage.value = "Password should not be blank";
         return false;
       }
@@ -38,12 +39,13 @@ class UserService extends GetxService {
       if (result['is_success'] == true) {
         var response = result["api_response"];
         userData.value = response["data"];
+        accessToken.value = response["access_token"] ?? "NA_APP";
 
         var encoder = const JsonEncoder.withIndent('  ');
         String prettyJson = encoder.convert(userData.value);
-        debugPrint("--------DATA FROM USER SERVICE------------");
+        debugPrint("--------DATA FROM USER LOGIN SERVICE------------");
         debugPrint(prettyJson);
-        debugPrint("--------END-----DATA FROM USER SERVICE------------");
+        debugPrint("--------END-----DATA FROM USER LOGIN SERVICE------------");
 
         return true;
       } else {
@@ -51,6 +53,33 @@ class UserService extends GetxService {
         return false;
       }
     } catch (e) {
+      isLoading.value = false;
+      return false;
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<bool> getLeadStatistics() async {
+    try {
+      var result = await ApiService.getLeadStatisticsApi(accessToken.value);
+      if (result['is_success'] == true) {
+        var response = result["api_response"];
+        leadStatistics.value = response["data"];
+
+        var encoder = const JsonEncoder.withIndent('  ');
+        String prettyJson = encoder.convert(userData.value);
+        debugPrint("--------DATA FROM LEADS STATISTICS SERVICE------------");
+        debugPrint(prettyJson);
+        debugPrint("--------END-----DATA FROM LEADS STATISTICS SERVICE------------");
+
+        return true;
+      } else {
+        errorMessage.value = result['error_message'];
+        return false;
+      }
+    } catch (e) {
+      isLoading.value = false;
       return false;
     } finally {
       isLoading.value = false;
