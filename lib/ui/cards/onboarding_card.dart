@@ -31,8 +31,8 @@ class OnboardingCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.indigo.withOpacity(.25),
-            blurRadius: 15,
+            color: AppColors.blackGunMetal,
+            blurRadius: 5,
             offset: const Offset(0, 8),
           ),
         ],

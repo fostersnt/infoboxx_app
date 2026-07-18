@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/onboarding_card.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class OnboardingFragmentScreen extends StatelessWidget {
   OnboardingFragmentScreen({super.key});
@@ -14,6 +15,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
     String companyName =
         userService.userData.value["service_provider"]["company_name"] ?? "N/A";
     return Scaffold(
+      backgroundColor: AppColors.whitePure,
       body: SingleChildScrollView(
         child: Column(
           children: [
