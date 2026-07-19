@@ -52,7 +52,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                           selected: isSelected_identity_verification.value,
                           icon: Icons.verified_user,
                           onChanged: (value) {
-                            isSelected_identity_verification.value = !isSelected_identity_verification.value;
+                            // isSelected_identity_verification.value = !isSelected_identity_verification.value;
                           },
                         )
                         .animate()
@@ -67,7 +67,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                           selected: isSelected_business_document.value,
                           icon: Icons.edit_document,
                           onChanged: (value) {
-                            isSelected_business_document.value = !isSelected_business_document.value;
+                            // isSelected_business_document.value = !isSelected_business_document.value;
                           },
                         )
                         .animate()
@@ -82,7 +82,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                           selected: isSelected_contact_persons.value,
                           icon: Icons.contact_phone,
                           onChanged: (value) {
-                            isSelected_contact_persons.value = !isSelected_contact_persons.value;
+                            // isSelected_contact_persons.value = !isSelected_contact_persons.value;
                           },
                         )
                         .animate()
