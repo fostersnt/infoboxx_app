@@ -34,8 +34,11 @@ class OnboardingCard extends StatelessWidget {
               AppColors.blackCharcoal,
             ]
                 : [
+              // AppColors.blackCharcoal,
+              // AppColors.yellowMustard.withOpacity(.85),
+              // Color(0xffF59E0B),
               AppColors.blackCharcoal,
-              AppColors.yellowMustard.withOpacity(.85),
+              Color(0xffEA580C),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
