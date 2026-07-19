@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/onboarding_fragment_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/home_fragment_screen.dart';
-import 'package:infoboxx/ui/fragments/bottom_navigation/profile_fragment_screen.dart';
+import 'package:infoboxx/ui/fragments/bottom_navigation/leads_fragment_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
 
 class DashboardFragmentScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
   final List<Widget> _fragmentScreens = [
     HomeFragmentScreen(),
     OnboardingFragmentScreen(),
-    ProfileFragmentScreen(),
+    LeadsFragmentScreen(),
   ];
 
   final List _navigationButtonsProperties = [
@@ -34,9 +34,9 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
       "label": "Onboarding",
     },
     {
-      "active_icon": FontAwesomeIcons.person,
-      "non_active_icon": Icons.person_outline,
-      "label": "Profile",
+      "active_icon": Icons.group_add,
+      "non_active_icon": Icons.group_add_outlined,
+      "label": "Leads",
     },
   ];
 
