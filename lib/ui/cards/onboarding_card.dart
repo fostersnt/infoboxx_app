@@ -4,15 +4,15 @@ import 'package:infoboxx/util/app_colors.dart';
 class OnboardingCard extends StatelessWidget {
   final String name;
   final bool selected;
-  final ValueChanged<bool> onChanged;
   final IconData icon;
+  final Widget miniText;
 
   const OnboardingCard({
     super.key,
     required this.name,
     required this.selected,
-    required this.onChanged,
     this.icon = Icons.rocket_launch_rounded,
+    required this.miniText,
   });
 
   @override
@@ -64,7 +64,7 @@ class OnboardingCard extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(24),
-            onTap: () => onChanged(!selected),
+            onTap: () => selected,
             child: Padding(
               padding: const EdgeInsets.all(18),
               child: Row(
@@ -112,13 +112,14 @@ class OnboardingCard extends StatelessWidget {
                           duration:
                           const Duration(milliseconds: 250),
                           opacity: selected ? 1 : .75,
-                          child: const Text(
-                            "Tap to onboard",
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 13,
-                            ),
-                          ),
+                          child: miniText,
+                          // child: const Text(
+                          //   "Tap to onboard",
+                          //   style: TextStyle(
+                          //     color: Colors.white70,
+                          //     fontSize: 13,
+                          //   ),
+                          // ),
                         ),
                       ],
                     ),
