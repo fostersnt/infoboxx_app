@@ -4,7 +4,7 @@ import 'package:infoboxx/util/app_colors.dart';
 class OnboardingCard extends StatelessWidget {
   final String name;
   final bool selected;
-  final ValueChanged<bool?> onChanged;
+  final ValueChanged<bool> onChanged;
   final IconData icon;
 
   const OnboardingCard({
@@ -12,85 +12,154 @@ class OnboardingCard extends StatelessWidget {
     required this.name,
     required this.selected,
     required this.onChanged,
-    this.icon = Icons.rocket_launch,
+    this.icon = Icons.rocket_launch_rounded,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(
-          colors: [
-            AppColors.blackCharcoal,
-            AppColors.yellowMustard
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.blackGunMetal,
-            blurRadius: 5,
-            offset: const Offset(0, 8),
+    return AnimatedScale(
+      duration: const Duration(milliseconds: 250),
+      scale: selected ? 1.02 : 1,
+      curve: Curves.easeOut,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24),
+          gradient: LinearGradient(
+            colors: selected
+                ? [
+              AppColors.yellowMustard,
+              AppColors.blackCharcoal,
+            ]
+                : [
+              AppColors.blackCharcoal,
+              AppColors.yellowMustard.withOpacity(.85),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(22),
-          onTap: () => onChanged(!selected),
-          child: Padding(
-            padding: const EdgeInsets.all(18),
-            child: Row(
-              children: [
-                // Image/Icon
-                Container(
-                  height: 65,
-                  width: 65,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(.2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    icon,
-                    color: Colors.white,
-                    size: 34,
-                  ),
-                ),
+          border: Border.all(
+            color: selected
+                ? Colors.white.withOpacity(.6)
+                : Colors.transparent,
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: selected
+                  ? AppColors.yellowMustard.withOpacity(.45)
+                  : Colors.black26,
+              blurRadius: selected ? 22 : 10,
+              spreadRadius: selected ? 2 : 0,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(24),
+            onTap: () => onChanged(!selected),
+            child: Padding(
+              padding: const EdgeInsets.all(18),
+              child: Row(
+                children: [
 
-                const SizedBox(width: 18),
-
-                // Name
-                Expanded(
-                  child: Text(
-                    name,
-                    style: const TextStyle(
+                  /// Icon
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    height: 68,
+                    width: 68,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withOpacity(
+                        selected ? .30 : .18,
+                      ),
+                    ),
+                    child: Icon(
+                      icon,
+                      size: 34,
                       color: Colors.white,
-                      fontSize: 20,
-                      // fontWeight: FontWeight.bold,
-                      letterSpacing: .5,
                     ),
                   ),
-                ),
 
-                // Checkbox
-                Transform.scale(
-                  scale: 1.2,
-                  child: Checkbox(
-                    value: selected,
-                    onChanged: onChanged,
-                    activeColor: Colors.white,
-                    checkColor: Colors.indigo,
-                    side: const BorderSide(
-                      color: Colors.white,
-                      width: 2,
+                  const SizedBox(width: 18),
+
+                  /// Text
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+
+                        Text(
+                          name,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+
+                        const SizedBox(height: 5),
+
+                        AnimatedOpacity(
+                          duration:
+                          const Duration(milliseconds: 250),
+                          opacity: selected ? 1 : .75,
+                          child: const Text(
+                            "Tap to onboard",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+
+                  /// Animated Check
+                  AnimatedContainer(
+                    duration:
+                    const Duration(milliseconds: 250),
+                    height: 34,
+                    width: 34,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: selected
+                          ? Colors.white
+                          : Colors.transparent,
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 2,
+                      ),
+                    ),
+                    child: AnimatedSwitcher(
+                      duration:
+                      const Duration(milliseconds: 200),
+                      transitionBuilder:
+                          (child, animation) =>
+                          ScaleTransition(
+                            scale: animation,
+                            child: child,
+                          ),
+                      child: selected
+                          ? Icon(
+                        Icons.check,
+                        key: const ValueKey(true),
+                        color: AppColors.blackCharcoal,
+                        size: 20,
+                      )
+                          : const SizedBox(
+                        key: ValueKey(false),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
