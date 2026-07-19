@@ -9,7 +9,11 @@ class OnboardingFragmentScreen extends StatelessWidget {
   OnboardingFragmentScreen({super.key});
 
   final userService = Get.find<UserService>();
-  final RxBool isSelected = false.obs;
+  final RxBool isSelected_identity_verification = false.obs;
+  final RxBool isSelected_business_document = true.obs;
+  final RxBool isSelected_contact_persons = false.obs;
+  // final RxBool isSelected_identity = false.obs;
+  // final RxBool isSelected_identity = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +49,10 @@ class OnboardingFragmentScreen extends StatelessWidget {
                 () =>
                     OnboardingCard(
                           name: "Identity Verification",
-                          selected: isSelected.value,
+                          selected: isSelected_identity_verification.value,
                           icon: Icons.verified_user,
                           onChanged: (value) {
-                            isSelected.value = !isSelected.value;
+                            isSelected_identity_verification.value = !isSelected_identity_verification.value;
                           },
                         )
                         .animate()
@@ -60,10 +64,10 @@ class OnboardingFragmentScreen extends StatelessWidget {
                 () =>
                     OnboardingCard(
                           name: "Business Documents",
-                          selected: isSelected.value,
+                          selected: isSelected_business_document.value,
                           icon: Icons.edit_document,
                           onChanged: (value) {
-                            isSelected.value = !isSelected.value;
+                            isSelected_business_document.value = !isSelected_business_document.value;
                           },
                         )
                         .animate()
@@ -75,10 +79,10 @@ class OnboardingFragmentScreen extends StatelessWidget {
                 () =>
                     OnboardingCard(
                           name: "Contact Persons",
-                          selected: isSelected.value,
+                          selected: isSelected_contact_persons.value,
                           icon: Icons.contact_phone,
                           onChanged: (value) {
-                            isSelected.value = !isSelected.value;
+                            isSelected_contact_persons.value = !isSelected_contact_persons.value;
                           },
                         )
                         .animate()
