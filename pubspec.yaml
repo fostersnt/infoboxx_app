@@ -54,6 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -96,3 +97,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  # Flutter Launcher Icons Configuration
+flutter_launcher_icons:
+    android: "launcher_icon" # Standard launcher icon name
+    ios: true # Generates icons for iOS
+    image_path: "images/icons/app_icon.png" # Path to your source image
+    # Optional: For Android Adaptive Icons (recommended for modern Android)
+    # adaptive_icon_background: "#1E3A8A" # Your brand blue color
+    # adaptive_icon_foreground: "assets/icon/app_icon_foreground.png" # A foreground-only version (transparent background)
