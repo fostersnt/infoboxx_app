@@ -42,6 +42,7 @@ dependencies:
   flutter_loading_animation_kit: ^0.0.2
   shimmer_animation_kit: ^0.1.0
   intl: ^0.20.3
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
