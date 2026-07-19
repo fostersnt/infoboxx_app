@@ -81,7 +81,7 @@ class LeadsFragmentScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whitePure,
       appBar: AppBar(
-        title: const Text("Leads"),
+        // title: const Text("Leads"),
         backgroundColor: AppColors.whitePure,
         actions: [
           Padding(
