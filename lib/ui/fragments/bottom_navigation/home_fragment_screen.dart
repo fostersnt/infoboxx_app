@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
@@ -26,7 +27,9 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
     // TODO: implement initState
     super.initState();
     String token = userService.accessToken.value;
-    print("======== LeadStatisticsScreen initState ======= TOKEN == $token ======");
+    print(
+      "======== LeadStatisticsScreen initState ======= TOKEN == $token ======",
+    );
     userService.getLeadStatistics();
   }
 
@@ -65,14 +68,18 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
               child: Column(
                 children: [
                   GreetingCard(
-                    name: "Greetings",
-                    selected: isSelected.value,
-                    onChanged: (val){
-                      if(val != null){
-                        isSelected.value = ! isSelected.value;
-                      }
-                    },
-                  ),
+                        name: "Greetings",
+                        selected: isSelected.value,
+                        onChanged: (val) {
+                          if (val != null) {
+                            isSelected.value = !isSelected.value;
+                          }
+                        },
+                      )
+                      .animate()
+                      .fade(duration: 400.ms)
+                      .slideY(begin: .25)
+                      .scale(begin: const Offset(.95, .95)),
                   Container(
                     margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
                     padding: EdgeInsets.all(10),
