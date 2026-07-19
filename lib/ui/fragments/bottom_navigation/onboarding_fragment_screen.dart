@@ -22,7 +22,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
     return Scaffold(
       // backgroundColor: AppColors.whitePure,
       appBar: AppBar(
-        title: const Text("Onboarding"),
+        // title: const Text("Onboarding"),
         backgroundColor: AppColors.whitePure,
         elevation: 0,
         // flexibleSpace: Container(
