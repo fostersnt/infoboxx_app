@@ -78,11 +78,11 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
                 _navigationHistory.add(val);
               }
             },
-            backgroundColor: AppColors.blackGunMetal,
+            backgroundColor: AppColors.whitePure,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedItemColor: AppColors.whitePure,
-            unselectedItemColor: AppColors.yellowAmber,
+            selectedItemColor: AppColors.orangeMain,
+            unselectedItemColor: AppColors.grayLightCharcoal,
             type: BottomNavigationBarType.fixed,
             items: List.generate(_navigationButtonsProperties.length, (index) {
               var navBtnProperty = _navigationButtonsProperties[index];

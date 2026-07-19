@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:infoboxx/model/Lead.dart';
 import 'package:infoboxx/ui/cards/lead_card.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class LeadsFragmentScreen extends StatelessWidget {
   const LeadsFragmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final searchController = TextEditingController();
     final leads = [
       Lead(
         name: "John Doe",
@@ -73,43 +75,114 @@ class LeadsFragmentScreen extends StatelessWidget {
       ),
     ];
     return Scaffold(
-      appBar: AppBar(title: const Text("Leads")),
-      body: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 20),
-        itemCount: leads.length,
-        itemBuilder: (context, index) {
-          final lead = leads[index];
+      backgroundColor: AppColors.whitePure,
+      appBar: AppBar(title: const Text("Leads"), backgroundColor: AppColors.whitePure),
+      body: Column(
+        children: [
+      Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 10,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xffF8FAFC),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(
+          color: Colors.grey.shade200,
+        ),
+      ),
+      child: TextField(
+        controller: searchController,
+        // onChanged: (true),
+        style: const TextStyle(
+          fontSize: 16,
+          color: Color(0xff0F172A),
+        ),
+        decoration: InputDecoration(
+          hintText: "Search here...",
+          hintStyle: TextStyle(
+            color: Colors.grey.shade500,
+          ),
 
-          return LeadCard(
-            name: lead.name,
-            phone: lead.phone,
-            email: lead.email,
-            status: lead.status,
-            source: lead.source,
-            priority: lead.priority,
-            lastContacted: lead.lastContacted,
+          prefixIcon: Icon(
+            Icons.search_rounded,
+            color: Colors.grey.shade600,
+          ),
 
-            onTap: () {
-              print("Open ${lead.name}");
+          suffixIcon: AnimatedSwitcher(
+            duration: const Duration(
+              milliseconds: 200,
+            ),
+            transitionBuilder: (child, animation) {
+              return ScaleTransition(
+                scale: animation,
+                child: child,
+              );
             },
+            child: true
+                ? IconButton(
+              key: const ValueKey("clear"),
+              onPressed: (){},
+              icon: const Icon(
+                Icons.close_rounded,
+              ),
+              color: Colors.grey.shade600,
+            )
+                : const SizedBox(
+              key: ValueKey("empty"),
+            ),
+          ),
 
-            onCall: () {
-              print("Call ${lead.phone}");
-            },
+          border: InputBorder.none,
 
-            onWhatsapp: () {
-              print("WhatsApp ${lead.phone}");
-            },
+          contentPadding:
+          const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 16,
+          ),
+        ),
+      ),
+    ),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.only(bottom: 20),
+              itemCount: leads.length,
+              itemBuilder: (context, index) {
+                final lead = leads[index];
 
-            onEmail: () {
-              print("Email ${lead.email}");
-            },
+                return LeadCard(
+                  name: lead.name,
+                  phone: lead.phone,
+                  email: lead.email,
+                  status: lead.status,
+                  source: lead.source,
+                  priority: lead.priority,
+                  lastContacted: lead.lastContacted,
 
-            onNotes: () {
-              print("Notes for ${lead.name}");
-            },
-          );
-        },
+                  onTap: () {
+                    print("Open ${lead.name}");
+                  },
+
+                  onCall: () {
+                    print("Call ${lead.phone}");
+                  },
+
+                  onWhatsapp: () {
+                    print("WhatsApp ${lead.phone}");
+                  },
+
+                  onEmail: () {
+                    print("Email ${lead.email}");
+                  },
+
+                  onNotes: () {
+                    print("Notes for ${lead.name}");
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

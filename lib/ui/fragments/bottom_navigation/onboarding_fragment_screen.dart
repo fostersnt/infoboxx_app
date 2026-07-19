@@ -17,52 +17,77 @@ class OnboardingFragmentScreen extends StatelessWidget {
         userService.userData.value["service_provider"]["company_name"] ?? "N/A";
     return Scaffold(
       // backgroundColor: AppColors.whitePure,
-      appBar: AppBar(title: const Text("Onboarding")),
+      appBar: AppBar(
+        title: const Text("Onboarding"),
+        backgroundColor: AppColors.whitePure,
+        elevation: 0,
+        // flexibleSpace: Container(
+        //   decoration: const BoxDecoration(
+        //     gradient: LinearGradient(
+        //       colors: [
+        //         AppColors.whitePure,
+        //         AppColors.blackCharcoal, // Blue
+        //       ],
+        //       begin: Alignment.topLeft,
+        //       end: Alignment.bottomRight,
+        //     ),
+        //   ),
+        // ),
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Obx(
-              () => OnboardingCard(
-                name: "Identity Verification",
-                selected: isSelected.value,
-                icon: Icons.verified_user,
-                onChanged: (value) {
-                  isSelected.value = !isSelected.value;
-                },
-              ).animate()
-                  .fade(duration: 400.ms)
-                  .slideY(begin: .25)
-                  .scale(begin: const Offset(.95, .95)),
-            ),
-            Obx(
-              () => OnboardingCard(
-                name: "Business Documents",
-                selected: isSelected.value,
-                icon: Icons.edit_document,
-                onChanged: (value) {
-                  isSelected.value = !isSelected.value;
-                },
-              ).animate()
-                  .fade(duration: 400.ms)
-                  .slideY(begin: .25)
-                  .scale(begin: const Offset(.95, .95)),
-            ),
-            Obx(
-              () =>
-                  OnboardingCard(
-                        name: "Contact Persons",
-                        selected: isSelected.value,
-                        icon: Icons.contact_phone,
-                        onChanged: (value) {
-                          isSelected.value = !isSelected.value;
-                        },
-                      )
-                      .animate()
-                      .fade(duration: 400.ms)
-                      .slideY(begin: .25)
-                      .scale(begin: const Offset(.95, .95)),
-            ),
-          ],
+        child: Container(
+          color: AppColors.whitePure,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              Obx(
+                () =>
+                    OnboardingCard(
+                          name: "Identity Verification",
+                          selected: isSelected.value,
+                          icon: Icons.verified_user,
+                          onChanged: (value) {
+                            isSelected.value = !isSelected.value;
+                          },
+                        )
+                        .animate()
+                        .fade(duration: 400.ms)
+                        .slideY(begin: .25)
+                        .scale(begin: const Offset(.95, .95)),
+              ),
+              Obx(
+                () =>
+                    OnboardingCard(
+                          name: "Business Documents",
+                          selected: isSelected.value,
+                          icon: Icons.edit_document,
+                          onChanged: (value) {
+                            isSelected.value = !isSelected.value;
+                          },
+                        )
+                        .animate()
+                        .fade(duration: 400.ms)
+                        .slideY(begin: .25)
+                        .scale(begin: const Offset(.95, .95)),
+              ),
+              Obx(
+                () =>
+                    OnboardingCard(
+                          name: "Contact Persons",
+                          selected: isSelected.value,
+                          icon: Icons.contact_phone,
+                          onChanged: (value) {
+                            isSelected.value = !isSelected.value;
+                          },
+                        )
+                        .animate()
+                        .fade(duration: 400.ms)
+                        .slideY(begin: .25)
+                        .scale(begin: const Offset(.95, .95)),
+              ),
+            ],
+          ),
         ),
       ),
     );

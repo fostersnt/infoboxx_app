@@ -30,15 +30,15 @@ class OnboardingCard extends StatelessWidget {
           gradient: LinearGradient(
             colors: selected
                 ? [
-              AppColors.yellowMustard,
-              AppColors.blackCharcoal,
+              Color(0xff059669),
+              Color(0xff10B981),
             ]
                 : [
               // AppColors.blackCharcoal,
               // AppColors.yellowMustard.withOpacity(.85),
               // Color(0xffF59E0B),
               AppColors.blackCharcoal,
-              Color(0xffEA580C),
+              AppColors.orangeMain,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -52,9 +52,9 @@ class OnboardingCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: selected
-                  ? AppColors.yellowMustard.withOpacity(.45)
+                  ? AppColors.blackGunMetal.withOpacity(.45)
                   : Colors.black26,
-              blurRadius: selected ? 22 : 10,
+              blurRadius: selected ? 0.5 : 0.5,
               spreadRadius: selected ? 2 : 0,
               offset: const Offset(0, 10),
             ),

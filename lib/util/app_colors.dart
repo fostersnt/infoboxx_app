@@ -47,4 +47,7 @@ class AppColors {
   static const redDeepBurgundy = Color(0xFF991B1B);
   static const redSoftRoseTint = Color(0xFFFEE2E2);
   static const redTomato = Color(0xFFFF5A5F);
+
+  //! Orange colors
+static const orangeMain = Color(0xffEA580C);
 }
