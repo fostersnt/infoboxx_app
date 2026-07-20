@@ -10,11 +10,11 @@ class OnboardingFragmentScreen extends StatelessWidget {
   OnboardingFragmentScreen({super.key});
 
   final userService = Get.find<UserService>();
-  final bool isSelected_1 = false;
-  final bool isSelected_2 = true;
-  final bool isSelected_3 = false;
-  // final RxBool isSelected_identity = false.obs;
-  // final RxBool isSelected_identity = false.obs;
+  final bool isCompleted_1 = false;
+  final bool isCompleted_2 = true;
+  final bool isCompleted_3 = false;
+  // final RxBool isCompleted_identity = false.obs;
+  // final RxBool isCompleted_identity = false.obs;
 
   String status_1 = "";
   String status_2 = "";
@@ -25,9 +25,9 @@ class OnboardingFragmentScreen extends StatelessWidget {
     String companyName =
         userService.userData.value["service_provider"]["company_name"] ?? "N/A";
 
-    status_1 = isSelected_1 == true ? status_1 = "Completed" : "Pending";
-    status_2 = isSelected_2 == true ? status_2 = "Completed" : "Pending";
-    status_3 = isSelected_3 == true ? status_3 = "Completed" : "Pending";
+    status_1 = isCompleted_1 == true ? status_1 = "Completed" : "Pending";
+    status_2 = isCompleted_2 == true ? status_2 = "Completed" : "Pending";
+    status_3 = isCompleted_3 == true ? status_3 = "Completed" : "Pending";
 
     return Scaffold(
       // backgroundColor: AppColors.whitePure,
@@ -69,7 +69,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
               ),
               OnboardingCard(
                     name: "Identity Verification",
-                    selected: isSelected_1,
+                    completed: isCompleted_1,
                     icon: Icons.verified_user,
                     miniText: Text(
                       status_1,
@@ -82,7 +82,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                   .scale(begin: const Offset(.95, .95)),
               OnboardingCard(
                     name: "Business Documents",
-                    selected: isSelected_2,
+                    completed: isCompleted_2,
                     icon: Icons.edit_document,
                     miniText: Text(
                       status_2,
@@ -96,7 +96,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
 
               OnboardingCard(
                     name: "Contact Persons",
-                    selected: isSelected_3,
+                    completed: isCompleted_3,
                     icon: Icons.contact_phone,
                     miniText: Text(
                       status_3,

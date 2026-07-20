@@ -3,14 +3,14 @@ import 'package:infoboxx/util/app_colors.dart';
 
 class OnboardingCard extends StatelessWidget {
   final String name;
-  final bool selected;
+  final bool completed;
   final IconData icon;
   final Widget miniText;
 
   const OnboardingCard({
     super.key,
     required this.name,
-    required this.selected,
+    required this.completed,
     this.icon = Icons.rocket_launch_rounded,
     required this.miniText,
   });
@@ -19,7 +19,7 @@ class OnboardingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedScale(
       duration: const Duration(milliseconds: 250),
-      scale: selected ? 1.02 : 1,
+      scale: completed ? 1.02 : 1,
       curve: Curves.easeOut,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
@@ -28,34 +28,35 @@ class OnboardingCard extends StatelessWidget {
         decoration: BoxDecoration(
           // borderRadius: BorderRadius.circular(24),
           gradient: LinearGradient(
-            colors: selected
+            colors: completed
                 ? [
               Color(0xff059669),
-              Color(0xff10B981),
+              // Color(0xff10B981),
+              AppColors.whitePure
             ]
                 : [
               // AppColors.blackCharcoal,
               // AppColors.yellowMustard.withOpacity(.85),
               // Color(0xffF59E0B),
               AppColors.blackCharcoal,
-              AppColors.orangeMain,
+              AppColors.whitePure,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           border: Border.all(
-            color: selected
+            color: completed
                 ? Colors.white.withOpacity(.6)
                 : Colors.transparent,
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
-              color: selected
+              color: completed
                   ? AppColors.blackGunMetal.withOpacity(.45)
                   : Colors.black26,
-              blurRadius: selected ? 0.5 : 0.5,
-              spreadRadius: selected ? 2 : 0,
+              blurRadius: completed ? 0.5 : 0.5,
+              spreadRadius: completed ? 2 : 0,
               offset: const Offset(0, 10),
             ),
           ],
@@ -64,7 +65,7 @@ class OnboardingCard extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(24),
-            onTap: () => selected,
+            onTap: () => completed,
             child: Padding(
               padding: const EdgeInsets.all(18),
               child: Row(
@@ -78,7 +79,7 @@ class OnboardingCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white.withOpacity(
-                        selected ? .30 : .18,
+                        completed ? .30 : .18,
                       ),
                     ),
                     child: Icon(
@@ -111,7 +112,7 @@ class OnboardingCard extends StatelessWidget {
                         AnimatedOpacity(
                           duration:
                           const Duration(milliseconds: 250),
-                          opacity: selected ? 1 : .75,
+                          opacity: completed ? 1 : .75,
                           child: miniText,
                           // child: const Text(
                           //   "Tap to onboard",
@@ -125,43 +126,60 @@ class OnboardingCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// Animated Check
-                  AnimatedContainer(
-                    duration:
-                    const Duration(milliseconds: 250),
-                    height: 34,
-                    width: 34,
+                  //Checked circle
+                  Container(
+                    width: 30,
+                    height: 30,
                     decoration: BoxDecoration(
+                      color: AppColors.whitePure,
                       shape: BoxShape.circle,
-                      color: selected
-                          ? Colors.white
-                          : Colors.transparent,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2,
+                    ),
+                    child: Center(
+                      child: Icon(
+                       completed ? Icons.check_rounded : Icons.question_mark,
+                        color: completed ? AppColors.greenVibrantEmerald : AppColors.grayCoolSlate,
+                        size: 40 * 0.65, // Scales proportionally with size
                       ),
                     ),
-                    child: AnimatedSwitcher(
-                      duration:
-                      const Duration(milliseconds: 200),
-                      transitionBuilder:
-                          (child, animation) =>
-                          ScaleTransition(
-                            scale: animation,
-                            child: child,
-                          ),
-                      child: selected
-                          ? Icon(
-                        Icons.check,
-                        key: const ValueKey(true),
-                        color: AppColors.blackCharcoal,
-                        size: 20,
-                      )
-                          : const SizedBox(
-                        key: ValueKey(false),
-                      ),
-                    ),
-                  ),
+                  )
+
+                  /// Animated Check
+                  // AnimatedContainer(
+                  //   duration:
+                  //   const Duration(milliseconds: 250),
+                  //   height: 34,
+                  //   width: 34,
+                  //   decoration: BoxDecoration(
+                  //     shape: BoxShape.circle,
+                  //     color: selected
+                  //         ? Colors.white
+                  //         : Colors.transparent,
+                  //     border: Border.all(
+                  //       color: Colors.white,
+                  //       width: 2,
+                  //     ),
+                  //   ),
+                  //   child: AnimatedSwitcher(
+                  //     duration:
+                  //     const Duration(milliseconds: 200),
+                  //     transitionBuilder:
+                  //         (child, animation) =>
+                  //         ScaleTransition(
+                  //           scale: animation,
+                  //           child: child,
+                  //         ),
+                  //     child: selected
+                  //         ? Icon(
+                  //       Icons.check,
+                  //       key: const ValueKey(true),
+                  //       color: AppColors.blackCharcoal,
+                  //       size: 20,
+                  //     )
+                  //         : const SizedBox(
+                  //       key: ValueKey(false),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
