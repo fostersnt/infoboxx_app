@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infoboxx/util/announcement_icon_helper.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class AnnouncementCarouselCard extends StatelessWidget {
   final String title;
@@ -28,7 +29,8 @@ class AnnouncementCarouselCard extends StatelessWidget {
         margin: const EdgeInsets.only(right: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E), // Dark Charcoal
+          color: AppColors.whitePure,
+          // color: const Color(0xFF1E1E1E), // Dark Charcoal
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: const Color(0xFFFBC31B).withOpacity(0.2),
@@ -65,7 +67,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
                 Text(
                   dateText,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.4),
+                    // color: Colors.white.withOpacity(0.4),
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                   ),
@@ -79,7 +81,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                color: Colors.white,
+                // color: Colors.white,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.2,
@@ -92,7 +94,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: Colors.white.withOpacity(0.6),
+                // color: Colors.white.withOpacity(0.6),
                 fontSize: 12,
                 height: 1.3,
               ),

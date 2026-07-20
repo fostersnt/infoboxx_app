@@ -27,11 +27,17 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
   final bool isLoading = true;
 
   final List<Map<String, dynamic>> announcements = [
-    {"title": "Announcement 1", "type": "leads", "message": "Hello world"},
+    {
+      "title": "Announcement 1",
+      "type": "leads",
+      "message": "Hello world",
+      "dateText": "2026-06-30 14:15:10",
+    },
     {
       "title": "Announcement 2",
       "type": "system",
       "message": "This is system maintenance",
+      "dateText": "2026-06-30 14:15:10",
     },
   ];
 
@@ -176,16 +182,20 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                     //   ),
                     // ),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child:  Obx(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
+                      child: Obx(
                         () => MonthlyConvertedLeadsChart(
-                            monthlyData: userService.getMonthlyConvertedLeads(),
-                          ),
+                          monthlyData: userService.getMonthlyConvertedLeads(),
+                        ),
                       ),
                     ),
                     Container(
                       // height: 140, 2peter 1:21
                       // 0547555587
+                      // padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                       color: AppColors.whitePure,
                       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       height: 150,
@@ -198,12 +208,12 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                             title: announcements[index]["title"],
                             type: announcements[index]["type"],
                             message: announcements[index]["message"],
-                            dateText: announcements[index]["message"],
+                            dateText: announcements[index]["dateText"],
                           );
                         },
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),

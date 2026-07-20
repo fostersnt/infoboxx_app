@@ -70,17 +70,17 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
         width: double.infinity,
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
-          color: AppColors.blackCharcoal, // Dark background container
+          color: AppColors.whitePure, // Dark background container
           // color: const Color(0xFF1E1E1E), // Dark background container
-          // borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: const Color(0xFFFBC31B).withOpacity(0.15),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFFBC31B).withOpacity(0.05),
-              blurRadius: 20,
+              color: AppColors.grayCoolSlate,
+              blurRadius: 10,
               offset: const Offset(0, 8),
             ),
           ],
@@ -110,7 +110,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
                     Text(
                       widget.title,
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.7),
+                        color: AppColors.blackCharcoal,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -155,8 +155,8 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
               builder: (context, child) {
                 return Text(
                   _countAnimation.value.toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: AppColors.blackCharcoal,
                     fontSize: 38,
                     fontWeight: FontWeight.bold,
                     letterSpacing: -1,
@@ -171,7 +171,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
             Text(
               "Active opportunities in pipeline",
               style: TextStyle(
-                color: Colors.white.withOpacity(0.4),
+                color: AppColors.blackCharcoal,
                 fontSize: 12,
               ),
             ),
