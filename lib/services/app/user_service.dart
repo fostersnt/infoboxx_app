@@ -91,13 +91,13 @@ class UserService extends GetxService {
           for (var item in allLeads) {
             leads.add(
               Lead(
-                firstName: item["first_name"],
-                lastName: item["last_name"],
-                email: item["email"],
-                msisdn: item["msisdn"],
-                status: item["status"],
-                comment: item["comment"],
-                createdAt: item["created_at"],
+                firstName: item["first_name"] ?? "N/A",
+                lastName: item["last_name"] ?? "N/A",
+                email: item["email"] ?? "N/A",
+                msisdn: item["msisdn"] ?? "N/A",
+                status: item["status"] ?? "N/A",
+                comment: item["comment"] ?? "N/A",
+                createdAt: item["created_at"] ?? "N/A",
               ),
             );
           }
