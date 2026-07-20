@@ -47,7 +47,7 @@ class OnboardingCard extends StatelessWidget {
           border: Border.all(
             color: completed
                 ? AppColors.greenVibrantEmerald.withOpacity(0.4)
-                : AppColors.blueElectric.withOpacity(0.4),
+                : AppColors.blackGunMetal.withOpacity(0.4),
             width: 1.5,
           ),
           // boxShadow: [
@@ -79,7 +79,7 @@ class OnboardingCard extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: completed
                           ? AppColors.greenVibrantEmerald.withOpacity(0.4)
-                          : AppColors.blueElectric.withOpacity(0.4),
+                          : AppColors.blackGunMetal.withOpacity(0.4),
                     ),
                     child: Icon(icon, size: 34, color: Colors.white),
                   ),
@@ -96,7 +96,7 @@ class OnboardingCard extends StatelessWidget {
                           style: TextStyle(
                             color: completed
                                 ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                                : AppColors.blueElectric.withOpacity(0.5),
+                                : AppColors.blackGunMetal.withOpacity(0.5),
                             fontSize: 20,
                             // fontWeight: FontWeight.w700,
                           ),
@@ -130,7 +130,7 @@ class OnboardingCard extends StatelessWidget {
                       border: BoxBorder.all(
                         color: completed
                             ? AppColors.greenVibrantEmerald.withOpacity(0.4)
-                            : AppColors.blueElectric.withOpacity(0.4),
+                            : AppColors.blackGunMetal.withOpacity(0.4),
                       ),
                     ),
                     child: Center(
@@ -138,7 +138,7 @@ class OnboardingCard extends StatelessWidget {
                         completed ? Icons.check_rounded : Icons.question_mark,
                         color: completed
                             ? AppColors.greenVibrantEmerald
-                            : AppColors.blueElectric,
+                            : AppColors.blackGunMetal,
                         size: 40 * 0.65, // Scales proportionally with size
                       ),
                     ),
