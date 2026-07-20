@@ -25,9 +25,9 @@ class OnboardingFragmentScreen extends StatelessWidget {
     String companyName =
         userService.userData.value["service_provider"]["company_name"] ?? "N/A";
 
-    status_1 = isCompleted_1 == true ? status_1 = "Completed" : "Pending";
-    status_2 = isCompleted_2 == true ? status_2 = "Completed" : "Pending";
-    status_3 = isCompleted_3 == true ? status_3 = "Completed" : "Pending";
+    status_1 = isCompleted_1 == true ? status_1 = "COMPLETED" : "PENDING";
+    status_2 = isCompleted_2 == true ? status_2 = "COMPLETED" : "PENDING";
+    status_3 = isCompleted_3 == true ? status_3 = "COMPLETED" : "PENDING";
 
     return Scaffold(
       // backgroundColor: AppColors.whitePure,
@@ -72,13 +72,21 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     name: "Identity Verification",
                     completed: isCompleted_1,
                     icon: Icons.verified_user,
-                    miniText: Text(
-                      status_1,
-                      style: TextStyle(
-                        color: isCompleted_1 == true
-                            ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                            : AppColors.redCrimson.withOpacity(0.5),
-                        fontSize: 13,
+                    miniText: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: AppColors.greenVibrantEmerald.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Text(
+                        status_1,
+                        style: TextStyle(
+                          color: isCompleted_1 == true
+                              ? AppColors.greenVibrantEmerald.withOpacity(0.8)
+                              : AppColors.redCrimson.withOpacity(0.8),
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   )
@@ -92,9 +100,13 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     icon: Icons.edit_document,
                     miniText: Text(
                       status_2,
-                      style: TextStyle(color: isCompleted_2 == true
-                          ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                          : AppColors.redCrimson.withOpacity(0.5), fontSize: 13),
+                      style: TextStyle(
+                        color: isCompleted_2 == true
+                            ? AppColors.greenVibrantEmerald.withOpacity(0.8)
+                            : AppColors.redCrimson.withOpacity(0.8),
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                   .animate()
@@ -108,9 +120,13 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     icon: Icons.contact_phone,
                     miniText: Text(
                       status_3,
-                      style: TextStyle(color: isCompleted_3 == true
-                          ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                          : AppColors.redCrimson.withOpacity(0.5), fontSize: 13),
+                      style: TextStyle(
+                        color: isCompleted_3 == true
+                            ? AppColors.greenVibrantEmerald.withOpacity(0.8)
+                            : AppColors.redCrimson.withOpacity(0.8),
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                   .animate()

@@ -26,28 +26,28 @@ class OnboardingCard extends StatelessWidget {
         curve: Curves.easeOut,
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          gradient: LinearGradient(
-            colors: completed
-                ? [
-                    Color(0xff059669),
-                    // Color(0xff10B981),
-                    AppColors.whitePure,
-                  ]
-                : [
-                    // AppColors.blackCharcoal,
-                    // AppColors.yellowMustard.withOpacity(.85),
-                    // Color(0xffF59E0B),
-                    AppColors.blackCharcoal,
-                    AppColors.whitePure,
-                  ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          borderRadius: BorderRadius.circular(20),
+          // gradient: LinearGradient(
+          //   colors: completed
+          //       ? [
+          //           Color(0xff059669),
+          //           // Color(0xff10B981),
+          //           AppColors.whitePure,
+          //         ]
+          //       : [
+          //           // AppColors.blackCharcoal,
+          //           // AppColors.yellowMustard.withOpacity(.85),
+          //           // Color(0xffF59E0B),
+          //           AppColors.blackCharcoal,
+          //           AppColors.whitePure,
+          //         ],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
           border: Border.all(
             color: completed
-                ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                : AppColors.redCrimson.withOpacity(0.4),
+                ? AppColors.greenVibrantEmerald.withOpacity(0.4)
+                : AppColors.blueElectric.withOpacity(0.4),
             width: 1.5,
           ),
           // boxShadow: [
@@ -78,8 +78,8 @@ class OnboardingCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: completed
-                          ? AppColors.greenVibrantEmerald.withOpacity(0.1)
-                          : AppColors.redCrimson.withOpacity(0.3),
+                          ? AppColors.greenVibrantEmerald.withOpacity(0.4)
+                          : AppColors.blueElectric.withOpacity(0.4),
                     ),
                     child: Icon(icon, size: 34, color: Colors.white),
                   ),
@@ -96,7 +96,7 @@ class OnboardingCard extends StatelessWidget {
                           style: TextStyle(
                             color: completed
                                 ? AppColors.greenVibrantEmerald.withOpacity(0.5)
-                                : AppColors.redCrimson.withOpacity(0.5),
+                                : AppColors.blueElectric.withOpacity(0.5),
                             fontSize: 20,
                             // fontWeight: FontWeight.w700,
                           ),
@@ -130,7 +130,7 @@ class OnboardingCard extends StatelessWidget {
                       border: BoxBorder.all(
                         color: completed
                             ? AppColors.greenVibrantEmerald.withOpacity(0.4)
-                            : AppColors.redCrimson.withOpacity(0.4),
+                            : AppColors.blueElectric.withOpacity(0.4),
                       ),
                     ),
                     child: Center(
@@ -138,7 +138,7 @@ class OnboardingCard extends StatelessWidget {
                         completed ? Icons.check_rounded : Icons.question_mark,
                         color: completed
                             ? AppColors.greenVibrantEmerald
-                            : AppColors.redCrimson,
+                            : AppColors.blueElectric,
                         size: 40 * 0.65, // Scales proportionally with size
                       ),
                     ),

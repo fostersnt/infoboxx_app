@@ -50,4 +50,15 @@ class AppColors {
 
   //! Orange colors
 static const orangeMain = Color(0xffEA580C);
+
+//! Blue colors
+  static const blueElectric = Color(0xFF2563EB);
+  static const blueSky = Color(0xFF38BDF8);
+  static const blueRoyal = Color(0xFF3B82F6);
+  static const blueVividCyan = Color(0xFF0EA5E9);
+  static const blueDarkSlate = Color(0xFF1E293B);
+  static const blueNavy = Color(0xFF0F172A);
+  static const blueMidnight = Color(0xFF1E1B4B);
+  static const blueIce = Color(0xFFE0F2FE);
+  static const blueSoftTint = Color(0xFFDBEAFE);
 }
