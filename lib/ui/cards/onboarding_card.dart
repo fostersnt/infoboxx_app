@@ -30,24 +30,24 @@ class OnboardingCard extends StatelessWidget {
           gradient: LinearGradient(
             colors: completed
                 ? [
-              Color(0xff059669),
-              // Color(0xff10B981),
-              AppColors.whitePure
-            ]
+                    Color(0xff059669),
+                    // Color(0xff10B981),
+                    AppColors.whitePure,
+                  ]
                 : [
-              // AppColors.blackCharcoal,
-              // AppColors.yellowMustard.withOpacity(.85),
-              // Color(0xffF59E0B),
-              AppColors.blackCharcoal,
-              AppColors.whitePure,
-            ],
+                    // AppColors.blackCharcoal,
+                    // AppColors.yellowMustard.withOpacity(.85),
+                    // Color(0xffF59E0B),
+                    AppColors.blackCharcoal,
+                    AppColors.whitePure,
+                  ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           border: Border.all(
             color: completed
-                ? AppColors.greenVibrantEmerald.withOpacity(0.6)
-                : Colors.transparent,
+                ? AppColors.greenVibrantEmerald.withOpacity(0.5)
+                : AppColors.redCrimson.withOpacity(0.4),
             width: 1.5,
           ),
           // boxShadow: [
@@ -70,7 +70,6 @@ class OnboardingCard extends StatelessWidget {
               padding: const EdgeInsets.all(18),
               child: Row(
                 children: [
-
                   /// Icon
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
@@ -78,15 +77,11 @@ class OnboardingCard extends StatelessWidget {
                     width: 68,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(
-                        completed ? .30 : .18,
-                      ),
+                      color: completed
+                          ? AppColors.greenVibrantEmerald.withOpacity(0.1)
+                          : AppColors.redCrimson.withOpacity(0.3),
                     ),
-                    child: Icon(
-                      icon,
-                      size: 34,
-                      color: Colors.white,
-                    ),
+                    child: Icon(icon, size: 34, color: Colors.white),
                   ),
 
                   const SizedBox(width: 18),
@@ -94,24 +89,23 @@ class OnboardingCard extends StatelessWidget {
                   /// Text
                   Expanded(
                     child: Column(
-                      crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Text(
                           name,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: completed
+                                ? AppColors.greenVibrantEmerald.withOpacity(0.5)
+                                : AppColors.redCrimson.withOpacity(0.5),
                             fontSize: 20,
-                            fontWeight: FontWeight.w700,
+                            // fontWeight: FontWeight.w700,
                           ),
                         ),
 
                         const SizedBox(height: 5),
 
                         AnimatedOpacity(
-                          duration:
-                          const Duration(milliseconds: 250),
+                          duration: const Duration(milliseconds: 250),
                           opacity: completed ? 1 : .75,
                           child: miniText,
                           // child: const Text(
@@ -133,15 +127,22 @@ class OnboardingCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.whitePure,
                       shape: BoxShape.circle,
+                      border: BoxBorder.all(
+                        color: completed
+                            ? AppColors.greenVibrantEmerald.withOpacity(0.4)
+                            : AppColors.redCrimson.withOpacity(0.4),
+                      ),
                     ),
                     child: Center(
                       child: Icon(
-                       completed ? Icons.check_rounded : Icons.question_mark,
-                        color: completed ? AppColors.greenVibrantEmerald : AppColors.grayCoolSlate,
+                        completed ? Icons.check_rounded : Icons.question_mark,
+                        color: completed
+                            ? AppColors.greenVibrantEmerald
+                            : AppColors.redCrimson,
                         size: 40 * 0.65, // Scales proportionally with size
                       ),
                     ),
-                  )
+                  ),
 
                   /// Animated Check
                   // AnimatedContainer(

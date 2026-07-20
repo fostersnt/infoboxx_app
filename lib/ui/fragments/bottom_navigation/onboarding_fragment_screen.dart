@@ -59,7 +59,8 @@ class OnboardingFragmentScreen extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: OnboardingSummaryCard(
                   completionRate: 0.75, // 75% completed
-                  approvalStatus: "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+                  approvalStatus:
+                      "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
                   completedSteps: 3,
                   totalSteps: 4,
                   onTapContinue: () {
@@ -73,7 +74,12 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     icon: Icons.verified_user,
                     miniText: Text(
                       status_1,
-                      style: TextStyle(color: Colors.white70, fontSize: 13),
+                      style: TextStyle(
+                        color: isCompleted_1 == true
+                            ? AppColors.greenVibrantEmerald.withOpacity(0.5)
+                            : AppColors.redCrimson.withOpacity(0.5),
+                        fontSize: 13,
+                      ),
                     ),
                   )
                   .animate()
@@ -86,7 +92,9 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     icon: Icons.edit_document,
                     miniText: Text(
                       status_2,
-                      style: TextStyle(color: Colors.white70, fontSize: 13),
+                      style: TextStyle(color: isCompleted_2 == true
+                          ? AppColors.greenVibrantEmerald.withOpacity(0.5)
+                          : AppColors.redCrimson.withOpacity(0.5), fontSize: 13),
                     ),
                   )
                   .animate()
@@ -100,7 +108,9 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     icon: Icons.contact_phone,
                     miniText: Text(
                       status_3,
-                      style: TextStyle(color: Colors.white70, fontSize: 13),
+                      style: TextStyle(color: isCompleted_3 == true
+                          ? AppColors.greenVibrantEmerald.withOpacity(0.5)
+                          : AppColors.redCrimson.withOpacity(0.5), fontSize: 13),
                     ),
                   )
                   .animate()
