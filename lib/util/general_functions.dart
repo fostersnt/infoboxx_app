@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/mock_data/leads_mock_data.dart';
 import 'package:intl/intl.dart';
 
@@ -43,5 +44,30 @@ class GeneralFunctions {
     } else {
       return "Welcome";
     }
+  }
+
+  static Widget getOnboardingStatusText({bool isCompleted = false})
+  {
+    String status = isCompleted ? "COMPLETED" : "PENDING";
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+          color: isCompleted == true
+              ? AppColors.greenVibrantEmerald.withOpacity(0.12)
+              : AppColors.redCrimson.withOpacity(0.12),
+          borderRadius: BorderRadius.circular(20)
+      ),
+      child: Text(
+        status,
+        style: TextStyle(
+          color: isCompleted == true
+              ? AppColors.greenVibrantEmerald.withOpacity(0.8)
+              : AppColors.redCrimson.withOpacity(0.8),
+          fontSize: 13,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 }

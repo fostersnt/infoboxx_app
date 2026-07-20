@@ -5,6 +5,7 @@ import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/onboarding_card.dart';
 import 'package:infoboxx/ui/cards/onboarding_summary_card.dart';
 import 'package:infoboxx/util/app_colors.dart';
+import 'package:infoboxx/util/general_functions.dart';
 
 class OnboardingFragmentScreen extends StatelessWidget {
   OnboardingFragmentScreen({super.key});
@@ -72,23 +73,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     name: "Identity Verification",
                     completed: isCompleted_1,
                     icon: Icons.verified_user,
-                    miniText: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: AppColors.greenVibrantEmerald.withOpacity(0.12),
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: Text(
-                        status_1,
-                        style: TextStyle(
-                          color: isCompleted_1 == true
-                              ? AppColors.greenVibrantEmerald.withOpacity(0.8)
-                              : AppColors.redCrimson.withOpacity(0.8),
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                    miniText: GeneralFunctions.getOnboardingStatusText(isCompleted: isCompleted_1),
                   )
                   .animate()
                   .fade(duration: 400.ms)
@@ -98,16 +83,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     name: "Business Documents",
                     completed: isCompleted_2,
                     icon: Icons.edit_document,
-                    miniText: Text(
-                      status_2,
-                      style: TextStyle(
-                        color: isCompleted_2 == true
-                            ? AppColors.greenVibrantEmerald.withOpacity(0.8)
-                            : AppColors.redCrimson.withOpacity(0.8),
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    miniText: GeneralFunctions.getOnboardingStatusText(isCompleted: isCompleted_2),
                   )
                   .animate()
                   .fade(duration: 400.ms)
@@ -118,16 +94,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
                     name: "Contact Persons",
                     completed: isCompleted_3,
                     icon: Icons.contact_phone,
-                    miniText: Text(
-                      status_3,
-                      style: TextStyle(
-                        color: isCompleted_3 == true
-                            ? AppColors.greenVibrantEmerald.withOpacity(0.8)
-                            : AppColors.redCrimson.withOpacity(0.8),
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    miniText: GeneralFunctions.getOnboardingStatusText(isCompleted: isCompleted_3),
                   )
                   .animate()
                   .fade(duration: 400.ms)
