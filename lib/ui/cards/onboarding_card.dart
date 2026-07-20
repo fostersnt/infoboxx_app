@@ -26,7 +26,7 @@ class OnboardingCard extends StatelessWidget {
         curve: Curves.easeOut,
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
         decoration: BoxDecoration(
-          // borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(24),
           gradient: LinearGradient(
             colors: completed
                 ? [
@@ -46,20 +46,20 @@ class OnboardingCard extends StatelessWidget {
           ),
           border: Border.all(
             color: completed
-                ? Colors.white.withOpacity(.6)
+                ? AppColors.greenVibrantEmerald.withOpacity(0.6)
                 : Colors.transparent,
             width: 1.5,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: completed
-                  ? AppColors.blackGunMetal.withOpacity(.45)
-                  : Colors.black26,
-              blurRadius: completed ? 0.5 : 0.5,
-              spreadRadius: completed ? 2 : 0,
-              offset: const Offset(0, 10),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: completed
+          //         ? AppColors.blackGunMetal.withOpacity(.45)
+          //         : Colors.black26,
+          //     blurRadius: completed ? 0.5 : 0.5,
+          //     spreadRadius: completed ? 2 : 0,
+          //     offset: const Offset(0, 10),
+          //   ),
+          // ],
         ),
         child: Material(
           color: Colors.transparent,
