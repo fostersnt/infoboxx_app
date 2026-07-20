@@ -25,6 +25,15 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
   final RxBool _isLoading = true.obs;
   final bool isLoading = true;
 
+  final List<Map<String, dynamic>> announcements = [
+    {"title": "Announcement 1", "type": "leads", "message": "Hello world"},
+    {
+      "title": "Announcement 2",
+      "type": "system",
+      "message": "This is system maintenance",
+    },
+  ];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -164,29 +173,27 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 140,
-                      child: ListView(
+                    Container(
+                      // height: 140, 2peter 1:21
+                      // 0547555587
+                      color: AppColors.whitePure,
+                      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                      height: 150,
+                      child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        children: [
-                          AnnouncementCarouselCard(
-                            title: "New Lead Features Active",
-                            type: "feature",
-                            message: "You can now export lead analytics directly to PDF or CSV.",
-                            dateText: "Today",
-                            onTap: () {},
-                          ),
-                          AnnouncementCarouselCard(
-                            title: "Scheduled Maintenance",
-                            type: "system",
-                            message: "Server optimization scheduled for tonight between 2:00 AM - 4:00 AM.",
-                            dateText: "19th July",
-                            onTap: () {},
-                          ),
-                        ],
+                        itemCount: announcements.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          // return ListTile(title: Text('Item $index'));
+                          return AnnouncementCarouselCard(
+                            title: announcements[index]["title"],
+                            type: announcements[index]["type"],
+                            message: announcements[index]["message"],
+                            dateText: announcements[index]["message"],
+                          );
+                        },
                       ),
-                    )
+                    ),
+                    SizedBox(height: 20,),
                   ],
                 ),
               ),

@@ -43,6 +43,7 @@ dependencies:
   shimmer_animation_kit: ^0.1.0
   intl: ^0.20.3
   flutter_animate: ^4.5.2
+  fl_chart: ^1.2.0
 
 dev_dependencies:
   flutter_test:
