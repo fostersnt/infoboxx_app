@@ -30,7 +30,7 @@ class GreetingCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
+          // borderRadius: BorderRadius.circular(24),
           border: Border.all(
             color: selected
                 ? AppColors.yellowMustard
