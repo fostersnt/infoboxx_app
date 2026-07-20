@@ -68,6 +68,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
                   dateText,
                   style: TextStyle(
                     // color: Colors.white.withOpacity(0.4),
+                    color: AppColors.blackGunMetal.withOpacity(0.5),
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                   ),
