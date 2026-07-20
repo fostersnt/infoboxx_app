@@ -132,23 +132,35 @@ class UserService extends GetxService {
 
   Map<String, int> getMonthlyConvertedLeads() {
     final userService = Get.find<UserService>();
-    // Initialize last 6 months with 0
-    // var leads = LeadsMockData.mockLeads;
-    final monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const monthNames = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+
+    final now = DateTime.now();
+
+    // Map<String, int> monthlyCounts = {};
+
+    // Oldest -> Newest
+    // for (int i = 5; i >= 0; i--) {
+    //   final date = DateTime(now.year, now.month - i);
+    //   monthlyCounts[monthNames[date.month - 1]] = 0;
+    // }
 
     Map<String, int> monthlyCounts = {
-      for (var i = 5; i >= 0; i--)
-        monthNames[DateTime.now().subtract(Duration(days: i * 30)).month - 1]: 0
+      for (final month in monthNames) month: 0,
     };
 
     for (var lead in userService.leads) {
-      // Only count CONVERTED status
-      if (lead.status?.toUpperCase() == 'CONVERTED' && lead.createdAt != null) {
+      if (lead.status?.toUpperCase() == 'CONVERTED' &&
+          lead.createdAt != null) {
         try {
-          DateTime date = DateTime.parse(lead.createdAt!);
-          String monthKey = monthNames[date.month - 1];
-          if (monthlyCounts.containsKey(monthKey)) {
-            monthlyCounts[monthKey] = (monthlyCounts[monthKey] ?? 0) + 1;
+          final date = DateTime.parse(lead.createdAt!);
+          final key = monthNames[date.month - 1];
+
+          if (monthlyCounts.containsKey(key)) {
+            monthlyCounts[key] = monthlyCounts[key]! + 1;
           }
         } catch (_) {}
       }
