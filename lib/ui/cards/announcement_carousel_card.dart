@@ -33,7 +33,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
           // color: const Color(0xFF1E1E1E), // Dark Charcoal
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: const Color(0xFFFBC31B).withOpacity(0.2),
+            color: AppColors.yellowAmber.withOpacity(0.5),
             width: 1,
           ),
           // boxShadow: [
@@ -55,7 +55,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFBC31B).withOpacity(0.12),
+                    color: AppColors.yellowAmber.withOpacity(0.14),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
