@@ -30,7 +30,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
     print(
       "======== LeadStatisticsScreen initState ======= TOKEN == $token ======",
     );
-    userService.getLeadStatistics();
+    userService.getLeads();
   }
 
   @override

@@ -1,83 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/model/Lead.dart';
+import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/lead_card.dart';
+import 'package:infoboxx/ui/components/empty_leads_view.dart';
 import 'package:infoboxx/ui/components/pagination_buttons.dart';
 import 'package:infoboxx/util/app_colors.dart';
 
-class LeadsFragmentScreen extends StatelessWidget {
+class LeadsFragmentScreen extends StatefulWidget {
   const LeadsFragmentScreen({super.key});
+
+  @override
+  State<LeadsFragmentScreen> createState() => _LeadsFragmentScreenState();
+}
+
+class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
+  final userService = Get.find<UserService>();
 
   @override
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
     var canSearch = false.obs;
+    final leads = userService.leads;
 
-    final leads = [
-      Lead(
-        name: "John Doe",
-        phone: "+233 24 123 4567",
-        email: "john@example.com",
-        status: "New",
-        source: "Facebook",
-        priority: "High",
-        lastContacted: "2 days ago",
-      ),
-      Lead(
-        name: "Jane Smith",
-        phone: "+233 20 987 6543",
-        email: "jane@example.com",
-        status: "Qualified",
-        source: "Website",
-        priority: "Medium",
-        lastContacted: "Yesterday",
-      ),
-      Lead(
-        name: "Michael Brown",
-        phone: "+233 55 321 7890",
-        email: "michael.brown@example.com",
-        status: "Contacted",
-        source: "Referral",
-        priority: "Low",
-        lastContacted: "5 hours ago",
-      ),
-      Lead(
-        name: "Sarah Johnson",
-        phone: "+233 54 765 4321",
-        email: "sarah.johnson@example.com",
-        status: "Closed",
-        source: "Instagram",
-        priority: "High",
-        lastContacted: "1 week ago",
-      ),
-      Lead(
-        name: "Daniel Wilson",
-        phone: "+233 27 456 1122",
-        email: "daniel.wilson@example.com",
-        status: "New",
-        source: "Google Ads",
-        priority: "Medium",
-        lastContacted: "Today",
-      ),
-      Lead(
-        name: "Emily Davis",
-        phone: "+233 59 876 3344",
-        email: "emily.davis@example.com",
-        status: "Qualified",
-        source: "LinkedIn",
-        priority: "High",
-        lastContacted: "3 days ago",
-      ),
-      Lead(
-        name: "Kevin Anderson",
-        phone: "+233 50 654 7788",
-        email: "kevin.anderson@example.com",
-        status: "Contacted",
-        source: "WhatsApp",
-        priority: "Low",
-        lastContacted: "6 hours ago",
-      ),
-    ];
+    // final leads = [
+    //   Lead(
+    //     name: "John Doe",
+    //     phone: "+233 24 123 4567",
+    //     email: "john@example.com",
+    //     status: "New",
+    //     source: "Facebook",
+    //     priority: "High",
+    //     lastContacted: "2 days ago",
+    //   ),
+    //   Lead(
+    //     name: "Jane Smith",
+    //     phone: "+233 20 987 6543",
+    //     email: "jane@example.com",
+    //     status: "Qualified",
+    //     source: "Website",
+    //     priority: "Medium",
+    //     lastContacted: "Yesterday",
+    //   ),
+    //   Lead(
+    //     name: "Michael Brown",
+    //     phone: "+233 55 321 7890",
+    //     email: "michael.brown@example.com",
+    //     status: "Contacted",
+    //     source: "Referral",
+    //     priority: "Low",
+    //     lastContacted: "5 hours ago",
+    //   ),
+    //   Lead(
+    //     name: "Sarah Johnson",
+    //     phone: "+233 54 765 4321",
+    //     email: "sarah.johnson@example.com",
+    //     status: "Closed",
+    //     source: "Instagram",
+    //     priority: "High",
+    //     lastContacted: "1 week ago",
+    //   ),
+    //   Lead(
+    //     name: "Daniel Wilson",
+    //     phone: "+233 27 456 1122",
+    //     email: "daniel.wilson@example.com",
+    //     status: "New",
+    //     source: "Google Ads",
+    //     priority: "Medium",
+    //     lastContacted: "Today",
+    //   ),
+    //   Lead(
+    //     name: "Emily Davis",
+    //     phone: "+233 59 876 3344",
+    //     email: "emily.davis@example.com",
+    //     status: "Qualified",
+    //     source: "LinkedIn",
+    //     priority: "High",
+    //     lastContacted: "3 days ago",
+    //   ),
+    //   Lead(
+    //     name: "Kevin Anderson",
+    //     phone: "+233 50 654 7788",
+    //     email: "kevin.anderson@example.com",
+    //     status: "Contacted",
+    //     source: "WhatsApp",
+    //     priority: "Low",
+    //     lastContacted: "6 hours ago",
+    //   ),
+    // ];
     return Scaffold(
       backgroundColor: AppColors.whitePure,
       appBar: AppBar(
@@ -90,7 +100,9 @@ class LeadsFragmentScreen extends StatelessWidget {
               children: [
                 InkWell(
                   child: Obx(() {
-                    return Icon(canSearch.value == true ? Icons.search_off : Icons.search);
+                    return Icon(
+                      canSearch.value == true ? Icons.search_off : Icons.search,
+                    );
                   }),
                   onTap: () {
                     canSearch.value = !canSearch.value;
@@ -104,6 +116,9 @@ class LeadsFragmentScreen extends StatelessWidget {
       body: Column(
         children: [
           Obx(() {
+            if (leads.isEmpty) {
+              return EmptyLeadsView(onRefresh: () => userService.getLeads());
+            }
             return canSearch.value == true
                 ? Container(
                     margin: const EdgeInsets.symmetric(
@@ -160,43 +175,45 @@ class LeadsFragmentScreen extends StatelessWidget {
                   )
                 : SizedBox.shrink();
           }),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: 20),
-              itemCount: leads.length,
-              itemBuilder: (context, index) {
-                final lead = leads[index];
+          Obx(
+            () => Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(bottom: 20),
+                itemCount: leads.length,
+                itemBuilder: (context, index) {
+                  final lead = leads[index];
+                  String name = '${lead.firstName} ${lead.lastName}';
 
-                return LeadCard(
-                  name: lead.name,
-                  phone: lead.phone,
-                  email: lead.email,
-                  status: lead.status,
-                  source: lead.source,
-                  priority: lead.priority,
-                  lastContacted: lead.lastContacted,
+                  return LeadCard(
+                    name: name,
+                    phone: lead.msisdn,
+                    email: lead.email,
+                    status: lead.status,
+                    source: lead.comment,
+                    lastContacted: lead.createdAt,
 
-                  onTap: () {
-                    print("Open ${lead.name}");
-                  },
+                    onTap: () {
+                      print("Open ${name}");
+                    },
 
-                  onCall: () {
-                    print("Call ${lead.phone}");
-                  },
+                    onCall: () {
+                      print("Call ${lead.msisdn}");
+                    },
 
-                  onWhatsapp: () {
-                    print("WhatsApp ${lead.phone}");
-                  },
+                    onWhatsapp: () {
+                      print("WhatsApp ${lead.msisdn}");
+                    },
 
-                  onEmail: () {
-                    print("Email ${lead.email}");
-                  },
+                    onEmail: () {
+                      print("Email ${lead.email}");
+                    },
 
-                  onNotes: () {
-                    print("Notes for ${lead.name}");
-                  },
-                );
-              },
+                    onNotes: () {
+                      print("Notes for ${name}");
+                    },
+                  );
+                },
+              ),
             ),
           ),
           // LeadPagination(

@@ -7,7 +7,6 @@ class LeadCard extends StatelessWidget {
   final String email;
   final String status;
   final String source;
-  final String priority;
   final String lastContacted;
 
   final VoidCallback? onTap;
@@ -23,7 +22,6 @@ class LeadCard extends StatelessWidget {
     required this.email,
     required this.status,
     required this.source,
-    required this.priority,
     required this.lastContacted,
     this.onTap,
     this.onCall,
@@ -51,18 +49,18 @@ class LeadCard extends StatelessWidget {
     }
   }
 
-  Color get priorityColor {
-    switch (priority.toLowerCase()) {
-      case "high":
-        return Colors.red;
-
-      case "medium":
-        return Colors.orange;
-
-      default:
-        return Colors.green;
-    }
-  }
+  // Color get priorityColor {
+  //   switch (priority.toLowerCase()) {
+  //     case "high":
+  //       return Colors.red;
+  //
+  //     case "medium":
+  //       return Colors.orange;
+  //
+  //     default:
+  //       return Colors.green;
+  //   }
+  // }
 
   String get initials {
     final parts = name.trim().split(" ");
@@ -225,7 +223,7 @@ class LeadCard extends StatelessWidget {
 
                           chip(source, Colors.indigo),
 
-                          chip(priority, priorityColor),
+                          // chip(priority, priorityColor),
                         ],
                       ),
 

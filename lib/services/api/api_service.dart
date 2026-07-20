@@ -85,7 +85,7 @@ class ApiService {
     }
   }
 
-  static Future<Map<String, dynamic>> getLeadStatisticsApi(String token, Map<String, dynamic> requestBody) async {
+  static Future<Map<String, dynamic>> getLeadsApi(String token, Map<String, dynamic> requestBody) async {
     try {
       String endpoint = ApiEndpoints.GET_LEADS;
       // var requestBody = {};

@@ -1,19 +1,19 @@
 class Lead {
-  final String name;
-  final String phone;
+  final String firstName;
+  final String lastName;
   final String email;
+  final String msisdn;
   final String status;
-  final String source;
-  final String priority;
-  final String lastContacted;
+  final String comment;
+  final String createdAt;
 
   Lead({
-    required this.name,
-    required this.phone,
+    required this.firstName,
+    required this.lastName,
     required this.email,
+    required this.msisdn,
     required this.status,
-    required this.source,
-    required this.priority,
-    required this.lastContacted,
+    required this.comment,
+    required this.createdAt,
   });
 }
