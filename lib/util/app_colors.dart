@@ -16,7 +16,7 @@ class AppColors {
 
   //! Dark colors
   static const blackPure = Color(0xFF000000);
-  static const blackCharcoal = Color(0xFF121212);
+  static const blackCharcoal = Color(0xFF1E1E1E);
   static const blackEerie = Color(0xFF1A1A1A);
   static const blackGunMetal = Color(0xFF212529);
   static const blackOnyx = Color(0xFF0B0C10);
