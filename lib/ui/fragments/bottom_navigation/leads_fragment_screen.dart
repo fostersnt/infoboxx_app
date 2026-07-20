@@ -116,9 +116,6 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
       body: Column(
         children: [
           Obx(() {
-            if (leads.isEmpty) {
-              return EmptyLeadsView(onRefresh: () => userService.getLeads());
-            }
             return canSearch.value == true
                 ? Container(
                     margin: const EdgeInsets.symmetric(
@@ -175,47 +172,51 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
                   )
                 : SizedBox.shrink();
           }),
-          Obx(
-            () => Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 20),
-                itemCount: leads.length,
-                itemBuilder: (context, index) {
-                  final lead = leads[index];
-                  String name = '${lead.firstName} ${lead.lastName}';
+          Obx(() {
+            if (leads.isEmpty) {
+              return EmptyLeadsView(onRefresh: () => userService.getLeads());
+            } else {
+              return Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  itemCount: leads.length,
+                  itemBuilder: (context, index) {
+                    final lead = leads[index];
+                    String name = '${lead.firstName} ${lead.lastName}';
 
-                  return LeadCard(
-                    name: name,
-                    phone: lead.msisdn,
-                    email: lead.email,
-                    status: lead.status,
-                    source: lead.comment,
-                    lastContacted: lead.createdAt,
+                    return LeadCard(
+                      name: name,
+                      phone: lead.msisdn,
+                      email: lead.email,
+                      status: lead.status,
+                      source: lead.comment,
+                      lastContacted: lead.createdAt,
 
-                    onTap: () {
-                      print("Open ${name}");
-                    },
+                      onTap: () {
+                        print("Open ${name}");
+                      },
 
-                    onCall: () {
-                      print("Call ${lead.msisdn}");
-                    },
+                      onCall: () {
+                        print("Call ${lead.msisdn}");
+                      },
 
-                    onWhatsapp: () {
-                      print("WhatsApp ${lead.msisdn}");
-                    },
+                      onWhatsapp: () {
+                        print("WhatsApp ${lead.msisdn}");
+                      },
 
-                    onEmail: () {
-                      print("Email ${lead.email}");
-                    },
+                      onEmail: () {
+                        print("Email ${lead.email}");
+                      },
 
-                    onNotes: () {
-                      print("Notes for ${name}");
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
+                      onNotes: () {
+                        print("Notes for ${name}");
+                      },
+                    );
+                  },
+                ),
+              );
+            }
+          }),
           // LeadPagination(
           //   currentPage: 2,
           //   totalPages: 15,
