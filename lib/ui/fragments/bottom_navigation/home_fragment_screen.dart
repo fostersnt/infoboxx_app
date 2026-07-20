@@ -66,98 +66,103 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
         child: ShimmerScope(
           child: SizedBox(
             width: deviceWidth,
-            child: SingleChildScrollView(
-              // padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
-                    child: Row(
-                      // mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFBC31B).withOpacity(0.12),
-                            borderRadius: BorderRadius.circular(10),
+            child: RefreshIndicator(
+              onRefresh: (){
+                return userService.getLeads();
+              },
+              child: SingleChildScrollView(
+                // padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
+                      child: Row(
+                        // mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFBC31B).withOpacity(0.12),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(
+                              Icons.calendar_today_rounded,
+                              color: Color(0xFFFBC31B),
+                              size: 18,
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.calendar_today_rounded,
-                            color: Color(0xFFFBC31B),
-                            size: 18,
+                          const SizedBox(width: 10),
+                          Text(
+                            currentDate,
+                            style: TextStyle(
+                              color: AppColors.blackCharcoal,
+                              fontSize: 15,
+                              // fontWeight: FontWeight.w600,
+                              letterSpacing: -0.2,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          currentDate,
-                          style: TextStyle(
-                            color: AppColors.blackCharcoal,
-                            fontSize: 15,
-                            // fontWeight: FontWeight.w600,
-                            letterSpacing: -0.2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  GreetingCard(
-                        name: "Greetings",
-                        selected: isSelected.value,
-                        onChanged: (val) {
-                          if (val != null) {
-                            isSelected.value = !isSelected.value;
-                          }
-                        },
-                      )
-                      .animate()
-                      .fade(duration: 400.ms)
-                      .slideY(begin: .25)
-                      .scale(begin: const Offset(.95, .95)),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Obx(
-                      () => AnimatedLeadCountCard(
-                        totalLeads: userService.leads.length,
-                        percentageChange: 14.2,
-                        onTap: () {
-                          // Navigate to lead list or filter view
-                        },
+                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  SizedBox(
-                    width: deviceWidth,
-                    height: 230,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          children: [
-                            AppShimmers.boxShimmer(boxWidth, boxHeight),
-                            SizedBox(height: 10),
-                            AppShimmers.textShimmer(boxWidth),
-                          ],
+                    GreetingCard(
+                          name: "Greetings",
+                          selected: isSelected.value,
+                          onChanged: (val) {
+                            if (val != null) {
+                              isSelected.value = !isSelected.value;
+                            }
+                          },
+                        )
+                        .animate()
+                        .fade(duration: 400.ms)
+                        .slideY(begin: .25)
+                        .scale(begin: const Offset(.95, .95)),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                      child: Obx(
+                        () => AnimatedLeadCountCard(
+                          totalLeads: userService.leads.length,
+                          percentageChange: 14.2,
+                          onTap: () {
+                            // Navigate to lead list or filter view
+                          },
                         ),
-                        Column(
-                          children: [
-                            AppShimmers.boxShimmer(boxWidth, boxHeight),
-                            SizedBox(height: 10),
-                            AppShimmers.textShimmer(boxWidth),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            AppShimmers.boxShimmer(boxWidth, boxHeight),
-                            SizedBox(height: 10),
-                            AppShimmers.textShimmer(boxWidth),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: deviceWidth,
+                      height: 230,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              AppShimmers.boxShimmer(boxWidth, boxHeight),
+                              SizedBox(height: 10),
+                              AppShimmers.textShimmer(boxWidth),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              AppShimmers.boxShimmer(boxWidth, boxHeight),
+                              SizedBox(height: 10),
+                              AppShimmers.textShimmer(boxWidth),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              AppShimmers.boxShimmer(boxWidth, boxHeight),
+                              SizedBox(height: 10),
+                              AppShimmers.textShimmer(boxWidth),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
