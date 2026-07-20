@@ -55,8 +55,8 @@ class OnboardingFragmentScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: OnboardingSummaryCard(
                   completionRate: 0.75, // 75% completed
                   approvalStatus: "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.

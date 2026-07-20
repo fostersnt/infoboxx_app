@@ -24,9 +24,9 @@ class OnboardingCard extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
+          // borderRadius: BorderRadius.circular(24),
           gradient: LinearGradient(
             colors: selected
                 ? [
