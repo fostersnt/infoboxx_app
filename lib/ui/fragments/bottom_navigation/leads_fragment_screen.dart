@@ -51,7 +51,7 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
       ),
       body: CustomRefreshIndicator(
         onRefresh: () async {
-          await userService.getLeads();
+          await userService.getLeads(forceRefresh: true);
         },
         child: Column(
           children: [

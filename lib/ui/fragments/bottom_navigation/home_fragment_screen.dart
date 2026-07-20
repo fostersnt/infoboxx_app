@@ -73,7 +73,8 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
           SystemNavigator.pop();
         }
       },
-      child: SizedBox(
+      child: Container(
+        color: AppColors.whitePure,
         width: double.infinity,
         child: ShimmerScope(
           child: SizedBox(
