@@ -6,6 +6,7 @@ import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/announcement_carousel_card.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/ui/cards/leads_count_card.dart';
+import 'package:infoboxx/ui/cards/onboarding_summary_card.dart';
 import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
 import 'package:infoboxx/ui/components/monthly_converted_leads_chart.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -125,19 +126,32 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                         ],
                       ),
                     ),
-                    GreetingCard(
-                          name: "Greetings",
-                          selected: isSelected.value,
-                          onChanged: (val) {
-                            if (val != null) {
-                              isSelected.value = !isSelected.value;
-                            }
-                          },
-                        )
-                        .animate()
-                        .fade(duration: 400.ms)
-                        .slideY(begin: .25)
-                        .scale(begin: const Offset(.95, .95)),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      child: OnboardingSummaryCard(
+                        completionRate: 0.75, // 75% completed
+                        approvalStatus:
+                        "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+                        completedSteps: 3,
+                        totalSteps: 4,
+                        onTapContinue: () {
+                          // Navigate to remaining onboarding screens/steps
+                        },
+                      ),
+                    ),
+                    // GreetingCard(
+                    //       name: "Greetings",
+                    //       selected: isSelected.value,
+                    //       onChanged: (val) {
+                    //         if (val != null) {
+                    //           isSelected.value = !isSelected.value;
+                    //         }
+                    //       },
+                    //     )
+                    //     .animate()
+                    //     .fade(duration: 400.ms)
+                    //     .slideY(begin: .25)
+                    //     .scale(begin: const Offset(.95, .95)),
                     Container(
                       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: Obx(
