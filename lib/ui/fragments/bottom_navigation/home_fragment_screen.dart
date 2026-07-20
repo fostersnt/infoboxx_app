@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
+import 'package:infoboxx/ui/cards/announcement_carousel_card.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/ui/cards/leads_count_card.dart';
 import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
@@ -163,6 +164,28 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 140,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        children: [
+                          AnnouncementCarouselCard(
+                            title: "New Lead Features Active",
+                            message: "You can now export lead analytics directly to PDF or CSV.",
+                            dateText: "Today",
+                            onTap: () {},
+                          ),
+                          AnnouncementCarouselCard(
+                            title: "Scheduled Maintenance",
+                            message: "Server optimization scheduled for tonight between 2:00 AM - 4:00 AM.",
+                            dateText: "19th July",
+                            icon: Icons.build_rounded,
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
