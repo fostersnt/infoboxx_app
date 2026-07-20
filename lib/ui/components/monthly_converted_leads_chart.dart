@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class MonthlyConvertedLeadsChart extends StatefulWidget {
   // Map of Month Name -> Converted Count (e.g. {"Jan": 4, "Feb": 12, ...})
@@ -34,7 +35,8 @@ class _MonthlyConvertedLeadsChartState
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E), // Dark charcoal tile
+        color: AppColors.blackGunMetal, // Dark charcoal tile
+        // color: const Color(0xFF1E1E1E), // Dark charcoal tile
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xFFFBC31B).withOpacity(0.15),

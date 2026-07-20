@@ -77,13 +77,13 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
             color: const Color(0xFFFBC31B).withOpacity(0.15),
             width: 1,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.grayCoolSlate,
-              blurRadius: 10,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: AppColors.grayCoolSlate,
+          //     blurRadius: 10,
+          //     offset: const Offset(0, 8),
+          //   ),
+          // ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
