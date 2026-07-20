@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/util/app_colors.dart';
 
 class OnboardingSummaryCard extends StatelessWidget {
   final double completionRate; // e.g., 0.85 for 85%
@@ -39,8 +40,9 @@ class OnboardingSummaryCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E), // Dark background tile
-        borderRadius: BorderRadius.circular(20),
+        color: AppColors.blackGunMetal, // Dark background tile
+        // color: const Color(0xFF1E1E1E), // Dark background tile
+        // borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Colors.white.withOpacity(0.08),
           width: 1,
