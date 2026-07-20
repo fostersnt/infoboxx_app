@@ -23,71 +23,6 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
     var canSearch = false.obs;
     final leads = userService.leads;
 
-    // final leads = [
-    //   Lead(
-    //     name: "John Doe",
-    //     phone: "+233 24 123 4567",
-    //     email: "john@example.com",
-    //     status: "New",
-    //     source: "Facebook",
-    //     priority: "High",
-    //     lastContacted: "2 days ago",
-    //   ),
-    //   Lead(
-    //     name: "Jane Smith",
-    //     phone: "+233 20 987 6543",
-    //     email: "jane@example.com",
-    //     status: "Qualified",
-    //     source: "Website",
-    //     priority: "Medium",
-    //     lastContacted: "Yesterday",
-    //   ),
-    //   Lead(
-    //     name: "Michael Brown",
-    //     phone: "+233 55 321 7890",
-    //     email: "michael.brown@example.com",
-    //     status: "Contacted",
-    //     source: "Referral",
-    //     priority: "Low",
-    //     lastContacted: "5 hours ago",
-    //   ),
-    //   Lead(
-    //     name: "Sarah Johnson",
-    //     phone: "+233 54 765 4321",
-    //     email: "sarah.johnson@example.com",
-    //     status: "Closed",
-    //     source: "Instagram",
-    //     priority: "High",
-    //     lastContacted: "1 week ago",
-    //   ),
-    //   Lead(
-    //     name: "Daniel Wilson",
-    //     phone: "+233 27 456 1122",
-    //     email: "daniel.wilson@example.com",
-    //     status: "New",
-    //     source: "Google Ads",
-    //     priority: "Medium",
-    //     lastContacted: "Today",
-    //   ),
-    //   Lead(
-    //     name: "Emily Davis",
-    //     phone: "+233 59 876 3344",
-    //     email: "emily.davis@example.com",
-    //     status: "Qualified",
-    //     source: "LinkedIn",
-    //     priority: "High",
-    //     lastContacted: "3 days ago",
-    //   ),
-    //   Lead(
-    //     name: "Kevin Anderson",
-    //     phone: "+233 50 654 7788",
-    //     email: "kevin.anderson@example.com",
-    //     status: "Contacted",
-    //     source: "WhatsApp",
-    //     priority: "Low",
-    //     lastContacted: "6 hours ago",
-    //   ),
-    // ];
     return Scaffold(
       backgroundColor: AppColors.whitePure,
       appBar: AppBar(
@@ -116,8 +51,8 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
       body: RefreshIndicator(
         backgroundColor: AppColors.whitePure,
         color: AppColors.orangeMain,
-        onRefresh: () {
-          return userService.getLeads();
+        onRefresh: () async {
+          await userService.getLeads();
         },
         child: Column(
           children: [
