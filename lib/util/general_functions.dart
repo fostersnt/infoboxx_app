@@ -44,30 +44,4 @@ class GeneralFunctions {
       return "Welcome";
     }
   }
-
-  static Map<String, int> getMonthlyConvertedLeads() {
-    // Initialize last 6 months with 0
-    var leads = LeadsMockData.mockLeads;
-    final monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    Map<String, int> monthlyCounts = {
-      for (var i = 5; i >= 0; i--)
-        monthNames[DateTime.now().subtract(Duration(days: i * 30)).month - 1]: 0
-    };
-
-    for (var lead in leads) {
-      // Only count CONVERTED status
-      if (lead.status?.toUpperCase() == 'CONVERTED' && lead.createdAt != null) {
-        try {
-          DateTime date = DateTime.parse(lead.createdAt!);
-          String monthKey = monthNames[date.month - 1];
-          if (monthlyCounts.containsKey(monthKey)) {
-            monthlyCounts[monthKey] = (monthlyCounts[monthKey] ?? 0) + 1;
-          }
-        } catch (_) {}
-      }
-    }
-
-    return monthlyCounts;
-  }
 }

@@ -177,7 +177,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child:  MonthlyConvertedLeadsChart(
-                          monthlyData: GeneralFunctions.getMonthlyConvertedLeads(),
+                          monthlyData: userService.getMonthlyConvertedLeads(),
                         ),
                     ),
                     Container(
