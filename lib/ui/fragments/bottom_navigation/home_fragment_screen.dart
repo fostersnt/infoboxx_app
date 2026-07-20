@@ -52,6 +52,8 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
     double boxHeight = boxWidth + addOnValue;
     double containerHeight = addOnValue + boxHeight;
 
+    String currentDate = GeneralFunctions.getFormatedDate();
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
@@ -68,6 +70,34 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
               child: Column(
                 children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFBC31B).withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(
+                          Icons.calendar_today_rounded,
+                          color: Color(0xFFFBC31B),
+                          size: 18,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        currentDate,
+                        style: TextStyle(
+                          color: AppColors.blackCharcoal,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -0.2,
+                        ),
+                      ),
+                    ],
+                  ),
                   GreetingCard(
                         name: "Greetings",
                         selected: isSelected.value,
@@ -158,7 +188,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                         ),
                         SizedBox(height: 20),
                         Text(
-                          GeneralFunctions.getFormatedDate(),
+                          currentDate,
                           style: TextStyle(
                             color: AppColors.grayLight,
                             // fontSize: 18,
