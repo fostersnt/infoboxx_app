@@ -7,6 +7,7 @@ import 'package:infoboxx/ui/cards/announcement_carousel_card.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/ui/cards/leads_count_card.dart';
 import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
+import 'package:infoboxx/ui/components/monthly_converted_leads_chart.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
@@ -143,35 +144,41 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    SizedBox(
-                      width: deviceWidth,
-                      height: 230,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              AppShimmers.boxShimmer(boxWidth, boxHeight),
-                              SizedBox(height: 10),
-                              AppShimmers.textShimmer(boxWidth),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              AppShimmers.boxShimmer(boxWidth, boxHeight),
-                              SizedBox(height: 10),
-                              AppShimmers.textShimmer(boxWidth),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              AppShimmers.boxShimmer(boxWidth, boxHeight),
-                              SizedBox(height: 10),
-                              AppShimmers.textShimmer(boxWidth),
-                            ],
-                          ),
-                        ],
-                      ),
+                    // SizedBox(
+                    //   width: deviceWidth,
+                    //   height: 230,
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //     children: [
+                    //       Column(
+                    //         children: [
+                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                    //           SizedBox(height: 10),
+                    //           AppShimmers.textShimmer(boxWidth),
+                    //         ],
+                    //       ),
+                    //       Column(
+                    //         children: [
+                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                    //           SizedBox(height: 10),
+                    //           AppShimmers.textShimmer(boxWidth),
+                    //         ],
+                    //       ),
+                    //       Column(
+                    //         children: [
+                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                    //           SizedBox(height: 10),
+                    //           AppShimmers.textShimmer(boxWidth),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child:  MonthlyConvertedLeadsChart(
+                          monthlyData: GeneralFunctions.getMonthlyConvertedLeads(),
+                        ),
                     ),
                     Container(
                       // height: 140, 2peter 1:21
