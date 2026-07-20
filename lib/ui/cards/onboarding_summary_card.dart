@@ -40,7 +40,7 @@ class OnboardingSummaryCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: AppColors.blackGunMetal.withOpacity(0.7), // Dark background tile
+        color: AppColors.blackGunMetal.withOpacity(0.8), // Dark background tile
         // color: const Color(0xFF1E1E1E), // Dark background tile
         borderRadius: BorderRadius.circular(20),
         border: Border.all(

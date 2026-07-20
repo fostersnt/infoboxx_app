@@ -56,19 +56,19 @@ class OnboardingFragmentScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                child: OnboardingSummaryCard(
-                  completionRate: 0.75, // 75% completed
-                  approvalStatus:
-                      "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
-                  completedSteps: 3,
-                  totalSteps: 4,
-                  onTapContinue: () {
-                    // Navigate to remaining onboarding screens/steps
-                  },
-                ),
-              ),
+              // Container(
+              //   margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              //   child: OnboardingSummaryCard(
+              //     completionRate: 0.75, // 75% completed
+              //     approvalStatus:
+              //         "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+              //     completedSteps: 3,
+              //     totalSteps: 4,
+              //     onTapContinue: () {
+              //       // Navigate to remaining onboarding screens/steps
+              //     },
+              //   ),
+              // ),
               OnboardingCard(
                     name: "Identity Verification",
                     completed: isCompleted_1,
