@@ -88,6 +88,7 @@ class UserService extends GetxService {
         );
 
         if (allLeads.isNotEmpty) {
+          leads.value = [];
           for (var item in allLeads) {
             leads.add(
               Lead(
@@ -98,6 +99,7 @@ class UserService extends GetxService {
                 status: item["status"] ?? "N/A",
                 comment: item["comment"] ?? "N/A",
                 createdAt: item["created_at"] ?? "N/A",
+                convertedAt: item["converted_at"] ?? "N/A",
               ),
             );
           }

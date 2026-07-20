@@ -195,6 +195,7 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
                         status: lead.status,
                         source: lead.comment,
                         lastContacted: lead.createdAt,
+                        lastConverted: lead.convertedAt,
 
                         onTap: () {
                           print("Open ${name}");

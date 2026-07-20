@@ -6,6 +6,7 @@ class Lead {
   final String status;
   final String comment;
   final String createdAt;
+  final String convertedAt;
 
   Lead({
     required this.firstName,
@@ -15,5 +16,6 @@ class Lead {
     required this.status,
     required this.comment,
     required this.createdAt,
+    required this.convertedAt,
   });
 }

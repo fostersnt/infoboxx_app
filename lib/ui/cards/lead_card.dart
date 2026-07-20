@@ -8,6 +8,7 @@ class LeadCard extends StatelessWidget {
   final String status;
   final String source;
   final String lastContacted;
+  final String lastConverted;
 
   final VoidCallback? onTap;
   final VoidCallback? onCall;
@@ -23,6 +24,7 @@ class LeadCard extends StatelessWidget {
     required this.status,
     required this.source,
     required this.lastContacted,
+    required this.lastConverted,
     this.onTap,
     this.onCall,
     this.onWhatsapp,
@@ -200,7 +202,7 @@ class LeadCard extends StatelessWidget {
                                 const SizedBox(height: 4),
 
                                 Text(
-                                  "Last contacted • $lastContacted",
+                                  "Last converted • $lastConverted",
                                   style: TextStyle(
                                     color:
                                     Colors.grey.shade600,
