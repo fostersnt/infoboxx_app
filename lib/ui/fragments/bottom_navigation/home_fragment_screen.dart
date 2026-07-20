@@ -71,7 +71,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 10, 20),
+                    margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
                     child: Row(
                       // mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -94,7 +94,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                           style: TextStyle(
                             color: AppColors.blackCharcoal,
                             fontSize: 15,
-                            fontWeight: FontWeight.w600,
+                            // fontWeight: FontWeight.w600,
                             letterSpacing: -0.2,
                           ),
                         ),
@@ -124,80 +124,6 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                           // Navigate to lead list or filter view
                         },
                       ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: AppColors.blackGunMetal,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    width: deviceWidth,
-                    // height: 300,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(16, 5, 16, 5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: BoxBorder.all(
-                              width: 1,
-                              color: AppColors.yellowAmber,
-                            ),
-                          ),
-                          child: SizedBox(
-                            width: 140,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.group_add,
-                                  color: AppColors.yellowAmber,
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Text(
-                                    "Lead Overview",
-                                    style: TextStyle(
-                                      color: AppColors.yellowAmber,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        Text(
-                          "Good $greeting, $companyName",
-                          style: TextStyle(
-                            color: AppColors.whitePure,
-                            fontSize: 18,
-                            // fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          "Stay on top of new enquiries and outreach",
-                          style: TextStyle(
-                            color: AppColors.yellowAmber,
-                            fontSize: 18,
-                            // fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          currentDate,
-                          style: TextStyle(
-                            color: AppColors.grayLight,
-                            // fontSize: 18,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   SizedBox(height: 10),
