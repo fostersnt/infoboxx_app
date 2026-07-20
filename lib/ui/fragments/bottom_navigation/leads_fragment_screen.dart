@@ -114,6 +114,8 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
         ],
       ),
       body: RefreshIndicator(
+        backgroundColor: AppColors.whitePure,
+        color: AppColors.orangeMain,
         onRefresh: () {
           return userService.getLeads();
         },
