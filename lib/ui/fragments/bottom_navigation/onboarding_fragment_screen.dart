@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/onboarding_card.dart';
+import 'package:infoboxx/ui/cards/onboarding_summary_card.dart';
 import 'package:infoboxx/util/app_colors.dart';
 
 class OnboardingFragmentScreen extends StatelessWidget {
@@ -54,6 +55,18 @@ class OnboardingFragmentScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: OnboardingSummaryCard(
+                  completionRate: 0.75, // 75% completed
+                  approvalStatus: "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+                  completedSteps: 3,
+                  totalSteps: 4,
+                  onTapContinue: () {
+                    // Navigate to remaining onboarding screens/steps
+                  },
+                ),
+              ),
               OnboardingCard(
                     name: "Identity Verification",
                     selected: isSelected_1,
