@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
+import 'package:infoboxx/ui/cards/leads_count_card.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
@@ -80,6 +81,18 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                       .fade(duration: 400.ms)
                       .slideY(begin: .25)
                       .scale(begin: const Offset(.95, .95)),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: Obx(
+                      () => AnimatedLeadCountCard(
+                        totalLeads: userService.leads.length,
+                        percentageChange: 14.2,
+                        onTap: () {
+                          // Navigate to lead list or filter view
+                        },
+                      ),
+                    ),
+                  ),
                   Container(
                     margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
                     padding: EdgeInsets.all(10),
