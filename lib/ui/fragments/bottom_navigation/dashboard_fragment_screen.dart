@@ -81,7 +81,7 @@ class _DashboardFragmentScreenState extends State<DashboardFragmentScreen> {
             backgroundColor: AppColors.whitePure,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedItemColor: AppColors.orangeMain,
+            selectedItemColor: AppColors.blackCharcoal,
             unselectedItemColor: AppColors.grayLightCharcoal,
             type: BottomNavigationBarType.fixed,
             items: List.generate(_navigationButtonsProperties.length, (index) {
