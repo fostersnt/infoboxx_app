@@ -74,7 +74,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
           // color: const Color(0xFF1E1E1E), // Dark background container
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: const Color(0xFFFBC31B).withOpacity(0.15),
+            color: AppColors.yellowAmber.withOpacity(0.4),
             width: 1,
           ),
           // boxShadow: [
