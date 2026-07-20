@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/model/Lead.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/lead_card.dart';
+import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
 import 'package:infoboxx/ui/components/empty_leads_view.dart';
 import 'package:infoboxx/ui/components/pagination_buttons.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -48,9 +49,7 @@ class _LeadsFragmentScreenState extends State<LeadsFragmentScreen> {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        backgroundColor: AppColors.whitePure,
-        color: AppColors.orangeMain,
+      body: CustomRefreshIndicator(
         onRefresh: () async {
           await userService.getLeads();
         },

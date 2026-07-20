@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/services/app/user_service.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/ui/cards/leads_count_card.dart';
+import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
 import 'package:infoboxx/util/app_colors.dart';
 import 'package:infoboxx/util/app_shimmers.dart';
 import 'package:infoboxx/util/general_functions.dart';
@@ -66,9 +67,8 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
         child: ShimmerScope(
           child: SizedBox(
             width: deviceWidth,
-            child: RefreshIndicator(
+            child: CustomRefreshIndicator(
               onRefresh: () async {
-                // await Future.delayed(Duration(seconds: 3));
                 await userService.getLeads();
               },
               child: SingleChildScrollView(
