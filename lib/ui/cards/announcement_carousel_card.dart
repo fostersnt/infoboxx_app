@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:infoboxx/util/announcement_icon_helper.dart';
 
 class AnnouncementCarouselCard extends StatelessWidget {
   final String title;
+  final String type;
   final String message;
   final String dateText;
-  final IconData icon;
+  // final IconData icon;
   final VoidCallback? onTap;
 
   const AnnouncementCarouselCard({
     super.key,
     required this.title,
+    required this.type,
     required this.message,
     required this.dateText,
-    this.icon = Icons.campaign_rounded,
+    // this.icon = Icons.campaign_rounded,
     this.onTap,
   });
 
@@ -54,7 +57,7 @@ class AnnouncementCarouselCard extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
-                    icon,
+                    AnnouncementIconHelper.getIconForCategory(type),
                     color: const Color(0xFFFBC31B),
                     size: 18,
                   ),

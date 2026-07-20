@@ -172,15 +172,16 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                         children: [
                           AnnouncementCarouselCard(
                             title: "New Lead Features Active",
+                            type: "feature",
                             message: "You can now export lead analytics directly to PDF or CSV.",
                             dateText: "Today",
                             onTap: () {},
                           ),
                           AnnouncementCarouselCard(
                             title: "Scheduled Maintenance",
+                            type: "system",
                             message: "Server optimization scheduled for tonight between 2:00 AM - 4:00 AM.",
                             dateText: "19th July",
-                            icon: Icons.build_rounded,
                             onTap: () {},
                           ),
                         ],
