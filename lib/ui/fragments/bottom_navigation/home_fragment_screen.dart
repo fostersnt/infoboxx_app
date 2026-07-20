@@ -81,7 +81,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
             width: deviceWidth,
             child: CustomRefreshIndicator(
               onRefresh: () async {
-                await userService.getLeads();
+                await userService.getLeads(forceRefresh: true);
               },
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -177,9 +177,11 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                     // ),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child:  MonthlyConvertedLeadsChart(
-                          monthlyData: userService.getMonthlyConvertedLeads(),
-                        ),
+                      child:  Obx(
+                        () => MonthlyConvertedLeadsChart(
+                            monthlyData: userService.getMonthlyConvertedLeads(),
+                          ),
+                      ),
                     ),
                     Container(
                       // height: 140, 2peter 1:21
