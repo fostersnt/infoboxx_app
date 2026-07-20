@@ -70,7 +70,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
         width: double.infinity,
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
-          color: AppColors.whitePure, // Dark background container
+          color: AppColors.blackCharcoal, // Dark background container
           // color: const Color(0xFF1E1E1E), // Dark background container
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -110,7 +110,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
                     Text(
                       widget.title,
                       style: TextStyle(
-                        color: AppColors.blackCharcoal,
+                        color: AppColors.whitePure,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -156,7 +156,7 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
                 return Text(
                   _countAnimation.value.toString(),
                   style: TextStyle(
-                    color: AppColors.blackCharcoal,
+                    color: AppColors.whitePure,
                     fontSize: 38,
                     fontWeight: FontWeight.bold,
                     letterSpacing: -1,
@@ -171,8 +171,8 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
             Text(
               "Active opportunities in pipeline",
               style: TextStyle(
-                color: AppColors.blackCharcoal,
-                fontSize: 12,
+                color: AppColors.whitePure.withOpacity(0.5),
+                fontSize: 16,
               ),
             ),
           ],
