@@ -64,12 +64,12 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
       child: SizedBox(
         width: double.infinity,
         child: ShimmerScope(
-          child: SizedBox(
-            width: deviceWidth,
-            child: RefreshIndicator(
-              onRefresh: (){
-                return userService.getLeads();
-              },
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await userService.getLeads(forceRefresh: true);
+            },
+            child: SizedBox(
+              width: deviceWidth,
               child: SingleChildScrollView(
                 // padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
                 child: Column(

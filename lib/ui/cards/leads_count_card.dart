@@ -32,11 +32,11 @@ class _AnimatedLeadCountCardState extends State<AnimatedLeadCountCard>
       vsync: this,
     );
 
-    _countAnimation = IntTween(begin: 0, end: widget.totalLeads).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
-    );
-
-    _controller.forward();
+    // Initialize directly at the passed initial value
+    _countAnimation = IntTween(
+      begin: widget.totalLeads,
+      end: widget.totalLeads,
+    ).animate(_controller);
   }
 
   @override

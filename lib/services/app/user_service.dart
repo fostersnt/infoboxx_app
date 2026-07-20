@@ -70,8 +70,12 @@ class UserService extends GetxService {
     }
   }
 
-  Future<bool> getLeads() async {
+  Future<bool> getLeads({bool forceRefresh = false}) async {
     try {
+      if (forceRefresh == false && leads.isNotEmpty) {
+        return true;
+      }
+
       String token = accessToken.value;
       var data = {
         "service_provider_id": userData.value["service_provider"]["id"],
