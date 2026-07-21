@@ -88,18 +88,23 @@ class UserService extends GetxService {
         errorMessage.value = "Company name missing";
         return false;
       }
-
       if (company_email == "") {
         errorMessage.value = "Company email missing";
         return false;
       }
-
       if (company_phone == "") {
         errorMessage.value = "Phone number missing";
         return false;
       }
 
-      var result = await ApiService.userLoginApi(email, password);
+      Map<String, dynamic> reqBody = {
+        company_name: company_name,
+        company_email: company_email,
+        company_phone: company_phone
+      };
+
+      var result = await ApiService.userSignUpApi(reqBody);
+
       if (result['is_success'] == true) {
         var response = result["api_response"];
         userData.value = response["data"];
