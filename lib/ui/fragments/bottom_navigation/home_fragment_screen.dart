@@ -46,10 +46,6 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    String token = userService.accessToken.value;
-    print(
-      "======== LeadStatisticsScreen initState ======= TOKEN == $token ======",
-    );
     userService.getLeads();
   }
 
@@ -63,7 +59,8 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
     // var leadStats = userService.leadStatistics();
 
     var userData = userService.userData.value;
-    String companyName = userData["service_provider"]?["company_name"] ?? "N/A";
+    String companyName = userData["company_name"] ?? "N/A";
+    String firstName = companyName.split(" ")[0];
 
     double verticalHeight = 10;
     double addOnValue = 50;
@@ -99,29 +96,44 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                       margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
                       child: Row(
                         // mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFBC31B).withOpacity(0.12),
+                              color: AppColors.yellowAmber.withOpacity(0.13),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Icon(
-                              Icons.calendar_today_rounded,
-                              color: Color(0xFFFBC31B),
-                              size: 18,
-                            ),
+                            child: Text("Hi $firstName,"),
                           ),
-                          const SizedBox(width: 10),
-                          Text(
-                            currentDate,
-                            style: TextStyle(
-                              color: AppColors.blackCharcoal,
-                              fontSize: 15,
-                              // fontWeight: FontWeight.w600,
-                              letterSpacing: -0.2,
-                            ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: const Color(
+                                    0xFFFBC31B,
+                                  ).withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Icon(
+                                  Icons.calendar_today_rounded,
+                                  color: Color(0xFFFBC31B),
+                                  size: 18,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                currentDate,
+                                style: TextStyle(
+                                  color: AppColors.blackCharcoal,
+                                  fontSize: 15,
+                                  // fontWeight: FontWeight.w600,
+                                  letterSpacing: -0.2,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -131,7 +143,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
                       child: OnboardingSummaryCard(
                         completionRate: 0.75, // 75% completed
                         approvalStatus:
-                        "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+                            "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
                         completedSteps: 3,
                         totalSteps: 4,
                         onTapContinue: () {

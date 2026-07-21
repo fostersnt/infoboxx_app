@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/model/Lead.dart';
 import 'package:infoboxx/services/api/api_service.dart';
 import 'package:infoboxx/util/response_convertor.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UserService extends GetxService {
   final userData = Rx<Map<String, dynamic>>({});
@@ -41,8 +42,12 @@ class UserService extends GetxService {
       var result = await ApiService.userLoginApi(email, password);
       if (result['is_success'] == true) {
         var response = result["api_response"];
-        userData.value = response["data"];
-        accessToken.value = response["data"]["access_token"] ?? "NA_APP";
+        userData.value = response["data"]["service_provider"];
+        String token = response["data"]["access_token"] ?? "NA_APP";
+
+        final storage = const FlutterSecureStorage();
+        await storage.write(key: 'auth_token', value: token);
+        // accessToken.value = response["data"]["access_token"] ?? "NA_APP";
 
         var encoder = const JsonEncoder.withIndent('  ');
         String prettyJson = encoder.convert(userData.value);
@@ -128,15 +133,17 @@ class UserService extends GetxService {
         return true;
       }
 
-      String token = accessToken.value;
+      final storage = const FlutterSecureStorage();
+      String token = await storage.read(key: 'auth_token') ?? "NA_FUNC";
+
+      // String token = accessToken.value;
       var data = {
-        "service_provider_id": userData.value["service_provider"]["id"],
-        "sub_category":
-            userData.value["service_provider"]["sub_category"]["name"],
-        "category": userData
-            .value["service_provider"]["sub_category"]["category"]["name"],
+        "service_provider_id": userData.value["id"],
+        "sub_category": userData.value["sub_category"]?["name"] ?? "NA",
+        "category": userData.value["sub_category"]?["category"]?["name"] ?? "NA",
       };
-      var result = await ApiService.getLeadsApi(accessToken.value, data);
+
+      var result = await ApiService.getLeadsApi(token, data);
       if (result['is_success'] == true) {
         var response = result["api_response"];
         List<Map<String, dynamic>> allLeads = List<Map<String, dynamic>>.from(
