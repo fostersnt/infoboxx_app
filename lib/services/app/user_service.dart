@@ -98,9 +98,9 @@ class UserService extends GetxService {
       }
 
       Map<String, dynamic> reqBody = {
-        company_name: company_name,
-        company_email: company_email,
-        company_phone: company_phone
+        "company_name": company_name,
+        "company_email": company_email,
+        "company_phone_number": company_phone
       };
 
       var result = await ApiService.userSignUpApi(reqBody);

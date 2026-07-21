@@ -89,13 +89,13 @@ class ApiService {
     try {
       String endpoint = ApiEndpoints.SERVICE_PROVIDER_SIGNUP;
       print("ENDPOINT === $endpoint");
-      
+      print("REQUEST DATA === $requestBody");
+
       var response = await DioClient.myDioObj.post(endpoint, data: requestBody);
       var result = response.data;
 
       //! Log response to console
       // ResponseConvertor.convertToJson(result);
-      print("ENDPOINT === $endpoint");
 
       if (result["data"]["status_code"] == 200) {
         return {"is_success": true, "api_response": result["data"]};
