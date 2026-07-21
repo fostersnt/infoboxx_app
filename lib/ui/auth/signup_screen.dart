@@ -24,8 +24,9 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   var formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final phoneController = TextEditingController();
 
   final userService = Get.find<UserService>();
 
@@ -88,10 +89,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             key: formKey,
                             child: Column(
                               children: [
-                                // SizedBox(height: 30),
+                                SizedBox(height: 30),
                                 //! Company name field
                                 TextFormField(
-                                  controller: emailController,
+                                  controller: nameController,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.email,
@@ -172,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 //! Company email field
                                 Obx(
                                       () => TextFormField(
-                                    controller: passwordController,
+                                    controller: phoneController,
                                     obscureText: hidePassword.value,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
@@ -231,13 +232,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
                                     onTap: () async {
-                                      String email = emailController.text
-                                          .trim();
-                                      String password = passwordController.text
-                                          .trim();
+                                      String company_name = emailController.text.trim();
+                                      String company_email = emailController.text.trim();
+                                      String company_phone = phoneController.text.trim();
                                       bool check = await userService.userSignUp(
-                                        email: email,
-                                        password: password,
+                                        company_name: company_name,
+                                        company_email: company_email,
+                                        company_phone: company_phone,
                                         forceRefresh: false,
                                       );
 

@@ -72,8 +72,9 @@ class UserService extends GetxService {
 
   Future<bool> userSignUp({
     bool forceRefresh = false,
-    String email = "",
-    String password = "",
+    String company_name = "",
+    String company_email = "",
+    String company_phone = "",
   }) async {
     // Skip fetching if data already exists
     if (forceRefresh == false && userData.value.isNotEmpty) {
@@ -83,13 +84,18 @@ class UserService extends GetxService {
     isLoading.value = true;
 
     try {
-      if (email == "") {
-        errorMessage.value = "Email should not be blank";
+      if (company_name == "") {
+        errorMessage.value = "Company name missing";
         return false;
       }
 
-      if (password == "") {
-        errorMessage.value = "Password should not be blank";
+      if (company_email == "") {
+        errorMessage.value = "Company email missing";
+        return false;
+      }
+
+      if (company_phone == "") {
+        errorMessage.value = "Phone number missing";
         return false;
       }
 

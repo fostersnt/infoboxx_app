@@ -1,6 +1,7 @@
 class ApiEndpoints {
   //! Authentication Endpoints
   static const String SERVICE_PROVIDER_LOGIN  = "/auth/service-provider/sign-in";
+  static const String SERVICE_PROVIDER_SIGNUP  = "/auth/service-provider/create";
   static const String SERVICE_PROVIDER_LOGOYT = "/auth/service-provider/sign-out";
 
   //! Article Endpoints
