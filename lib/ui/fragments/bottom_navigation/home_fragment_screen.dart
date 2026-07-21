@@ -77,170 +77,187 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
           SystemNavigator.pop();
         }
       },
-      child: Container(
-        color: AppColors.whitePure,
-        width: double.infinity,
-        child: ShimmerScope(
-          child: SizedBox(
-            width: deviceWidth,
-            child: CustomRefreshIndicator(
-              onRefresh: () async {
-                await userService.getLeads(forceRefresh: true);
-              },
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                // padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
-                      child: Row(
-                        // mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-                            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                            decoration: BoxDecoration(
-                              color: AppColors.yellowAmber.withOpacity(0.13),
-                              borderRadius: BorderRadius.circular(10),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.whitePure,
+          leading: Text(""),
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: InkWell(
+                  child: Icon(Icons.menu),
+                ),
+              )
+            ],
+          ),
+        ),
+        body: Container(
+          color: AppColors.whitePure,
+          width: double.infinity,
+          child: ShimmerScope(
+            child: SizedBox(
+              width: deviceWidth,
+              child: CustomRefreshIndicator(
+                onRefresh: () async {
+                  await userService.getLeads(forceRefresh: true);
+                },
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  // padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 20, 10, 20),
+                        child: Row(
+                          // mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              decoration: BoxDecoration(
+                                color: AppColors.yellowAmber.withOpacity(0.13),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text("Hi $firstName,"),
                             ),
-                            child: Text("Hi $firstName,"),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: const Color(
-                                    0xFFFBC31B,
-                                  ).withOpacity(0.15),
-                                  borderRadius: BorderRadius.circular(10),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(
+                                      0xFFFBC31B,
+                                    ).withOpacity(0.15),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.calendar_today_rounded,
+                                    color: Color(0xFFFBC31B),
+                                    size: 18,
+                                  ),
                                 ),
-                                child: const Icon(
-                                  Icons.calendar_today_rounded,
-                                  color: Color(0xFFFBC31B),
-                                  size: 18,
+                                const SizedBox(width: 10),
+                                Text(
+                                  currentDate,
+                                  style: TextStyle(
+                                    color: AppColors.blackCharcoal,
+                                    fontSize: 15,
+                                    // fontWeight: FontWeight.w600,
+                                    letterSpacing: -0.2,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 10),
-                              Text(
-                                currentDate,
-                                style: TextStyle(
-                                  color: AppColors.blackCharcoal,
-                                  fontSize: 15,
-                                  // fontWeight: FontWeight.w600,
-                                  letterSpacing: -0.2,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      child: OnboardingSummaryCard(
-                        completionRate: 0.75, // 75% completed
-                        approvalStatus:
-                            "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
-                        completedSteps: 3,
-                        totalSteps: 4,
-                        onTapContinue: () {
-                          // Navigate to remaining onboarding screens/steps
-                        },
-                      ),
-                    ),
-                    // GreetingCard(
-                    //       name: "Greetings",
-                    //       selected: isSelected.value,
-                    //       onChanged: (val) {
-                    //         if (val != null) {
-                    //           isSelected.value = !isSelected.value;
-                    //         }
-                    //       },
-                    //     )
-                    //     .animate()
-                    //     .fade(duration: 400.ms)
-                    //     .slideY(begin: .25)
-                    //     .scale(begin: const Offset(.95, .95)),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      child: Obx(
-                        () => AnimatedLeadCountCard(
-                          totalLeads: userService.leads.length,
-                          percentageChange: 14.2,
-                          onTap: () {
-                            // Navigate to lead list or filter view
+                      Container(
+                        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        child: OnboardingSummaryCard(
+                          completionRate: 0.75, // 75% completed
+                          approvalStatus:
+                              "UNDER_REVIEW", // PENDING, APPROVED, REJECTED, etc.
+                          completedSteps: 3,
+                          totalSteps: 4,
+                          onTapContinue: () {
+                            // Navigate to remaining onboarding screens/steps
                           },
                         ),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    // SizedBox(
-                    //   width: deviceWidth,
-                    //   height: 230,
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //     children: [
-                    //       Column(
-                    //         children: [
-                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
-                    //           SizedBox(height: 10),
-                    //           AppShimmers.textShimmer(boxWidth),
-                    //         ],
-                    //       ),
-                    //       Column(
-                    //         children: [
-                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
-                    //           SizedBox(height: 10),
-                    //           AppShimmers.textShimmer(boxWidth),
-                    //         ],
-                    //       ),
-                    //       Column(
-                    //         children: [
-                    //           AppShimmers.boxShimmer(boxWidth, boxHeight),
-                    //           SizedBox(height: 10),
-                    //           AppShimmers.textShimmer(boxWidth),
-                    //         ],
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 10,
-                      ),
-                      child: Obx(
-                        () => MonthlyConvertedLeadsChart(
-                          monthlyData: userService.getMonthlyConvertedLeads(),
+                      // GreetingCard(
+                      //       name: "Greetings",
+                      //       selected: isSelected.value,
+                      //       onChanged: (val) {
+                      //         if (val != null) {
+                      //           isSelected.value = !isSelected.value;
+                      //         }
+                      //       },
+                      //     )
+                      //     .animate()
+                      //     .fade(duration: 400.ms)
+                      //     .slideY(begin: .25)
+                      //     .scale(begin: const Offset(.95, .95)),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        child: Obx(
+                          () => AnimatedLeadCountCard(
+                            totalLeads: userService.leads.length,
+                            percentageChange: 14.2,
+                            onTap: () {
+                              // Navigate to lead list or filter view
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      // height: 140, 2peter 1:21
-                      // 0547555587
-                      // padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      color: AppColors.whitePure,
-                      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      height: 150,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: announcements.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          // return ListTile(title: Text('Item $index'));
-                          return AnnouncementCarouselCard(
-                            title: announcements[index]["title"],
-                            type: announcements[index]["type"],
-                            message: announcements[index]["message"],
-                            dateText: announcements[index]["dateText"],
-                          );
-                        },
+                      SizedBox(height: 10),
+                      // SizedBox(
+                      //   width: deviceWidth,
+                      //   height: 230,
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //     children: [
+                      //       Column(
+                      //         children: [
+                      //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                      //           SizedBox(height: 10),
+                      //           AppShimmers.textShimmer(boxWidth),
+                      //         ],
+                      //       ),
+                      //       Column(
+                      //         children: [
+                      //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                      //           SizedBox(height: 10),
+                      //           AppShimmers.textShimmer(boxWidth),
+                      //         ],
+                      //       ),
+                      //       Column(
+                      //         children: [
+                      //           AppShimmers.boxShimmer(boxWidth, boxHeight),
+                      //           SizedBox(height: 10),
+                      //           AppShimmers.textShimmer(boxWidth),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 10,
+                        ),
+                        child: Obx(
+                          () => MonthlyConvertedLeadsChart(
+                            monthlyData: userService.getMonthlyConvertedLeads(),
+                          ),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                  ],
+                      Container(
+                        // height: 140, 2peter 1:21
+                        // 0547555587
+                        // padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        color: AppColors.whitePure,
+                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        height: 150,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: announcements.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            // return ListTile(title: Text('Item $index'));
+                            return AnnouncementCarouselCard(
+                              title: announcements[index]["title"],
+                              type: announcements[index]["type"],
+                              message: announcements[index]["message"],
+                              dateText: announcements[index]["dateText"],
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
