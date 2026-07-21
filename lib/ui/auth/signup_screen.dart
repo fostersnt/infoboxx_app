@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:infoboxx/services/api/dio_client.dart';
 import 'package:infoboxx/services/api/api_endpoints.dart';
 import 'package:infoboxx/services/app/user_service.dart';
+import 'package:infoboxx/ui/auth/login_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -237,6 +238,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       );
 
                                       if (check == true) {
+                                        nameController.text = "";
+                                        emailController.text = "";
+                                        phoneController.text = "";
                                         AppNotifications.showSuccessSnackBar(
                                           "Account Creation",
                                           "Your account has been created",
@@ -278,7 +282,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                     TextButton(
                                       onPressed: () {
-                                        Get.to(() => OnboardingStarterScreen());
+                                        Get.to(() => LoginScreen());
                                       },
                                       child: Text(
                                         "Login",
