@@ -112,10 +112,13 @@ class UserService extends GetxService {
 
         var encoder = const JsonEncoder.withIndent('  ');
         String prettyJson = encoder.convert(userData.value);
+        String prettyJsonReqBody = encoder.convert(reqBody);
+
         debugPrint("--------DATA FROM USER LOGIN SERVICE------------");
         String tk = accessToken.value;
         debugPrint("--------ACCESS TOKEN $tk ------------");
         debugPrint(prettyJson);
+        debugPrint(prettyJsonReqBody);
         debugPrint("--------END-----DATA FROM USER LOGIN SERVICE------------");
 
         return true;

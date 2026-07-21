@@ -30,7 +30,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final userService = Get.find<UserService>();
 
-  var hidePassword = true.obs;
   var isLoading = false.obs;
   // var isFormValidated = false.obs;
   // var formErrorMessage = "".obs;
@@ -174,25 +173,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 Obx(
                                       () => TextFormField(
                                     controller: phoneController,
-                                    obscureText: hidePassword.value,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
                                         Icons.key,
                                         color: AppColors.grayCoolSlate,
-                                      ),
-                                      suffixIcon: Obx(
-                                            () => GestureDetector(
-                                          onTap: () {
-                                            hidePassword.value =
-                                            !hidePassword.value;
-                                          },
-                                          child: Icon(
-                                            hidePassword.value == true
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                            color: AppColors.grayCoolSlate,
-                                          ),
-                                        ),
                                       ),
                                       hintText: "phone number...",
                                       hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
@@ -232,13 +216,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   borderRadius: BorderRadius.circular(30),
                                   child: InkWell(
                                     onTap: () async {
-                                      String company_name = emailController.text.trim();
-                                      String company_email = emailController.text.trim();
-                                      String company_phone = phoneController.text.trim();
+                                      String companyName = emailController.text.trim();
+                                      String companyEmail = emailController.text.trim();
+                                      String companyPhone = phoneController.text.trim();
                                       bool check = await userService.userSignUp(
-                                        company_name: company_name,
-                                        company_email: company_email,
-                                        company_phone: company_phone,
+                                        company_name: companyName,
+                                        company_email: companyEmail,
+                                        company_phone: companyPhone,
                                         forceRefresh: false,
                                       );
 
