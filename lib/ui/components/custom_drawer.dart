@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:infoboxx/services/app/user_service.dart';
+import 'package:infoboxx/util/general_functions.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
+
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  final userService = Get.find<UserService>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +43,16 @@ class CustomDrawer extends StatelessWidget {
                 CircleAvatar(
                   radius: 28,
                   backgroundColor: Colors.amber.shade600,
-                  child: const Text(
-                    "JD",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                  child: Obx(
+                    () => Text(
+                      GeneralFunctions.getInitials(
+                        userService.userData.value["company_name"],
+                      ),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
@@ -47,26 +61,27 @@ class CustomDrawer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Text(
-                        "John Doe",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                    children: [
+                      Obx(
+                        () => Text(
+                          userService.userData.value["company_name"],
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        "john.doe@example.com",
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12,
+                      Obx(
+                        () => Text(
+                          userService.userData.value["company_email"],
+                          style: TextStyle(color: Colors.white70, fontSize: 12),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
@@ -125,7 +140,8 @@ class CustomDrawer extends StatelessWidget {
               title: "Logout",
               iconColor: Colors.redAccent,
               textColor: Colors.redAccent,
-              showArrow: false, // Hide trailing arrow for action buttons like Logout
+              showArrow:
+                  false, // Hide trailing arrow for action buttons like Logout
               onTap: () {
                 Navigator.pop(context);
                 // Perform logout action
