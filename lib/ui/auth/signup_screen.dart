@@ -59,14 +59,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: MediaQuery.of(context).size.height / 8,
                         child: Column(
                           children: [
-                            Text(
-                              "WELCOME BACK !",
-                              style: TextStyle(
-                                color: AppColors.grayCoolSlate,
-                                fontSize: 20,
-                              ),
-                            ),
-                            SizedBox(height: 5),
+                            // Text(
+                            //   "WELCOME BACK !",
+                            //   style: TextStyle(
+                            //     color: AppColors.grayCoolSlate,
+                            //     fontSize: 20,
+                            //   ),
+                            // ),
+                            // SizedBox(height: 5),
                             Obx(() {
                               if (userService.isLoading.value == true) {
                                 return AppLoaders.fourCirclePulse();
@@ -97,7 +97,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Icons.email,
                                       color: AppColors.grayCoolSlate,
                                     ),
-                                    hintText: "email",
+                                    hintText: "email...",
+                                    hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
                                     filled: true,
                                     fillColor: AppColors.whitePure,
                                     border: OutlineInputBorder(
@@ -152,7 +153,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                         ),
                                       ),
-                                      hintText: "password",
+                                      hintText: "password...",
+                                      hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
                                       filled: true,
                                       fillColor: AppColors.whitePure,
                                       border: OutlineInputBorder(
@@ -226,7 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        "Don't have an Account?",
+                                        "Already have an Account?",
                                         textAlign: TextAlign.end,
                                         style: TextStyle(
                                           color: AppColors.blackPure,
@@ -238,9 +240,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         Get.to(() => OnboardingStarterScreen());
                                       },
                                       child: Text(
-                                        "Onboard Now",
+                                        "Login",
                                         style: TextStyle(
-                                          color: AppColors.yellowAmber,
+                                          color: AppColors.blackCharcoal,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),
