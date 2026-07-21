@@ -7,6 +7,7 @@ import 'package:infoboxx/ui/cards/announcement_carousel_card.dart';
 import 'package:infoboxx/ui/cards/greeting_card.dart';
 import 'package:infoboxx/ui/cards/leads_count_card.dart';
 import 'package:infoboxx/ui/cards/onboarding_summary_card.dart';
+import 'package:infoboxx/ui/components/custom_drawer.dart';
 import 'package:infoboxx/ui/components/custom_refresh_indicator.dart';
 import 'package:infoboxx/ui/components/monthly_converted_leads_chart.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -80,19 +81,31 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.whitePure,
-          leading: Text(""),
-          flexibleSpace: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: InkWell(
-                  child: Icon(Icons.menu),
-                ),
-              )
-            ],
-          ),
+          automaticallyImplyLeading: false,
+          // leading: Builder(
+          //   builder: (context) {
+          //     return IconButton(
+          //       icon: const Icon(Icons.menu),
+          //       onPressed: () {
+          //         Scaffold.of(context).openDrawer();
+          //       },
+          //     );
+          //   },
+          // ),
+          actions: [
+            Builder(
+              builder: (context) {
+                return IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                );
+              },
+            ),
+          ],
         ),
+        drawer: CustomDrawer(),
         body: Container(
           color: AppColors.whitePure,
           width: double.infinity,
