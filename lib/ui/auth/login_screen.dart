@@ -197,7 +197,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                       bool check = await userService.userLogin(
                                         email: email,
                                         password: password,
-                                        forceRefresh: false,
                                       );
 
                                       if(check == true){

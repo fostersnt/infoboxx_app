@@ -24,7 +24,7 @@ class OnboardingFragmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String companyName =
-        userService.userData.value["service_provider"]["company_name"] ?? "N/A";
+        userService.userData.value["service_provider"]?["company_name"] ?? "N/A";
 
     status_1 = isCompleted_1 == true ? status_1 = "COMPLETED" : "PENDING";
     status_2 = isCompleted_2 == true ? status_2 = "COMPLETED" : "PENDING";

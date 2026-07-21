@@ -22,15 +22,9 @@ class UserService extends GetxService {
   // }
 
   Future<bool> userLogin({
-    bool forceRefresh = false,
     String email = "",
     String password = "",
   }) async {
-    // Skip fetching if data already exists
-    if (forceRefresh == false && userData.value.isNotEmpty) {
-      return true;
-    }
-
     isLoading.value = true;
 
     try {
