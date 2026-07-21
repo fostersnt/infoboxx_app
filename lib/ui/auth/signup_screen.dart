@@ -246,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           "Your account has been created",
                                         );
                                         Future.delayed(Duration(seconds: 3));
-                                        Get.to(() => LoginScreen());
+                                        Get.back();
                                       } else {
                                         AppNotifications.showErrorSnackBar(
                                           "SignUp Error",
