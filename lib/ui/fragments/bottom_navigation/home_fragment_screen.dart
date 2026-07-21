@@ -63,7 +63,7 @@ class _HomeFragmentScreenState extends State<HomeFragmentScreen> {
     // var leadStats = userService.leadStatistics();
 
     var userData = userService.userData.value;
-    String companyName = userData["service_provider"]?["company_name"] ?? "N/A";
+    String companyName = userData["service_provider"]["company_name"] ?? "N/A";
 
     double verticalHeight = 10;
     double addOnValue = 50;

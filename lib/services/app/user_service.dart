@@ -8,6 +8,7 @@ import 'package:infoboxx/util/response_convertor.dart';
 
 class UserService extends GetxService {
   final userData = Rx<Map<String, dynamic>>({});
+  final userSignUpData = Rx<Map<String, dynamic>>({});
   RxBool isLoading = false.obs;
   RxString errorMessage = "".obs;
   RxString accessToken = "".obs;
@@ -76,10 +77,6 @@ class UserService extends GetxService {
     String company_email = "",
     String company_phone = "",
   }) async {
-    // Skip fetching if data already exists
-    if (forceRefresh == false && userData.value.isNotEmpty) {
-      return true;
-    }
 
     isLoading.value = true;
 
@@ -107,16 +104,13 @@ class UserService extends GetxService {
 
       if (result['is_success'] == true) {
         var response = result["api_response"];
-        userData.value = response["data"];
-        accessToken.value = response["data"]["access_token"] ?? "NA_APP";
+        userSignUpData.value = response["data"];
 
         var encoder = const JsonEncoder.withIndent('  ');
-        String prettyJson = encoder.convert(userData.value);
+        String prettyJson = encoder.convert(userSignUpData.value);
         String prettyJsonReqBody = encoder.convert(reqBody);
 
         debugPrint("--------DATA FROM USER LOGIN SERVICE------------");
-        String tk = accessToken.value;
-        debugPrint("--------ACCESS TOKEN $tk ------------");
         debugPrint(prettyJson);
         debugPrint(prettyJsonReqBody);
         debugPrint("--------END-----DATA FROM USER LOGIN SERVICE------------");
