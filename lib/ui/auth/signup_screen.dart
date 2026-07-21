@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:infoboxx/services/api/dio_client.dart';
 import 'package:infoboxx/services/api/api_endpoints.dart';
 import 'package:infoboxx/services/app/user_service.dart';
-import 'package:infoboxx/ui/auth/signup_screen.dart';
 import 'package:infoboxx/ui/fragments/bottom_navigation/dashboard_fragment_screen.dart';
 import 'package:infoboxx/ui/onboarding/onboarding_starter_screen.dart';
 import 'package:infoboxx/util/app_colors.dart';
@@ -16,14 +15,14 @@ import 'package:infoboxx/util/app_notifications.dart';
 import 'package:infoboxx/util/app_validators.dart';
 import 'package:infoboxx/util/response_convertor.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   var formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -131,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(height: 30),
                                 //! Password field
                                 Obx(
-                                  () => TextFormField(
+                                      () => TextFormField(
                                     controller: passwordController,
                                     obscureText: hidePassword.value,
                                     decoration: InputDecoration(
@@ -140,10 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: AppColors.grayCoolSlate,
                                       ),
                                       suffixIcon: Obx(
-                                        () => GestureDetector(
+                                            () => GestureDetector(
                                           onTap: () {
                                             hidePassword.value =
-                                                !hidePassword.value;
+                                            !hidePassword.value;
                                           },
                                           child: Icon(
                                             hidePassword.value == true
@@ -194,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           .trim();
                                       String password = passwordController.text
                                           .trim();
-                                      bool check = await userService.userLogin(
+                                      bool check = await userService.userSignUp(
                                         email: email,
                                         password: password,
                                         forceRefresh: false,
@@ -203,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       if(check == true){
                                         Get.to(() => DashboardFragmentScreen());
                                       }else{
-                                        AppNotifications.showErrorSnackBar("Login Error", userService.errorMessage.value);
+                                        AppNotifications.showErrorSnackBar("SignUp Error", userService.errorMessage.value);
                                       }
                                     },
                                     borderRadius: BorderRadius.circular(30),
@@ -213,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         horizontal: 28,
                                       ),
                                       child: Text(
-                                        "Login",
+                                        "SignUp",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -224,25 +223,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 SizedBox(height: 30),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "Don't have an Account?",
-                                      // textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        color: AppColors.blackPure,
+                                    Expanded(
+                                      child: Text(
+                                        "Don't have an Account?",
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                          color: AppColors.blackPure,
+                                        ),
                                       ),
                                     ),
                                     TextButton(
                                       onPressed: () {
-                                        // Get.to(() => OnboardingStarterScreen());
-                                        Get.to(() => SignUpScreen());
+                                        Get.to(() => OnboardingStarterScreen());
                                       },
                                       child: Text(
-                                        "SignUp",
+                                        "Onboard Now",
                                         style: TextStyle(
-                                          color: AppColors.blackCharcoal,
+                                          color: AppColors.yellowAmber,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),

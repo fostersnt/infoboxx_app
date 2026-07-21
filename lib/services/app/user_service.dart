@@ -70,6 +70,56 @@ class UserService extends GetxService {
     }
   }
 
+  Future<bool> userSignUp({
+    bool forceRefresh = false,
+    String email = "",
+    String password = "",
+  }) async {
+    // Skip fetching if data already exists
+    if (forceRefresh == false && userData.value.isNotEmpty) {
+      return true;
+    }
+
+    isLoading.value = true;
+
+    try {
+      if (email == "") {
+        errorMessage.value = "Email should not be blank";
+        return false;
+      }
+
+      if (password == "") {
+        errorMessage.value = "Password should not be blank";
+        return false;
+      }
+
+      var result = await ApiService.userLoginApi(email, password);
+      if (result['is_success'] == true) {
+        var response = result["api_response"];
+        userData.value = response["data"];
+        accessToken.value = response["data"]["access_token"] ?? "NA_APP";
+
+        var encoder = const JsonEncoder.withIndent('  ');
+        String prettyJson = encoder.convert(userData.value);
+        debugPrint("--------DATA FROM USER LOGIN SERVICE------------");
+        String tk = accessToken.value;
+        debugPrint("--------ACCESS TOKEN $tk ------------");
+        debugPrint(prettyJson);
+        debugPrint("--------END-----DATA FROM USER LOGIN SERVICE------------");
+
+        return true;
+      } else {
+        errorMessage.value = result['error_message'];
+        return false;
+      }
+    } catch (e) {
+      isLoading.value = false;
+      return false;
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   Future<bool> getLeads({bool forceRefresh = false}) async {
     try {
       if (forceRefresh == false && leads.isNotEmpty) {
