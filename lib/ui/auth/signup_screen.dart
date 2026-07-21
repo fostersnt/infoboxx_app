@@ -52,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height / 4,
+                        height: MediaQuery.of(context).size.height / 5,
                         child: Image.asset("images/logo_white.webp"),
                       ),
                       SizedBox(
@@ -88,8 +88,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             key: formKey,
                             child: Column(
                               children: [
-                                SizedBox(height: 30),
-                                //! Email field
+                                // SizedBox(height: 30),
+                                //! Company name field
                                 TextFormField(
                                   controller: emailController,
                                   decoration: InputDecoration(
@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Icons.email,
                                       color: AppColors.grayCoolSlate,
                                     ),
-                                    hintText: "email...",
+                                    hintText: "company name...",
                                     hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
                                     filled: true,
                                     fillColor: AppColors.whitePure,
@@ -129,7 +129,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 30),
-                                //! Password field
+                                //! Company email field
+                                TextFormField(
+                                  controller: emailController,
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(
+                                      Icons.email,
+                                      color: AppColors.grayCoolSlate,
+                                    ),
+                                    hintText: "company email...",
+                                    hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
+                                    filled: true,
+                                    fillColor: AppColors.whitePure,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                        color: AppColors.grayLightSilver,
+                                      ),
+                                    ),
+                                    // 1. Border when the field is enabled (idle)
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                        color: AppColors.grayLightSilver,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                        color: AppColors.grayLightSilver,
+                                      ),
+                                    ),
+                                    disabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                        color: AppColors.grayLightSilver,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+                                //! Company email field
                                 Obx(
                                       () => TextFormField(
                                     controller: passwordController,
@@ -153,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                         ),
                                       ),
-                                      hintText: "password...",
+                                      hintText: "phone number...",
                                       hintStyle: TextStyle(color: AppColors.blackGunMetal.withOpacity(0.35)),
                                       filled: true,
                                       fillColor: AppColors.whitePure,
